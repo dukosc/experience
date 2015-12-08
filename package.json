@@ -1,0 +1,20 @@
+{
+  "name": "experience",
+  "version": "1.0.0",
+  "description": "Using real life activity information to imfluence your progress in the game.",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "experience",
+    "game"
+  ],
+  "author": "Jacob Sharp, Barrette Mize, Josh Guion",
+  "license": "MIT",
+  "dependencies": {
+    "angular": "^1.4.8",
+    "angular-route": "^1.4.8",
+    "phaser": "^2.4.4"
+  }
+}

@@ -1,11 +1,22 @@
 var player;
 var cursors;
-
-function create(){
+var sword;
+var bullets;
+function create() {
 
   game.physics.startSystem(Phaser.Physics.ARCADE);
-
+  bullets = game.add.group();
+  bullets.enableBody = true;
+  bullets.physicsBodyType = Phaser.Physics.ARCADE;
+  bullets.createMultiple(50, 'bullet');
+  bullets.setAll('checkWorldBounds', true);
+  bullets.setAll('outOfBoundsKill', true);
   player = game.add.sprite(100, game.world.height - 301, 'hero');
+  sword = game.add.sprite(15, 15, 'sword');
+  sword.scale.setTo(0.3, 0.3);
+  player.addChild(sword);
+  // player.addChild(bullets);
+  sword.anchor.setTo(0.5, 0.5);
   game.physics.arcade.enable(player);
   player.body.collideWorldBounds = true;
 

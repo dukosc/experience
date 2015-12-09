@@ -4,7 +4,6 @@ var sword;
 var bullets;
 
 function create() {
-
   game.physics.startSystem(Phaser.Physics.ARCADE);
   bullets = game.add.group();
   bullets.enableBody = true;

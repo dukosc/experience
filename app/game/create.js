@@ -2,6 +2,7 @@ var player;
 var cursors;
 var sword;
 var bullets;
+
 function create() {
 
   game.physics.startSystem(Phaser.Physics.ARCADE);

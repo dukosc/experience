@@ -1,6 +1,7 @@
 
 var preload = function(){
-  game.load.image('bullet', 'app/game/assets/slashesD4_2.png');
-  game.load.image('sword', 'app/game/assets/master_sword.gif');
-  game.load.spritesheet('hero', 'app/game/assets/hero.png', 32, 48);
+  // game.load.image('sword', 'app/game/assets/master_sword.gif');
+  game.load.image('gun', 'app/game/assets/pistol.png');
+  game.load.image('bullet', 'app/game/assets/bullet.png');
+  game.load.spritesheet('player', 'app/game/assets/player.png', 128, 128, 10);
 }

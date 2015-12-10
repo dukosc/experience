@@ -1,3 +1,3 @@
 function render(){
-  game.debug.spriteInfo(sword, 32, 32);
+  game.debug.spriteInfo(gun, 32, 32);
 }

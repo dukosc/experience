@@ -8,7 +8,7 @@ function fire() {
     bullet.scale.setTo(0.5, 0.5);
     // bullet.anchor.setTo(0.2, 0.5);
     bullet.rotation = game.physics.arcade.angleToPointer(gun);
-    bullet.reset(gun.body.center.x, gun.body.center.y+5);
+    bullet.reset(player.body.center.x, player.body.center.y);
     game.physics.arcade.moveToPointer(bullet, 2500, game.input.activePointer);
   }
 }

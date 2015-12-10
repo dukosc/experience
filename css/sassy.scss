@@ -6,12 +6,12 @@ body {
 }
 
 h1 {
-  font-size: 7em;
+  font-size: 4.75em;
   text-shadow: -2px -2px darkgray;
   font-family: gamegirl;
   text-align: center;
   letter-spacing: 15px;
-  padding: 7% 0 4% 0;
+  padding: 3% 0 1% 0;
   margin-top: -1%;
 }
 
@@ -40,6 +40,39 @@ h1 {
   display: none;
 }
 
+#mainMenu {
+  div {
+    display: inline-block;
+    width: 32%;
+    height: 580px;
+    margin: .5%;
+    background: #333333;
+    border-radius: 5px;
+    border: 1px solid #333333;
+    box-shadow: -2px -2px darkgrey;
+    vertical-align: top;
+    #spriteImg {
+      width: 300px;
+      height: 300px;
+      margin-top: 5%;
+      margin-left: 10%;
+      background: url('/app/game/assets/hipster2.png');
+      animation: play 1s steps(6) infinite;
+    }
+    @keyframes play {
+    100% { background-position: -1900px; }
+    }
+    .btn {
+      margin: 55% 35% 0 25%;
+      // border: 1px solid #333333;
+      box-shadow: -2px -2px darkgrey;
+      font-family: gamegirl;
+    }
+  }
+}
+
 #gameWindow {
-  margin-left: 17.75%;
+  margin-left: 10%;
+  border: 1px solid #333333;
+  width: 1002px;
 }

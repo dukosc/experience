@@ -15,6 +15,7 @@
   </head>
   <body>
 
+
     <h1>EXPERIENCE</h1>
 
     <div class="loginWindow hide">
@@ -26,7 +27,20 @@
         </form>
     </div>
 
-    <div id="gameWindow" class=""></div>
+    <div id="mainMenu">
+      <div class="playGame">
+        <button type="button" class="btn btn-lg" name="button">Play Game</button>
+        <section id="spriteImg"></section>
+      </div>
+      <div class="viewStats">
+        <button type="button" class="btn btn-lg" name="button">View Stats</button>
+      </div>
+      <div class="setGoals">
+        <button type="button" class="btn btn-lg" name="button">Set Goals</button>
+      </div>
+    </div>
+
+    <div id="gameWindow" class="hide"></div>
 
     <script src="app/game/function.js" charset="utf-8"></script>
     <script src="app/game/preload.js" charset="utf-8"></script>

@@ -2,8 +2,10 @@ var player;
 var cursors;
 var sword;
 var bullets;
+var background;
 
 function create() {
+  background = game.add.image(0, 0, 'background');
   game.physics.startSystem(Phaser.Physics.ARCADE);
   bullets = game.add.group();
   bullets.enableBody = true;
@@ -21,10 +23,10 @@ function create() {
   player.body.collideWorldBounds = true;
 
   //movement animations
-  player.animations.add('left', [4, 5, 6, 7], 8, true);
-  player.animations.add('right', [8, 9, 10, 11], 8, true);
-  player.animations.add('up', [12, 13, 14, 15], 8, true);
-  player.animations.add('down', [1, 2, 3, 0], 8, true);
+  player.animations.add('left', [16, 17, 18, 19, 20], 9, true);
+  player.animations.add('right', [5, 6, 7, 8, 9], 9, true);
+  player.animations.add('up', [5, 6, 7, 8, 9], 9, true);
+  player.animations.add('down', [5, 6, 7, 8, 9], 9, true);
 
   cursors = game.input.keyboard.createCursorKeys();
 }

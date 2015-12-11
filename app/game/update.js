@@ -23,4 +23,8 @@ function update() {
   if (game.input.activePointer.isDown) {
     fire();
   }
+
+  //collision
+  game.physics.arcade.collide(player, walls);
+  
 }

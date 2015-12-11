@@ -59,9 +59,7 @@ h1 {
       background: url('/app/game/assets/hipster2.png');
       animation: play 1s steps(6) infinite;
     }
-    @keyframes play {
-    100% { background-position: -1900px; }
-    }
+
     .btn {
       margin: 55% 35% 0 25%;
       // border: 1px solid #333333;

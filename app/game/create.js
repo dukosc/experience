@@ -9,9 +9,25 @@ var gunEquipped = true;
 var swordEquipped = false;
 var swung = false;
 var timer;
+var map;
+var layer;
 
 function create() {
+  game.stage.backgroundColor = '#787878';
 
+  //  The 'mario' key here is the Loader key given in game.load.tilemap
+  map = game.add.tilemap('snowlevel');
+
+  //  The first parameter is the tileset name, as specified in the Tiled map editor (and in the tilemap json file)
+  //  The second parameter maps this name to the Phaser.Cache key 'tiles'
+  glob2=map.addTilesetImage('Meta', 'tiles', 32, 32);
+
+  //  Creates a layer from the World1 layer in the map data.
+  //  A Layer is effectively like a Phaser.Sprite, so is added to the display list.
+  layer = map.createLayer('Tile-Layer-1');
+
+  //  This resizes the game world to match the layer dimensions
+  layer.resizeWorld();
   game.physics.startSystem(Phaser.Physics.ARCADE);
   //backgound
   game.add.sprite(0, 0, 'background');
@@ -91,6 +107,7 @@ function create() {
   addWeapon('gun');
   game.camera.follow(player);
   //movement animations
+
   var run = player.animations.add('run', [4, 5, 6, 7, 8, 9]);
   var idle = player.animations.add('idle', [0, 1, 2, 3]);
   cursors = game.input.keyboard.createCursorKeys();

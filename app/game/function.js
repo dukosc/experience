@@ -57,18 +57,87 @@ function attack() {
   }
 }
 
-function collisionDetection(projectile, enemy) {
-  enemy.kill();
-  projectile.kill();
-  console.log('this is what its like when worlds collide');
+function bulletHitEnemy(enemy, bullet) {
+  bullet.kill();
+  var destroyed = enemies[enemy.name].damage();
 }
 
 function processHandler(projectile, enemy) {
   return true;
 }
-function moveToPlayer(enemy){
-  game.physics.arcade.moveToObject(enemy, player, 60);
+// function moveToPlayer(enemy){
+//   game.physics.arcade.moveToObject(enemy, player, 60);
+// }
+Enemy = function(index, game, player, bullets) {
+  var x = game.world.randomX;
+  var y = game.world.randomY;
+
+  this.game = game;
+  this.health = 3;
+  this.player = player;
+  this.bullets = enemyBullets;
+  this.fireRate = 1000;
+  this.nextFire = 0;
+  this.alive = true;
+
+  this.enemy = game.add.sprite(x, y, 'enemy');
+  this.enemy.animations.add('run', [4, 5, 6, 7, 8, 9], true);
+  this.gun = game.add.sprite(x, y, 'gun');
+  this.gun.scale.setTo(0.5, 0.5);
+  this.enemy.anchor.set(0.5);
+  this.gun.anchor.set(0.05, 0.45);
+
+  this.enemy.name = index.toString();
+  game.physics.enable(this.enemy, Phaser.Physics.ARCADE);
+  this.enemy.body.setSize(64, 64, 0, 0);
+  this.enemy.body.immovable = false;
+  this.enemy.body.collideWorldBounds = true;
+  this.enemy.body.bounce.setTo(1, 1);
+
+  // this.enemy.angle = game.rnd.angle();
+
+  game.physics.arcade.velocityFromRotation(this.enemy.rotation, 100, this.enemy.body.velocity);
+};
+Enemy.prototype.damage = function() {
+  if (gunEquipped) {
+    this.health -= 1;
+  }
+  if (swordEquipped) {
+    this.health -= 3;
+  }
+  if (this.health <= 0) {
+    this.alive = false;
+    this.enemy.kill();
+    this.gun.kill();
+    return true;
+  }
+  return false;
 }
+
+Enemy.prototype.update = function() {
+
+  this.enemy.animations.play('run', 10, true);
+  this.gun.x = this.enemy.x;
+  this.gun.y = this.enemy.y;
+  this.gun.rotation = this.game.physics.arcade.angleBetween(this.enemy, this.player);
+  if (this.enemy.x > this.player.x) {
+    this.enemy.scale.x = -1;
+    this.gun.scale.y = -0.5;
+  } else {
+    this.enemy.scale.x = 1;
+    this.gun.scale.y = 0.5;
+  }
+  if (this.game.physics.arcade.distanceBetween(this.enemy, this.player) < 300) {
+    if (this.game.time.now > this.nextFire && this.bullets.countDead() > 0) {
+      this.nextFire = this.game.time.now + this.fireRate;
+      var bullet = this.bullets.getFirstDead();
+      bullet.scale.setTo(0.5, 0.5);
+      bullet.reset(this.gun.x, this.gun.y);
+      bullet.rotation = this.game.physics.arcade.moveToObject(bullet, this.player, 500);
+    }
+  }
+
+};
 // Enemy = function(index, game, player, bullets) {
 //   var x = game.world.randomX;
 //   var y = game.world.randomY;

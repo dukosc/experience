@@ -22,7 +22,7 @@ function update() {
     }
   }
   for (var i = 0; i < enemies.length; i++) {
-    if(player.x < enemies.getAt(i).body.x + 36 && player.x > enemies.getAt(i).body.x - 36 && player.y > enemies.getAt(i).body.y + 48 && player.y < enemies.getAt(i).body.y - 48){
+    if(player.x < enemies.getAt(i).body.x + 144 && player.x > enemies.getAt(i).body.x - 144 && player.y > enemies.getAt(i).body.y - 144 && player.y < enemies.getAt(i).body.y + 144){
       enemies.getAt(i).isRunning = true;
     }
     if(enemies.getAt(i).isRunning === undefined || enemies.getAt(i).isRunning === false){

@@ -66,6 +66,9 @@ function collisionDetection(projectile, enemy) {
 function processHandler(projectile, enemy) {
   return true;
 }
+function moveToPlayer(enemy){
+  game.physics.arcade.moveToObject(enemy, player, 60);
+}
 // Enemy = function(index, game, player, bullets) {
 //   var x = game.world.randomX;
 //   var y = game.world.randomY;

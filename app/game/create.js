@@ -11,7 +11,6 @@ var swung = false;
 var timer;
 
 function create() {
-<<<<<<< HEAD
 
   game.physics.startSystem(Phaser.Physics.ARCADE);
   //backgound
@@ -76,12 +75,14 @@ function create() {
   enemies.enableBody = true;
   enemies.physicsBodyType = Phaser.Physics.ARCADE;
   enemies.setAll('checkWorldBounds', true);
-  enemies.createMultiple(30, 'enemy', 0, false);
   for (var i = 0; i < 20; i++) {
     enemy = enemies.create(game.world.randomX, game.world.randomY, 'enemy');
-    enemy.body.setSize(64, 64, 32, 32);
+    enemy.body.setSize(64, 64, 0, 0);
   }
-
+  enemies.setAll('anchor.x', 0.5);
+  enemies.setAll('anchor.y', 0.5);
+  enemies.callAll('animations.add', 'animations', 'idle', [0,1,2,3], true);
+  enemies.callAll('animations.add', 'animations', 'run', [4,5,6,7,8,9], true);
   player = game.add.sprite(100, game.world.height - 301, 'player');
   player.anchor.setTo(0.5, 0.5);
   game.physics.arcade.enable(player);
@@ -90,7 +91,6 @@ function create() {
   addWeapon('gun');
   game.camera.follow(player);
   //movement animations
-  var enemyIdle = player.animations.add('idle', [0, 1, 2, 3]);
   var run = player.animations.add('run', [4, 5, 6, 7, 8, 9]);
   var idle = player.animations.add('idle', [0, 1, 2, 3]);
   cursors = game.input.keyboard.createCursorKeys();

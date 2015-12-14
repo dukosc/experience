@@ -1,3 +1,3 @@
 function render(){
-  game.debug.spriteInfo(sword, 32, 32);
+  game.debug.text(game.input.activePointer.position);
 }

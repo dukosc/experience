@@ -1,3 +1,5 @@
 function render(){
-  game.debug.spriteInfo(gun, 32, 32);
+  for(var i = 0; i < enemies.length; i++){
+    game.debug.body(enemies.getAt(i));
+  }
 }

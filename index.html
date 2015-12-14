@@ -13,23 +13,16 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
   </head>
-  <body>
+  <body ng-app="experience">
 
-    <h1>EXPERIENCE</h1>
+    <ng-view></ng-view>
 
-    <div id="gameWindow"></div>
-
-    <div class="loginWindow hide">
-        <form class="" action="index.html" method="post">
-          <input class="form-comtrol" type="text" name="name" value="" placeholder="Username">
-          <input class="form-comtrol" type="password" name="name" value="" placeholder="Password">
-          <button type="submit" name="button">Register</button>
-          <button type="submit" name="button">Login</button>
-        </form>
-    </div>
-
-    <div id="gameWindow" class=""></div>
-
+    <div id="game-window"></div>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="node_modules/angular/angular.js" charset="utf-8"></script>
+    <script src="node_modules/angular-route/angular-route.js" charset="utf-8"></script>
+    <script src="main.js" charset="utf-8"></script>
+    <script src="controllers.js" charset="utf-8"></script>
     <script src="app/game/function.js" charset="utf-8"></script>
     <script src="app/game/preload.js" charset="utf-8"></script>
     <script src="app/game/create.js" charset="utf-8"></script>

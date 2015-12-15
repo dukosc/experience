@@ -32,7 +32,8 @@ h1 {
       width: 100%;
       margin-bottom: 3%; }
     .loginWindow form button {
-      background: #C0C0C0;
+      background: #F3F3F3;
+      border: none;
       box-shadow: -2px -2px darkgrey;
       border-radius: 4px;
       margin: 2% 0 0 2%; }
@@ -50,12 +51,35 @@ h1 {
   border: 1px solid #333333;
   box-shadow: -2px -2px darkgrey;
   vertical-align: top; }
-  #mainMenu div #spriteImg {
-    width: 300px;
-    height: 300px;
-    margin-top: 5%;
+  #mainMenu div .spriteImg {
+    width: 128px;
+    height: 128px;
+    margin-top: -5%;
+    margin-top: -5%;
+    background-image: url("/app/game/assets/player.png");
+    z-index: 1;
+    zoom: 3.0;
+    overflow: hidden;
+    -webkit-animation: play 1s steps(9) infinite; }
+  #mainMenu div .spriteImg2 {
+    width: 128px;
+    height: 128px;
+    margin-top: -5%;
     margin-left: 10%;
-    animation: play 1s steps(6) infinite; }
+    background-image: url("/app/game/assets/bear.png");
+    z-index: 1;
+    zoom: 3.0;
+    overflow: hidden;
+    -webkit-animation: play 1s steps(9) infinite; }
+  #mainMenu div .spriteImg3 {
+    width: 128px;
+    height: 128px;
+    margin-top: -5%;
+    background-image: url("/app/game/assets/enemy.png");
+    z-index: 1;
+    zoom: 3.0;
+    overflow: hidden;
+    -webkit-animation: play 1s steps(9) infinite; }
   #mainMenu div .btn {
     margin: 55% 35% 0 25%;
     box-shadow: -2px -2px darkgrey;
@@ -69,7 +93,7 @@ canvas {
   width: 95%;
   font-family: gamegirl;
   margin: 4% 2%;
-  background: #C0C0C0;
+  background: #F3F3F3;
   color: #333;
   box-shadow: -2px -2px darkgray; }
 
@@ -94,11 +118,11 @@ canvas {
     margin: 6% 35%;
     text-align: center; }
   .optionContainer .addGoalBtn, .optionContainer .mainMenuBtn, .optionContainer .playGameBtn {
-    background: #C0C0C0;
+    background: #F3F3F3;
     padding: .5%;
     font-family: gamegirl;
     color: #333;
-    margin: 1%;
+    margin: 1% 1% 1% 2%;
     border-radius: 4px;
     text-decoration: none;
     box-shadow: -2px -2px #A9A9A9; }

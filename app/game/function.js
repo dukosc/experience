@@ -6,7 +6,7 @@ var slash;
 var bullet;
 
 function gunFire() {
-  if (game.time.now > nextFire && bullets.countDead() > 0) {
+  if (game.time.now > nextFire && bullets.countDead() > 0 && player.ammo > 0) {
     nextFire = game.time.now + fireRate;
     bullet = bullets.getFirstExists(false);
     bullet.scale.setTo(0.5, 0.5);
@@ -14,6 +14,11 @@ function gunFire() {
     bullet.reset(player.body.center.x, player.body.center.y);
     bullet.body.setSize(32, 32);
     game.physics.arcade.moveToPointer(bullet, 1500, game.input.activePointer);
+    player.ammo--;
+    text.text = 'Ammo:' + player.ammo;
+  }
+  else{
+    return;
   }
 }
 
@@ -58,7 +63,9 @@ function attack() {
 }
 
 function bulletHitEnemy(enemy, bullet) {
-  bullet.kill();
+  if(gunEquipped){
+    bullet.kill();
+  }
   var destroyed = enemies[enemy.name].damage();
 }
 

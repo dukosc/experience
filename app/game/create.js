@@ -9,7 +9,7 @@ var gunEquipped = true;
 var swordEquipped = false;
 var swung = false;
 var timer;
-
+var text;
 function create() {
   game.world.setBounds(0, 0, 1920, 1920);
   timer = game.time.create();
@@ -57,6 +57,7 @@ function create() {
   game.physics.arcade.enable(player);
   player.body.setSize(64, 64);
   player.body.collideWorldBounds = true;
+  player.ammo = 60;
   addWeapon('gun');
   game.camera.follow(player);
   enemies = [];
@@ -67,6 +68,9 @@ function create() {
   for (var i = 0; i < enemiesTotal; i++) {
     enemies.push(new Enemy(i, game, player, bullets));
   }
+  text = game.add.text(0, 0, "Ammo: " + player.ammo, { font: "30px Arial", fill: "#ff0044", align: "left" });
+  text.fixedToCamera = true;
+  text.cameraOffset.setTo(0,0);
   //movement animations
 
   var run = player.animations.add('run', [4, 5, 6, 7, 8, 9]);

@@ -1,25 +1,16 @@
-<h1>EXPERIENCE</h1>
+<h1>Add Goal</h1>
 
-<section class="optionContainer">
-  <div class="activityDiv">
+<section class="addGoalsContainer">
+  <div class="addGoalsDiv">
     <form class="" action="index.html" method="post">
-      <a href="" class="addGoalBtn"> New Goal </a>
+      <a href="#/view-goals" class="viewGoalsBtn"> View Goals </a>
       <a href="#/main-page" class="mainMenuBtn"> Main Menu </a>
       <a href="#/game-window" class="playGameBtn"> Play Game </a>
-      <select class="form-control">
-        <option>Activity</option>
-        <option>Lift</option>
-      </select>
-    </form>
-  </div>
-  <div class="intervalDiv">
-    <a href="#/add-goals" class="placeHolderBtn"></a>
-    <form class="" action="index.html" method="post">
-      <select class="form-control">
-        <option>Interval</option>
-        <option>30 reps</option>
-      </select>
-    </form>
+      <form class="" action="index.html" method="post">
+        <input type="text" class="form-control activityInput" name="activity" ng-model="newGoal.activity" placeholder="Add Activity" value="">
+        <input type="text" class="form-control intervalInput" name="interval" ng-model="newGoal.interval" placeholder="Add Interval" value="">
+        <button type="button" class="btn addGoalBtn" ng-click="addGoal(newGoal)" name="button">Add Goal</button>
+      </form>
   </div>
 </section>
 
@@ -33,4 +24,13 @@
     <input type="text" class="form-control" name="Description" ng-model="newBeer.description" placeholder="Description" value="">
     <button type="button" ng-click="addBeer(newBeer)" name="button">Add Beer</button>
   </form>
+</div> -->
+
+
+<!-- <div class="beerDiv" ng-repeat="beer in myBeers">
+  <img ng-src="{{beer.photo}}" alt="" />
+  <h3><span class="titleSpan">{{beer.name}}</span></h3>
+  <h4>{{beer.brewery}}</h4>
+  <h4>Type: {{beer.type}}</h4>
+  <p class="beerDescription">Description: {{beer.description}}</p>
 </div> -->

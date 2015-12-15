@@ -6,14 +6,19 @@ var slash;
 var bullet;
 
 function gunFire() {
-  if (game.time.now > nextFire && bullets.countDead() > 0) {
+  if (game.time.now > nextFire && bullets.countDead() > 0 && player.ammo > 0) {
     nextFire = game.time.now + fireRate;
     bullet = bullets.getFirstExists(false);
     bullet.scale.setTo(0.5, 0.5);
     bullet.rotation = game.physics.arcade.angleToPointer(weapon);
     bullet.reset(player.body.center.x, player.body.center.y);
     bullet.body.setSize(32, 32);
-    game.physics.arcade.moveToPointer(bullet, 1500, game.input.activePointer);
+    game.physics.arcade.moveToPointer(bullet, 750, game.input.activePointer);
+    player.ammo--;
+    text.text = 'Ammo:' + player.ammo;
+  }
+  else{
+    return;
   }
 }
 
@@ -56,9 +61,15 @@ function attack() {
     swordSwing();
   }
 }
-
+function collided(bullet){
+  if(gunEquipped){
+    bullet.kill();
+  }
+}
 function bulletHitEnemy(enemy, bullet) {
-  bullet.kill();
+  if(gunEquipped){
+    bullet.kill();
+  }
   var destroyed = enemies[enemy.name].damage();
 }
 
@@ -76,7 +87,7 @@ Enemy = function(index, game, player, bullets) {
   this.health = 3;
   this.player = player;
   this.bullets = enemyBullets;
-  this.fireRate = 1000;
+  this.fireRate = 750;
   this.nextFire = 0;
   this.alive = true;
 
@@ -117,6 +128,7 @@ Enemy.prototype.damage = function() {
 Enemy.prototype.update = function() {
 
   this.enemy.animations.play('run', 10, true);
+  this.game.physics.arcade.collide(this.enemy, layer);
   this.gun.x = this.enemy.x;
   this.gun.y = this.enemy.y;
   this.gun.rotation = this.game.physics.arcade.angleBetween(this.enemy, this.player);

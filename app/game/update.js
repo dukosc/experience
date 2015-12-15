@@ -1,5 +1,8 @@
 function update() {
   player.body.velocity.x = 0;
+  game.physics.arcade.collide(player, layer);
+  game.physics.arcade.collide(bullets, layer, collided);
+  game.physics.arcade.collide(enemyBullets, layer, collided);
   weapon.x = player.body.x + 32;
   weapon.y = player.body.y + 32;
   // game.physics.arcade.overlap(bullets, enemies, collisionDetection, processHandler, this);
@@ -87,4 +90,8 @@ function update() {
     slash.kill();
     timer.stop();
   }
+
+  //collision
+  // game.physics.arcade.collide(player, walls);
+
 }

@@ -87,4 +87,8 @@ function update() {
     slash.kill();
     timer.stop();
   }
+
+  //collision
+  // game.physics.arcade.collide(player, walls);
+
 }

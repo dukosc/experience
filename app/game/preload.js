@@ -13,10 +13,10 @@ var preload = function() {
    //  The final one tells Phaser the foramt of the map data, in this case it's a JSON file exported from the Tiled map editor.
    //  This could be Phaser.Tilemap.CSV too.
 
-   game.load.tilemap('snowlevel', 'app/game/assets/snowTiles/snowlevel.json', null, Phaser.Tilemap.TILED_JSON);
+   game.load.tilemap('snowmap', 'app/game/assets/tiles/snowmap.json', null, Phaser.Tilemap.TILED_JSON);
    //  Next we load the tileset. This is just an image, loaded in via the normal way we load images:
 
-   glob = game.load.image('tiles', 'app/game/assets/snowTiles/tiles.png');
+   game.load.image('tiles', 'app/game/assets/tiles/tiles.png');
 
   game.load.image('sword', 'app/game/assets/sword.png');
   game.load.image('slash', 'app/game/assets/slash.png');

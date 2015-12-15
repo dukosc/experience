@@ -125,7 +125,7 @@ function create() {
   }
   //movement animations
 
-  var run = player.animations.add('run', [4, 5, 6, 7, 8, 9]);
+  var run = player.animations.add('run', [4, 5, 6, 7, 8]);
   var idle = player.animations.add('idle', [0, 1, 2, 3]);
   cursors = game.input.keyboard.createCursorKeys();
 

@@ -1,6 +1,6 @@
 
 var preload = function() {
-  // game.load.image('sword', 'app/game/assets/master_sword.gif');
+  // game.load.image('sword', 'game/assets/master_sword.gif');
   //  Tilemaps are split into two parts: The actual map data (usually stored in a CSV or JSON file)
    //  and the tileset/s used to render the map.
 
@@ -13,15 +13,16 @@ var preload = function() {
    //  The final one tells Phaser the foramt of the map data, in this case it's a JSON file exported from the Tiled map editor.
    //  This could be Phaser.Tilemap.CSV too.
 
-   game.load.tilemap('snowmap', 'app/game/assets/tiles/snowmap.json', null, Phaser.Tilemap.TILED_JSON);
+  game.load.tilemap('snowmap', 'game/assets/tiles/snowmap.json', null, Phaser.Tilemap.TILED_JSON);
    //  Next we load the tileset. This is just an image, loaded in via the normal way we load images:
 
-   game.load.image('tiles', 'app/game/assets/tiles/tiles.png');
+  game.load.image('tiles', 'game/assets/tiles/tiles.png');
 
-  game.load.image('sword', 'app/game/assets/sword.png');
-  game.load.image('slash', 'app/game/assets/slash.png');
-  game.load.image('gun', 'app/game/assets/pistol.png');
-  game.load.image('bullet', 'app/game/assets/bullet.png');
-  game.load.spritesheet('enemy', 'app/game/assets/enemy.png', 128, 128, 10);
-  game.load.spritesheet('player', 'app/game/assets/player.png', 128, 128, 10);
+  game.load.image('ammo', 'game/assets/ammo-crate.png');
+  game.load.image('sword', 'game/assets/sword.png');
+  game.load.image('slash', 'game/assets/slash.png');
+  game.load.image('gun', 'game/assets/pistol.png');
+  game.load.image('bullet', 'game/assets/bullet.png');
+  game.load.spritesheet('enemy', 'game/assets/enemy.png', 128, 128, 10);
+  game.load.spritesheet('player', 'game/assets/player.png', 128, 128, 10);
 };

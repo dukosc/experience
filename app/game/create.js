@@ -56,6 +56,11 @@ function create() {
   bullets.setAll('anchor.y', 0.5);
   bullets.setAll('outOfBoundsKill', true);
   bullets.setAll('checkWorldBounds', true);
+  ammocrates = game.add.group();
+  ammocrates.enableBody = true;
+  ammocrates.physicsBodyType = Phaser.Physics.ARCADE;
+  ammocrates.setAll('anchor.x', 0.5);
+  ammocrates.setAll('anchor.y', 0.5);
   enemyBullets = game.add.group();
   enemyBullets.enableBody = true;
   enemyBullets.physicsBodyType = Phaser.Physics.ARCADE;

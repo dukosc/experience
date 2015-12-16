@@ -1,5 +1,6 @@
 function update() {
   player.body.velocity.x = 0;
+  game.physics.arcade.overlap(player, ammocrates, collectAmmo);
   game.physics.arcade.collide(player, layer);
   game.physics.arcade.collide(bullets, layer, collided);
   game.physics.arcade.collide(enemyBullets, layer, collided);

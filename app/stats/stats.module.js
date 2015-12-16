@@ -8,7 +8,7 @@
     .config(function ($routeProvider) {
       $routeProvider
       .when('/stats', {
-        templateUrl: 'app/stats/views/stats.html',
+        templateUrl: 'stats/views/stats.html',
         controller: 'StatsController'
       })
         .otherwise({ redirectTo: '/404'});

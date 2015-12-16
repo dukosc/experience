@@ -42,7 +42,6 @@ function create() {
 
 
   //bullet physics
-  game.world.setBounds(0, 0, 1920, 1920);
   layer.resizeWorld();
   timer = game.time.create();
   game.input.onDown.add(attack, this);
@@ -95,8 +94,8 @@ function create() {
   game.camera.follow(player);
   enemies = [];
 
-  enemiesTotal = 20;
-  enemiesAlive = 20;
+  enemiesTotal = 5;
+  enemiesAlive = 5;
 
   for (var i = 0; i < enemiesTotal; i++) {
     enemies.push(new Enemy(i, game, player, bullets));

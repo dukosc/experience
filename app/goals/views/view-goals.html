@@ -1,0 +1,22 @@
+<h1>GOALS</h1>
+
+<section class="viewGoalsContainer" ng-repeat="goal in myGoals">
+  <div class="viewGoalsDiv">
+    <a href="#/add-goals" class="addGoalBtn"> New Goal </a>
+    <a href="#/main-page" class="mainMenuBtn"> Main Menu </a>
+    <a href="#/game-window" class="playGameBtn"> Play Game </a>
+    <h3>{{newGoal.activity}}</h3>
+  </div>
+  <div class="intervalDiv">
+    <h3>{{newGoal.interval}}</h3>
+  </div>
+</section>
+
+
+<!-- <div class="beerDiv" ng-repeat="beer in myBeers">
+  <img ng-src="{{beer.photo}}" alt="" />
+  <h3><span class="titleSpan">{{beer.name}}</span></h3>
+  <h4>{{beer.brewery}}</h4>
+  <h4>Type: {{beer.type}}</h4>
+  <p class="beerDescription">Description: {{beer.description}}</p>
+</div> -->

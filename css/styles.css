@@ -133,7 +133,7 @@ canvas {
     border-radius: 4px;
     box-shadow: -2px -2px #A9A9A9; }
   .viewGoalsContainer .addGoalBtn, .viewGoalsContainer .mainMenuBtn, .viewGoalsContainer .playGameBtn {
-    background: #F3F3F3;
+    background: red;
     padding: .5%;
     font-family: gamegirl;
     color: #333;

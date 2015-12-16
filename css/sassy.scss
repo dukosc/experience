@@ -15,6 +15,7 @@ h1 {
   margin-top: -1%;
 }
 
+/////////////////////////////////////////// login page
 .loginWindow {
   background: #333333;
   margin-left: 24%;
@@ -163,7 +164,7 @@ canvas {
     box-shadow: -2px -2px #A9A9A9;
   }
   .addGoalBtn, .mainMenuBtn, .playGameBtn {
-    background: #F3F3F3;
+    background: red;
     padding: .5%;
     font-family: gamegirl;
     color: #333;

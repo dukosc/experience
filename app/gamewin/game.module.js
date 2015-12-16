@@ -8,7 +8,7 @@
     .config(function ($routeProvider) {
       $routeProvider
       .when('/game-window', {
-        templateUrl: 'game/views/game-window.html',
+        templateUrl: 'gamewin/views/game-window.html',
         controller: 'GameWindowController'
       })
         .otherwise({ redirectTo: '/404'});

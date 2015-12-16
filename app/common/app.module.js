@@ -1,10 +1,8 @@
 (function () {
   "use strict";
-
   angular
     .module('experience', [
       'ngRoute',
-      'underscore',
       'experience',
       'goals',
       'game',
@@ -14,7 +12,7 @@
       $routeProvider
       .when('/', {
         templateUrl: 'common/views/login.html',
-        controller: 'MainController'
+        controller: 'LoginController as loginCtrl'
       })
       .when('/main-page', {
         templateUrl: 'common/views/main-page.html',
@@ -26,14 +24,14 @@
         .otherwise({ redirectTo: '/404'});
     });
 
-  angular
-    .module('underscore', [])
-    .factory('_', function($window){
-      return $window._;
-    });
-    angular
-    .module('jquery', [])
-    .factory('$', function($window){
-      return $window.$;
-    });
+  // angular
+  //   .module('underscore', [])
+  //   .factory('_', function($window){
+  //     return $window._;
+  //   });
+  //   angular
+  //   .module('jquery', [])
+  //   .factory('$', function($window){
+  //     return $window.$;
+  //   });
 })();

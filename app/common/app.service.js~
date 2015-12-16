@@ -3,7 +3,7 @@
 
   angular
     .module('experience')
-    .factory('LoginService', function($http, $rootScope) {
+    .factory('LoginService', function($http, _, $rootScope) {
       var socket = io();
 
       var on = function(eventName, callback) {

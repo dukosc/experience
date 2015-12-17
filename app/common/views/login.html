@@ -5,6 +5,6 @@
       <input ng-model="newUser.username" class="form-control" type="text" autocomplete="off" name="name" value="" placeholder="Username"/>
       <input ng-model="newUser.password" class="form-control" type="password" autocomplete="off" name="name" value="" placeholder="Password"/>
       <button class="registerBtn" type="submit" name="button">Register</button>
-      <button class="loginBtn" name="button" ng-click="loginCtrl.login()">Login</button>
+      <button class="loginBtn" name="button" type = "button" ng-click="loginCtrl.login(newUser)">Login</button>
     </form>
 </div>

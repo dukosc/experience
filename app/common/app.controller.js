@@ -6,6 +6,7 @@
 
     }).controller('LoginController', function($http, $location, $scope, $route, $routeParams, LoginService) {
       var vm = this;
+      vm.x = 0;
       vm.users = [];
       vm.getUsers = function() {
         LoginService.on('all:users', function(data) {
@@ -17,11 +18,27 @@
         LoginService.emit('new:user', newUser);
         vm.newUser = "";
       };
-      vm.login = function(){
-        console.log('fire');
-        $location.path('/main-page');
-      }
       vm.getUsers();
+      console.log(vm.users);
+      vm.login = function(user){
+        console.log(user);
+        for(var i = 0; i < vm.users.length; i++){
+          if(user.username === vm.users[i].username && user.password === vm.users[i].password){
+            $location.path('/main-page');
+          }
+          if(user.username === vm.users[i].username && user.password !== vm.users[i].password){
+            console.log('wrong password');
+          }
+          if(user.username !== vm.users[i].username){
+            vm.x++;
+            vm.getUsers();
+            if(vm.x === vm.users.length){
+              console.log('users not found');
+              vm.x = 0;
+            }
+          }
+        }
+      }
       LoginService.on('new:user', function(data) {
         var user = {
           username: data.username,

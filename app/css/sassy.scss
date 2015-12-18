@@ -15,6 +15,16 @@ h1 {
   margin-top: -1%;
 }
 
+h2 {
+  font-size: 1.75em;
+  text-shadow: -2px -2px darkgray;
+  font-family: gamegirl;
+  float: left;
+  letter-spacing: 15px;
+  padding: 3% 0 1% 0;
+  margin-top: -1%;
+}
+
 .loginWindow {
   background: #333333;
   margin-left: 24%;
@@ -198,6 +208,20 @@ canvas {
        }
     }
   }
+
+  #eggSection{
+    width: 128px;
+    height: 128px;
+    background-image: url('/game/assets/easter-egg.png');
+    margin-left: 30%;
+    margin-top: -2%;
+    z-index: 1;
+    zoom: 5.0;
+    overflow: hidden;
+
+
+  }
+
   .viewStatsBtn, .mainMenuBtn, .playGameBtn {
     background: #C0C0C0;
     padding: 1.5%;

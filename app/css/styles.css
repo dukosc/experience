@@ -110,7 +110,8 @@ canvas {
   box-shadow: -2px -2px darkgray; }
 
 .viewGoalsContainer {
-  width: 100%; }
+  width: 100%;
+  height: 100px; }
   .viewGoalsContainer div {
     background: #333333;
     padding: 1% 0;
@@ -120,41 +121,35 @@ canvas {
     background: #F3F3F3;
     font-family: gamegirl;
     font-size: 1.25em;
-    padding: 1.75% 3% 1.75% 1.75%;
-    width: 90%;
-    margin: 6% auto;
-    text-align: center;
+    padding: 1%;
+    width: 40.5%;
+    display: inline-block;
+    margin-left: 6%;
     border-radius: 4px;
-    box-shadow: -2px -2px #A9A9A9; }
-  .viewGoalsContainer .viewGoalsDiv h3 {
+    box-shadow: -2px -2px #A9A9A9;
     text-align: left; }
-
-.intervalDiv h3 {
-  margin-top: 10.5%; }
-
-.viewGoalsDiv h3 {
-  margin-bottom: 10.5%; }
 
 .goalsContainer .addGoalsDiv {
   display: inline-block;
   vertical-align: top;
   background: #333333;
-  width: 50%;
+  width: 75%;
   padding: 2% 0;
-  margin-left: 24%;
+  margin-left: 12%;
   min-height: 500px;
   border-radius: 5px;
   border: 1px solid #333333;
   box-shadow: -2px -2px darkgrey; }
   .goalsContainer .addGoalsDiv .activityInput, .goalsContainer .addGoalsDiv .intervalInput {
-    width: 88%;
-    margin-left: 6%;
+    width: 77%;
+    margin-left: 11%;
     margin-top: 5%; }
   .goalsContainer .addGoalsDiv #grubSection {
     width: 128px;
     height: 128px;
     background-image: url("/game/assets/grub.png");
-    margin-left: 17%;
+    margin-left: 30%;
+    margin-top: -7%;
     z-index: 1;
     zoom: 3.0;
     overflow: hidden;
@@ -169,7 +164,7 @@ canvas {
   padding: 1.5%;
   font-family: gamegirl;
   color: #333;
-  margin: 1% 1% 1% 6%;
+  margin: 1% 1% 1% 11%;
   border-radius: 4px;
   text-decoration: none;
   box-shadow: -2px -2px #A9A9A9; }
@@ -182,7 +177,7 @@ canvas {
   padding: 1%;
   font-family: gamegirl;
   color: #333;
-  margin: 0 1% 1% 6%;
+  margin: 0 1% 1% 11%;
   border-radius: 4px;
   text-decoration: none;
   box-shadow: -2px -2px #A9A9A9; }

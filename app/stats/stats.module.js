@@ -3,7 +3,8 @@
 
   angular
     .module('stats', [
-      'ngRoute'
+      'ngRoute',
+
     ])
     .config(function ($routeProvider) {
       $routeProvider

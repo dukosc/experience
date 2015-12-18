@@ -33,6 +33,21 @@ io.on('connection', function(socket) {
       console.log(data);
       socket.emit('all:users', data);
     });
+    socket.on('new:goal', function(val){
+    console.log('new goal', val);
+
+    // User.findByIdAndUpdate(
+    //   val._id, {$push: {comments: val.comments.pop()}},
+    //   {safe: true, upsert: true, new: true},
+    //   function(err, pitch) {
+    //     if(err) {
+    //       console.log("UPDATE ERR", err);
+    //       throw err;
+    //     }
+    //    socket.emit('new:goal', user);
+    //   }
+    // );
+  });
   socket.on('new:user', function(val) {
     console.log('val', val);
     var user = new User({

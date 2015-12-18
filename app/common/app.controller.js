@@ -4,7 +4,7 @@
   angular.module('experience')
     .controller('MainController', function($scope) {
 
-    }).controller('LoginController', function($http, $location, $scope, $route, $routeParams, LoginService) {
+    }).controller('LoginController', function($http, $location, $rootScope, $scope, $route, $routeParams, LoginService) {
       var vm = this;
       vm.x = 0;
       vm.users = [];
@@ -15,15 +15,19 @@
         });
       };
       vm.addUser = function(newUser) {
+        console.log('fire');
+        console.log(newUser);
         LoginService.emit('new:user', newUser);
         vm.newUser = "";
       };
       vm.getUsers();
       console.log(vm.users);
       vm.login = function(user){
+        vm.getUsers();
         console.log(user);
         for(var i = 0; i < vm.users.length; i++){
           if(user.username === vm.users[i].username && user.password === vm.users[i].password){
+            $rootScope.user = user.username;
             $location.path('/main-page');
           }
           if(user.username === vm.users[i].username && user.password !== vm.users[i].password){

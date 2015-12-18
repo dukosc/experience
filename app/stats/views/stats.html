@@ -1,1 +1,15 @@
 <h1>STATS</h1>
+
+
+<div ng-repeat="stat in myStats">
+  <!-- <h2>{{stats.strenght}}</h2>
+  <h2>{{stats.stamina}}</h2>
+  <h2>{{stats.wisdom}}</h2>
+  <h2>{{stats.intellect}}</h2>
+  <h2>{{stats.dexterity}}</h2> -->
+  {{stat | json}}
+
+</div>
+<player-stats data="stat">
+  <h2>Main Menu</h2>
+</player-stats>

@@ -149,81 +149,54 @@ canvas {
 
 .viewGoalsContainer {
   width: 100%;
+  height: 100px;
   div {
-    display: inline-block;
-    vertical-align: top;
     background: #333333;
-    width: 35%;
     padding: 1% 0;
-    margin-left: 9%;
-    min-height: 580px;
+    min-height: 500px;
     border-radius: 5px;
-    border: 1px solid #333333;
-    box-shadow: -2px -2px darkgrey;
   }
   h3 {
     background: #F3F3F3;
     font-family: gamegirl;
-    font-size: 1.25em;
-    padding: 1.75% 3% 1.75% 1.75%;
-    width: 90%;
-    margin: 6% auto;
-    text-align: center;
+    font-size: 1em;
+    padding: 1%;
+    width: 40.5%;
+    display: inline-block;
+    margin-left: 6%;
     border-radius: 4px;
     box-shadow: -2px -2px #A9A9A9;
-  }
-  .addGoalBtn, .mainMenuBtn, .playGameBtn {
-    background: #F3F3F3;
-    padding: .5%;
-    font-family: gamegirl;
-    color: #333;
-    margin: 1% 1% 1% 2%;
-    border-radius: 4px;
-    text-decoration: none;
-    box-shadow: -2px -2px #A9A9A9;
-    &:hover {
-      background: #a9a9a9;
-      box-shadow: -2px -2px #ccc;
-    }
+    text-align: left;
   }
 }
-
-.intervalDiv {
-  h3 {
-    margin-top: 10.5%;
-  }
-}
-.viewGoalsDiv {
-  h3 {
-    margin-bottom: 10.5%;
-  }
-}
-
 
 
 
 ///////////////////////////////////////Add Goals Page
-.addGoalsContainer {
-  div {
+
+.goalsContainer {
+  .addGoalsDiv {
     display: inline-block;
     vertical-align: top;
     background: #333333;
-    width: 50%;
+    width: 75%;
     padding: 2% 0;
-    margin-left: 24%;
-    min-height: 580px;
+    margin-left: 12%;
+    min-height: 500px;
     border-radius: 5px;
     border: 1px solid #333333;
     box-shadow: -2px -2px darkgrey;
     .activityInput, .intervalInput {
-      width: 88%;
-      margin-left: 6%;
+      width: 77%;
+      margin-left: 11%;
       margin-top: 5%;
     }
-    .grubSection {
+    #grubSection {
       width: 128px;
       height: 128px;
       background-image: url('/game/assets/grub.png');
+      margin-left: 30%;
+      margin-top: -7%;
       z-index: 1;
       zoom: 3.0;
       overflow: hidden;
@@ -235,7 +208,19 @@ canvas {
        }
     }
   }
-  .viewGoalsBtn, .mainMenuBtn, .playGameBtn {
+  #eggSection{
+    width: 128px;
+    height: 128px;
+    background-image: url('/game/assets/easter-egg.png');
+    margin-left: 30%;
+    margin-top: -2%;
+    z-index: 1;
+    zoom: 5.0;
+    overflow: hidden;
+
+
+  }
+  .viewStatsBtn, .mainMenuBtn, .playGameBtn {
     background: #C0C0C0;
     padding: 1.5%;
     font-family: gamegirl;
@@ -244,7 +229,7 @@ canvas {
       background: #a9a9a9;
       box-shadow: -2px -2px #ccc;
     }
-    margin: 1% 1% 1% 6%;
+    margin: 1% 1% 1% 11%;
     border-radius: 4px;
     text-decoration: none;
     box-shadow: -2px -2px #A9A9A9;
@@ -254,7 +239,7 @@ canvas {
     padding: 1%;
     font-family: gamegirl;
     color: #333;
-    margin: 0 1% 1% 6%;
+    margin: 0 1% 1% 11%;
     border-radius: 4px;
     text-decoration: none;
     box-shadow: -2px -2px #A9A9A9;

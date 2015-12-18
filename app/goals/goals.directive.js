@@ -6,11 +6,11 @@
             templateUrl: 'goals/views/goals.directive.html',
             transclude: true,
 
-            link: function (scope, element, attrs) {
-              element.on('click', function(){
-                alert('this is a test');
-              });
-        },
+        //     link: function (scope, element, attrs) {
+        //       element.on('click', function(){
+        //         alert('this is a test');
+        //       });
+        // },
         scope: {
           goals: '=',
           action: '&',

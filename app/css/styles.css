@@ -112,16 +112,10 @@ canvas {
 .viewGoalsContainer {
   width: 100%; }
   .viewGoalsContainer div {
-    display: inline-block;
-    vertical-align: top;
     background: #333333;
-    width: 35%;
     padding: 1% 0;
-    margin-left: 9%;
-    min-height: 580px;
-    border-radius: 5px;
-    border: 1px solid #333333;
-    box-shadow: -2px -2px darkgrey; }
+    min-height: 500px;
+    border-radius: 5px; }
   .viewGoalsContainer h3 {
     background: #F3F3F3;
     font-family: gamegirl;
@@ -132,18 +126,8 @@ canvas {
     text-align: center;
     border-radius: 4px;
     box-shadow: -2px -2px #A9A9A9; }
-  .viewGoalsContainer #addGoalBtn, .viewGoalsContainer #mainMenuBtn, .viewGoalsContainer #playGameBtn {
-    background: #C0C0C0;
-    padding: 2% 1%;
-    font-family: gamegirl;
-    color: #333;
-    margin: 1% .25% 2% 1.5%;
-    border-radius: 4px;
-    text-decoration: none;
-    box-shadow: -2px -2px #A9A9A9; }
-    .viewGoalsContainer #addGoalBtn:hover, .viewGoalsContainer #mainMenuBtn:hover, .viewGoalsContainer #playGameBtn:hover {
-      background: #a9a9a9;
-      box-shadow: -2px -2px #ccc; }
+  .viewGoalsContainer .viewGoalsDiv h3 {
+    text-align: left; }
 
 .intervalDiv h3 {
   margin-top: 10.5%; }
@@ -151,25 +135,26 @@ canvas {
 .viewGoalsDiv h3 {
   margin-bottom: 10.5%; }
 
-.addGoalsContainer div {
+.goalsContainer .addGoalsDiv {
   display: inline-block;
   vertical-align: top;
   background: #333333;
   width: 50%;
   padding: 2% 0;
   margin-left: 24%;
-  min-height: 580px;
+  min-height: 500px;
   border-radius: 5px;
   border: 1px solid #333333;
   box-shadow: -2px -2px darkgrey; }
-  .addGoalsContainer div .activityInput, .addGoalsContainer div .intervalInput {
+  .goalsContainer .addGoalsDiv .activityInput, .goalsContainer .addGoalsDiv .intervalInput {
     width: 88%;
     margin-left: 6%;
     margin-top: 5%; }
-  .addGoalsContainer div .grubSection {
+  .goalsContainer .addGoalsDiv #grubSection {
     width: 128px;
     height: 128px;
     background-image: url("/game/assets/grub.png");
+    margin-left: 17%;
     z-index: 1;
     zoom: 3.0;
     overflow: hidden;
@@ -179,7 +164,7 @@ canvas {
   100% {
     background-position: -512px; } }
 
-.addGoalsContainer .viewGoalsBtn, .addGoalsContainer .mainMenuBtn, .addGoalsContainer .playGameBtn {
+.goalsContainer .viewStatsBtn, .goalsContainer .mainMenuBtn, .goalsContainer .playGameBtn {
   background: #C0C0C0;
   padding: 1.5%;
   font-family: gamegirl;
@@ -188,11 +173,11 @@ canvas {
   border-radius: 4px;
   text-decoration: none;
   box-shadow: -2px -2px #A9A9A9; }
-  .addGoalsContainer .viewGoalsBtn:hover, .addGoalsContainer .mainMenuBtn:hover, .addGoalsContainer .playGameBtn:hover {
+  .goalsContainer .viewStatsBtn:hover, .goalsContainer .mainMenuBtn:hover, .goalsContainer .playGameBtn:hover {
     background: #a9a9a9;
     box-shadow: -2px -2px #ccc; }
 
-.addGoalsContainer .addGoalBtn {
+.goalsContainer .addGoalBtn {
   background: #C0C0C0;
   padding: 1%;
   font-family: gamegirl;
@@ -201,6 +186,6 @@ canvas {
   border-radius: 4px;
   text-decoration: none;
   box-shadow: -2px -2px #A9A9A9; }
-  .addGoalsContainer .addGoalBtn:hover {
+  .goalsContainer .addGoalBtn:hover {
     background: #a9a9a9;
     box-shadow: -2px -2px #ccc; }

@@ -8,36 +8,36 @@
       <a href="#/main-page" class="mainMenuBtn"> Main Menu </a>
       <a href="#/game-window" class="playGameBtn"> Play Game </a>
 
+      <!-- <div class="input-group">
+        <div class="btn-group" ng-class='{open: open}'>
+            <button class="btn btn-primary dropdown-toggle"
+                    data-toggle="dropdown"
+                    ng-click='open=!open'>
+                Action<span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li ng-repeat="choice in ['the', 'quick', 'brown', 'fox']"
+                    ng-click="setChoiceIndex($index);$parent.open =!$parent.open">
+                    <a href="#">{{choice}}</a>
+                </li>
+            </ul>
+        </div>
+    </div> -->
+
       <div class="goalsDiv">
+
+        <span uib-dropdown ng-class='{open: open}'>
         <ul class="mainList">
-          <li class="dropdown" uib-dropdown><a href="" data-toggle="dropdown" uib-dropdown>Strength<span class="caret"></span>
+          <li class="dropdown-toggle" uib-dropdown-toggle uib-data-toggle="dropdown" ng-click='open=!open'><a href="">Strength<span class="caret"></span>
             <ul class="dropdown-menu" uib-dropdown-menu>
-              <li><a ng-click="action1()">Example</a></li>
-              <li><a ng-click="action2()">Example</a></li>
-              <li><a ng-click="action3()">Example</a></li>
-              <li><a ng-click="action4()">Example</a></li>
-              <li><a ng-click="action5()">Example</a></li>
+              <li ng-click="setChoiceIndex($index);$parent.open =!$parent.open"><a>Example</a></li>
+              <li><a>Example</a></li>
+              <li><a>Example</a></li>
+              <li><a>Example</a></li>
+              <li><a>Example</a></li>
             </ul>
           </li>
-          <li class="dropdown"><a data-toggle="dropdown" href="">Endurance</a><span class="caret"></span>
-            <ul class="dropdown-menu">
-              <li>Example</li>
-              <li>Example</li>
-              <li>Example</li>
-              <li>Example</li>
-              <li>Example</li>
-            </ul>
-          </li>
-          <li class="dropdown"><a data-toggle="dropdown" href="">Dexterity</a><span class="caret"></span>
-            <ul class="dropdown-menu">
-              <li>Example</li>
-              <li>Example</li>
-              <li>Example</li>
-              <li>Example</li>
-              <li>Example</li>
-            </ul>
-          </li>
-          <li class="dropdown"><a data-toggle="dropdown" href="">Intelligence</a><span class="caret"></span>
+          <li class="dropdown"><a data-toggle="dropdown" href="">Stamina</a><span class="caret"></span>
             <ul class="dropdown-menu">
               <li>Example</li>
               <li>Example</li>
@@ -55,8 +55,29 @@
               <li>Example</li>
             </ul>
           </li>
+          <li class="dropdown"><a data-toggle="dropdown" href="">Intellect</a><span class="caret"></span>
+            <ul class="dropdown-menu">
+              <li>Example</li>
+              <li>Example</li>
+              <li>Example</li>
+              <li>Example</li>
+              <li>Example</li>
+            </ul>
+          </li>
+          <li class="dropdown"><a data-toggle="dropdown" href="">Dexterity</a><span class="caret"></span>
+            <ul class="dropdown-menu">
+              <li>Example</li>
+              <li>Example</li>
+              <li>Example</li>
+              <li>Example</li>
+              <li>Example</li>
+            </ul>
+          </li>
         </ul>
+        </span>
       </div>
+
+      <section id="grubSection"></section>
 
       <section class="viewGoalsContainer">
         <div class="viewGoalsDiv">
@@ -64,7 +85,7 @@
           <h3>Interval: {{newGoal.interval}}</h3>
         </div>
       </section>
-      <section id="grubSection"></section>
+
   </div>
 </section>
 

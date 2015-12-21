@@ -3,6 +3,7 @@
 
   angular
     .module('goals', [
+      'ui.bootstrap',
       'ngRoute'
     ])
     .config(function ($routeProvider) {
@@ -13,6 +14,7 @@
       })
         .otherwise({ redirectTo: '/404'});
     });
+
 
 
 })();

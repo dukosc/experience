@@ -37,14 +37,14 @@ io.on('connection', function(socket) {
     console.log('new goal', val);
 
     User.findByIdAndUpdate(
-      val._id, {$push: {comments: val.comments.pop()}},
+      val._id, {$push: {currGoals: val.currGoals.pop()}},
       {safe: true, upsert: true, new: true},
       function(err, pitch) {
         if(err) {
           console.log("UPDATE ERR", err);
           throw err;
         }
-       socket.emit('new:goal', user);
+      //  socket.emit('new:goal', user);
       }
     );
   });

@@ -27,7 +27,8 @@
         console.log(user);
         for(var i = 0; i < vm.users.length; i++){
           if(user.username === vm.users[i].username && user.password === vm.users[i].password){
-            $rootScope.user = user.username;
+            $rootScope.user = vm.users[i];
+            console.log($rootScope.user);
             $location.path('/main-page');
           }
           if(user.username === vm.users[i].username && user.password !== vm.users[i].password){
@@ -47,6 +48,9 @@
         var user = {
           username: data.username,
           password: data.password,
+          stats: {},
+          currGoals: [],
+          completedGoals: []
         };
         vm.users.push(user);
       });

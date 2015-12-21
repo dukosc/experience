@@ -1,29 +1,28 @@
-(function(){
+(function() {
 
   angular.module('goals')
-    .controller('GoalsController', function ($scope, $rootScope, GoalsService) {
-
-      GoalsService.getGoals().success(function (goals) {
-        console.log(goals);
-        $scope.myGoals = goals;
-        console.log($rootScope.user);
-        $scope.addGoal = function(newGoal){
-          GoalsService.createGoal(newGoal);
-        };
-  });
-
-})
-    .controller('DropdownCtrl', function ($scope, $log) {
-      $scope.items = [
-          'Example 1',
-          'Example 2',
-          'Example 3'
-      ];
-
-      $scope.status = {
-          isopen: false
+    .controller('GoalsController', function($scope, $rootScope, GoalsService) {
+      var vm = this;
+      vm.putGoal = function(user){
+        GoalsService.emit('new:goal', user);
+        vm.newGoal = "";
       };
-
+      vm.addGoal = function(user, goal) {
+        console.log(goal);
+        user = $rootScope.user;
+        user.currGoals.push(goal);
+        vm.putGoal(user);
+        console.log(user);
+        vm.newGoal = "";
+      };
+      //     GoalsService.getGoals().success(function (goals) {
+      //       var vm = this;
+      //       $scope.myGoals = goals;
+      //       console.log($rootScope.user);
+      //       $scope.addGoal = function(newGoal){
+      //         GoalsService.createGoal(newGoal);
+      //       };
+      // });
       $scope.toggled = function(open) {
           $log.log('Dropdown is now: ', open);
       };

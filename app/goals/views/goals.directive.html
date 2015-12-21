@@ -7,17 +7,75 @@
       <a href="#/stats" class="viewStatsBtn"> View Stats </a>
       <a href="#/main-page" class="mainMenuBtn"> Main Menu </a>
       <a href="#/game-window" class="playGameBtn"> Play Game </a>
-      <form class="addGoalForm" action="index.html" method="post">
-        <input type="text" class="form-control activityInput" name="activity" ng-model="newGoal.activity" placeholder="New Activity" value="">
-        <input type="text" class="form-control intervalInput" name="interval" ng-model="newGoal.interval" placeholder="New Interval" value="">
-        <button type="button" class="btn addGoalBtn" ng-click="addGoal(newGoal)" name="button">Add Goal</button>
-      </form>
+
+      <div class="goalsDiv">
+
+        <span uib-dropdown ng-class='{open: open}'>
+        <ul class="mainList">
+          <li class="dropdown-toggle" uib-dropdown-toggle uib-data-toggle="dropdown" ng-click='open=!open'><a href="">Strength<span class="caret"></span>
+            <ul class="dropdown-menu" uib-dropdown-menu>
+              <li ng-click="setChoiceIndex($index);$parent.open =!$parent.open"><a>Example</a></li>
+              <li><a>Example</a></li>
+              <li><a>Example</a></li>
+              <li><a>Example</a></li>
+              <li><a>Example</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a data-toggle="dropdown" href="">Stamina</a><span class="caret"></span>
+            <ul class="dropdown-menu">
+              <li>Example</li>
+              <li>Example</li>
+              <li>Example</li>
+              <li>Example</li>
+              <li>Example</li>
+            </ul>
+          </li>
+          <li class="dropdown"><a data-toggle="dropdown" href="">Wisdom</a><span class="caret"></span>
+            <ul class="dropdown-menu">
+              <li>Example</li>
+              <li>Example</li>
+              <li>Example</li>
+              <li>Example</li>
+              <li>Example</li>
+            </ul>
+          </li>
+          <li class="dropdown"><a data-toggle="dropdown" href="">Intellect</a><span class="caret"></span>
+            <ul class="dropdown-menu">
+              <li>Example</li>
+              <li>Example</li>
+              <li>Example</li>
+              <li>Example</li>
+              <li>Example</li>
+            </ul>
+          </li>
+          <li class="dropdown"><a data-toggle="dropdown" href="">Dexterity</a><span class="caret"></span>
+            <ul class="dropdown-menu">
+              <li>Example</li>
+              <li>Example</li>
+              <li>Example</li>
+              <li>Example</li>
+              <li>Example</li>
+            </ul>
+          </li>
+        </ul>
+        </span>
+      </div>
+
+      <section id="grubSection"></section>
+
       <section class="viewGoalsContainer">
         <div class="viewGoalsDiv">
           <h3>Activity: {{newGoal.activity}}</h3>
           <h3>Interval: {{newGoal.interval}}</h3>
         </div>
       </section>
-      <section id="grubSection"></section>
+
   </div>
 </section>
+
+
+<!-- <form class="addGoalForm" action="index.html" method="post">
+  <input type="text" class="form-control activityInput" name="activity" ng-model="newGoal.activity" placeholder="New Activity" value="">
+  <input type="text" class="form-control intervalInput" name="interval" ng-model="newGoal.interval" placeholder="New Interval" value="">
+  <button type="button" class="btn addGoalBtn" ng-click="addGoal(newGoal)" name="button">Add Goal</button>
+</form> -->

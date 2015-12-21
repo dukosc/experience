@@ -6,14 +6,15 @@
       'ui.bootstrap',
       'ngRoute'
     ])
-      .config(function ($routeProvider) {
-        $routeProvider
-        .when('/goals', {
-          templateUrl: 'goals/views/goals.html',
-          controller: 'GoalsController'
-        })
-          .otherwise({ redirectTo: '/404'});
-      });
+    .config(function ($routeProvider) {
+      $routeProvider
+      .when('/goals', {
+        templateUrl: 'goals/views/goals.html',
+        controller: 'GoalsController as goalCtrl'
+      })
+        .otherwise({ redirectTo: '/404'});
+    });
+
 
 
 })();

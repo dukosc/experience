@@ -3,7 +3,8 @@
 
   angular
     .module('goals', [
-      'ngRoute'
+      'ngRoute',
+      'ui.bootstrap',
     ])
     .config(function ($routeProvider) {
       $routeProvider

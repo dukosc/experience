@@ -191,15 +191,23 @@ canvas {
     background: #a9a9a9;
     box-shadow: -2px -2px #ccc; }
 
-.goalsContainer .addGoalBtn {
-  background: #C0C0C0;
-  padding: 1%;
-  font-family: gamegirl;
-  color: #333;
-  margin: 0 1% 1% 11%;
-  border-radius: 4px;
-  text-decoration: none;
-  box-shadow: -2px -2px #A9A9A9; }
-  .goalsContainer .addGoalBtn:hover {
-    background: #a9a9a9;
-    box-shadow: -2px -2px #ccc; }
+.goalsContainer .goalsDiv {
+  margin-top: 4%;
+  margin-left: 1%;
+  width: 93%; }
+  .goalsContainer .goalsDiv .mainList {
+    font-family: gamegirl; }
+    .goalsContainer .goalsDiv .mainList li {
+      background: #F3F3F3;
+      margin: 1.5%;
+      padding: 1%;
+      font-size: 1.5em;
+      border-radius: 4px;
+      box-shadow: -2px -2px #A9A9A9;
+      text-align: center; }
+      .goalsContainer .goalsDiv .mainList li:hover {
+        background: #a9a9a9;
+        box-shadow: -2px -2px #ccc; }
+      .goalsContainer .goalsDiv .mainList li a {
+        text-decoration: none;
+        color: #333; }

@@ -12,7 +12,7 @@
       // },
       scope: {
         user: '=',
-        action: '&',
+        action: '&action'
       }
     }
   });

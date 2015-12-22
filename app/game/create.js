@@ -123,6 +123,7 @@ function create() {
     down: game.input.keyboard.addKey(Phaser.Keyboard.S),
     left: game.input.keyboard.addKey(Phaser.Keyboard.A),
     right: game.input.keyboard.addKey(Phaser.Keyboard.D),
+    space: game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR),
   };
 
 }

@@ -65,16 +65,34 @@ function update() {
   if (wasd.left.isDown) {
     player.body.velocity.x = -150;
     player.animations.play('run', 10, true);
-  } else if (wasd.right.isDown) {
+}
+    if (wasd.left.isDown && wasd.space.isDown) {
+      player.body.velocity.x = -300;
+      player.animations.play('run', 20, true);
+    }
+  if (wasd.right.isDown) {
     player.body.velocity.x = 150;
     player.animations.play('run', 10, true);
   }
+ if (wasd.right.isDown && wasd.space.isDown) {
+  player.body.velocity.x = 300;
+  player.animations.play('run', 20, true);
+}
   if (wasd.up.isDown) {
     player.body.velocity.y = -150;
     player.animations.play('run', 10, true);
-  } else if (wasd.down.isDown) {
+  }
+  if (wasd.up.isDown && wasd.space.isDown) {
+    player.body.velocity.y = -300;
+    player.animations.play('run', 20, true);
+  }
+ if (wasd.down.isDown) {
     player.body.velocity.y = 150;
     player.animations.play('run', 10, true);
+  }
+  if (wasd.down.isDown && wasd.space.isDown) {
+    player.body.velocity.y = 300;
+    player.animations.play('run', 20, true);
   }
   if (!wasd.up.isDown && !wasd.down.isDown) {
     player.body.velocity.y = 0;
@@ -84,6 +102,7 @@ function update() {
     player.animations.play('idle', 10, true);
     player.body.velocity.y = 0;
   }
+
   if (swung === true && swordEquipped) {
     weapon.angle = weapon.angle + 90;
   }

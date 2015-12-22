@@ -7,6 +7,20 @@
       <a href="#/main-page" class="mainMenuBtn"> Main Menu </a>
       <a href="#/game-window" class="playGameBtn"> Play Game </a>
 
+      <form class="addGoalForm" ng-submit="action({user: user, goal: newGoal })" ng-init="newGoal = {}">
+      <select name="select" ng-model="newGoal.activity">
+      <option value="activity 1">activity 1</option>
+      <option value="activity 2">activity 2</option>
+      <option value="activity 3">activity 3</option>
+    </select>
+    <select name="select" ng-model="newGoal.interval">
+    <option value="interval 1">interval 1</option>
+    <option value="interval 2">interval 2</option>
+    <option value="interval 3">interval 3</option>
+  </select>
+  <button type="submit" class="btn addGoalBtn" name="button">Add Goal</button>
+</form>
+
       <div class="goalsDiv">
 
         <span uib-dropdown ng-class='{open: open}'>

@@ -198,7 +198,7 @@ canvas {
   width: 93%; }
   .goalsContainer .goalsDiv .mainList {
     font-family: gamegirl; }
-    .goalsContainer .goalsDiv .mainList li {
+    .goalsContainer .goalsDiv .mainList > li {
       background: #F3F3F3;
       margin: 1.5%;
       padding: 1%;
@@ -207,9 +207,21 @@ canvas {
       box-shadow: -2px -2px #A9A9A9;
       text-align: center;
       list-style-type: none; }
-      .goalsContainer .goalsDiv .mainList li:hover {
-        background: #a9a9a9;
-        box-shadow: -2px -2px #ccc; }
-      .goalsContainer .goalsDiv .mainList li a {
+      .goalsContainer .goalsDiv .mainList > li ul {
+        width: 100%;
+        list-style-type: none;
+        background: #F3F3F3; }
+        .goalsContainer .goalsDiv .mainList > li ul li {
+          margin-top: 2%;
+          text-align: center; }
+      .goalsContainer .goalsDiv .mainList > li a {
         text-decoration: none;
-        color: #333; }
+        color: #333;
+        margin-top: .5%;
+        text-align: center; }
+
+.background {
+  background: #C0C0C0;
+  padding: 1.5%;
+  box-shadow: -2px -2px #A9A9A9;
+  border-radius: 4px; }

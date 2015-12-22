@@ -233,7 +233,7 @@ canvas {
     width: 93%;
     .mainList {
       font-family: gamegirl;
-      li {
+      &>li {
         background: #F3F3F3;
         margin: 1.5%;
         padding: 1%;
@@ -242,15 +242,29 @@ canvas {
         box-shadow: -2px -2px #A9A9A9;
         text-align: center;
         list-style-type: none;
-        &:hover {
-          background: #a9a9a9;
-          box-shadow: -2px -2px #ccc;
+        ul {
+          width: 100%;
+          list-style-type: none;
+          background: #F3F3F3;
+          li {
+            margin-top: 2%;
+            text-align: center;
+          }
         }
         a {
           text-decoration: none;
           color: #333;
+          margin-top: .5%;
+          text-align: center;
         }
       }
     }
   }
+}
+
+.background {
+  background: #C0C0C0;
+  padding: 1.5%;
+  box-shadow: -2px -2px #A9A9A9;
+  border-radius: 4px;
 }

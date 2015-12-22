@@ -3,6 +3,7 @@
   angular.module('goals')
     .controller('GoalsController', function($scope, $rootScope, GoalsService) {
       var vm = this;
+      vm.user = {};
       vm.getGoals = function(){
         console.log('fire');
         GoalsService.on('all:users', function(data) {
@@ -13,6 +14,7 @@
             if(user._id === data[i]._id){
               console.log(data[i].currGoals);
               vm.goals = data[i].currGoals;
+              vm.user = data[i];
               console.log(vm.goals);
             }
           }
@@ -26,7 +28,7 @@
       };
       vm.addGoal = function(user, goal) {
         console.log(goal);
-        user = $rootScope.user;
+        user = JSON.parse(localStorage.getItem('user'));
         user.currGoals.push(goal);
         vm.putGoal(user);
         console.log(user);

@@ -17,7 +17,7 @@
 
           <li><a href="#/goals">Intellect</a><i class="fa fa-caret-up"></i>
             <div>
-              <form class="addGoalForm" ng-submit="action({user: user, goal: newGoal })" ng-init="newGoal = {}">
+              <form class="addGoalForm" ng-submit="goalCtrl.addGoal(user, newGoal)" ng-init="newGoal = {}">
                 <select name="select" ng-model="newGoal.activity">
                   <option value="" disabled selected hidden>Intellect</option>
                   <option value="read">Read</option>

@@ -2,7 +2,7 @@
   "use strict";
   angular
     .module('goals')
-    .factory('GoalsService', function($http) {
+    .factory('GoalsService', function($http, $rootScope) {
       var socket = io();
 
       var on = function(eventName, callback) {

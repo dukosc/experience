@@ -27,8 +27,9 @@
         console.log(user);
         for(var i = 0; i < vm.users.length; i++){
           if(user.username === vm.users[i].username && user.password === vm.users[i].password){
-            $rootScope.user = vm.users[i];
-            console.log($rootScope.user);
+            localStorage.setItem('user', JSON.stringify(vm.users[i]));
+            var user = localStorage.getItem('user');
+            console.log(JSON.parse(user));
             $location.path('/main-page');
           }
           if(user.username === vm.users[i].username && user.password !== vm.users[i].password){

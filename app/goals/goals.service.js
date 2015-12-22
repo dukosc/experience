@@ -3,13 +3,32 @@
   angular
     .module('goals')
     .factory('GoalsService', function($http) {
-      var url = 'http://tiny-tiny.herokuapp.com/collections/experience';
-      var getGoals = function() {
-        console.log($http.get(url));
-        return $http.get(url);
+      var socket = io();
+
+      var on = function(eventName, callback) {
+        socket.on(eventName, function() {
+          var args = arguments;
+          console.log(args);
+          $rootScope.$apply(function() {
+            callback.apply(socket, args);
+          });
+        });
       };
+
+      var emit = function(eventName, data, callback) {
+        socket.emit(eventName, data, function() {
+          var args = arguments;
+          $rootScope.$apply(socket, function() {
+            if (callback) {
+              callback.apply(socket.args);
+            }
+          });
+        });
+      };
+
       return {
-        getGoals: getGoals,
+        on: on,
+        emit: emit
       };
     });
 })();

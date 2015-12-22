@@ -15,7 +15,26 @@
           <li><a href="#/goals/stamina">Stamina</a><i class="fa fa-caret-down"></i></li>
           <li><a href="#/goals/wisdom">Wisdom</a><i class="fa fa-caret-down"></i></li>
           <li><a href="#/goals/intellect">Intellect</a><i class="fa fa-caret-down"></i></li>
-          <li><a href="#/goals/dexterity">Dexterity</a><i class="fa fa-caret-down"></i></li>
+
+          <li><a href="#/goals">Dexterity</a><i class="fa fa-caret-up"></i>
+            <div>
+              <form class="addGoalForm" ng-submit="action({user: user, goal: newGoal })" ng-init="newGoal = {}">
+                <select name="select" ng-model="newGoal.activity">
+                  <option value="" disabled selected hidden>Dexterity</option>
+                  <option value="activity 1">Push-ups</option>
+                  <option value="activity 2">Squats</option>
+                  <option value="activity 3">Sit-ups</option>
+                </select>
+                <select name="select" ng-model="newGoal.interval">
+                  <option value="" disabled selected hidden>Interval</option>
+                  <option value="interval 1">interval 1</option>
+                  <option value="interval 2">interval 2</option>
+                  <option value="interval 3">interval 3</option>
+                </select>
+                <button type="submit" class="btn addGoalBtn" name="button">Add Goal</button>
+              </form>
+            </div>
+          </li>
 
         </ul>
         </span>

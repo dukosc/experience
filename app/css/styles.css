@@ -90,12 +90,12 @@ h2 {
   #mainMenu div .spriteImg3 {
     width: 128px;
     height: 128px;
-    margin-top: -5%;
-    background-image: url("/game/assets/enemy.png");
+    margin: 12% auto;
+    background-image: url("/game/assets/dirt-devil.png");
     z-index: 1;
-    zoom: 3.0;
+    zoom: 2.0;
     overflow: hidden;
-    -webkit-animation: sprite 1s steps(4) infinite; }
+    -webkit-animation: sprite 0.4s steps(4) infinite; }
   #mainMenu div .btn {
     margin: 55% 35% 0 25%;
     box-shadow: -2px -2px darkgrey;
@@ -225,3 +225,14 @@ canvas {
   padding: 1.5%;
   box-shadow: -2px -2px #A9A9A9;
   border-radius: 4px; }
+
+.cursor {
+  cursor: pointer; }
+
+select {
+  font-family: gamegirl;
+  background: #C0C0C0;
+  padding: 1%; }
+
+.addGoalBtn {
+  border: 1px solid #A6A6A6; }

@@ -15,11 +15,19 @@
         console.log(user);
         vm.newGoal = "";
       };
+      vm.putCompGoal = function(user){
+        GoalsService.emit('complete:goal', user);
+      }
       vm.completeGoal = function(user, goal) {
-        console.log('fire');
+        console.log(goal);
+        compGoal = {
+          activity: goal.activity,
+          interval: goal.interval
+        };
         user = JSON.parse(localStorage.getItem('user'));
-        user.completedGoals.push(goal);
-        vm.putGoal(user);
+        user.completedGoals.push(compGoal);
+        vm.putCompGoal(user);
+        console.log(user);
       }
       GoalsService.on('all:users', function(data) {
         var user = JSON.parse(localStorage.getItem('user'));

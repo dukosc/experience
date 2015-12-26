@@ -28,7 +28,7 @@
         <div ng-repeat="goal in goalCtrl.goals">
           <h3>Activity: {{goal.activity}}</h3>
           <h3>Interval: {{goal.interval}}</h3>
-          <input type="button" name="name" value="Completed" ng-click="goalCtrl.completeGoal(goal)">
+          <input type="button" name="name" value="Completed" ng-click="goalCtrl.completeGoal(user, goal)">
         </div>
       </section>
 

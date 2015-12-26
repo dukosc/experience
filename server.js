@@ -17,7 +17,7 @@ mongoose.connection.on('error', function() {
 
 app.use(express.static(__dirname + "/app"))
 
-app.get('/', function(req,res) {
+app.get('/', function(req, res) {
   res.sendFile('app');
 });
 
@@ -29,22 +29,51 @@ http.listen(port);
 
 io.on('connection', function(socket) {
   console.log("WE CONNECTED");
-  User.find({},function(err,data) {
-      console.log(data);
-      socket.emit('all:users', data);
-    });
-    socket.on('new:goal', function(val){
-    console.log('new goal', val);
+  User.find({}, function(err, data) {
+    console.log(data);
+    socket.emit('all:users', data);
+  });
+  socket.on('complete:goal', function(val) {
+    console.log('completed goal', val);
 
     User.findByIdAndUpdate(
-      val._id, {$push: {currGoals: val.currGoals.pop()}},
-      {safe: true, upsert: true, new: true},
+      val._id, {
+        $push: {
+          completedGoals: val.completedGoals.pop()
+        }
+      }, {
+        safe: true,
+        upsert: true,
+        new: true
+      },
       function(err, pitch) {
-        if(err) {
+        if (err) {
           console.log("UPDATE ERR", err);
           throw err;
         }
-      //  socket.emit('new:goal', user);
+        //  socket.emit('new:goal', user);
+      }
+    );
+  });
+  socket.on('new:goal', function(val) {
+    console.log('new goal', val);
+
+    User.findByIdAndUpdate(
+      val._id, {
+        $push: {
+          currGoals: val.currGoals.pop()
+        }
+      }, {
+        safe: true,
+        upsert: true,
+        new: true
+      },
+      function(err, pitch) {
+        if (err) {
+          console.log("UPDATE ERR", err);
+          throw err;
+        }
+        //  socket.emit('new:goal', user);
       }
     );
   });
@@ -57,14 +86,14 @@ io.on('connection', function(socket) {
       currGoals: val.currGoals,
       completedGoals: val.completedGoals
     });
-    user.save(function(err,data) {
-    if (err) {
-      console.log("OH FUCK", err);
-      return;
-    }
-    console.log(" YAY", data);
-    io.emit('new:user', data);
-  });
+    user.save(function(err, data) {
+      if (err) {
+        console.log("OH FUCK", err);
+        return;
+      }
+      console.log(" YAY", data);
+      io.emit('new:user', data);
+    });
   });
 });
 

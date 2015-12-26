@@ -119,8 +119,7 @@ canvas {
   box-shadow: -2px -2px darkgray; }
 
 .viewGoalsContainer {
-  width: 100%;
-  height: 100px; }
+  width: 100%; }
   .viewGoalsContainer div {
     background: #333333;
     padding: 1% 0;

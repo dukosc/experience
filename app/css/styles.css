@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-image: url("https://images.unsplash.com/photo-1446716336919-df838e44ce7b?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=0543a683e1899d191e56a57419fa1a59");
+  background-image: url(https://images.unsplash.com/photo-1446716336919-df838e44ce7b?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=0543a683e1899d191e56a57419fa1a59);
   background-position: center; }
 
 h1 {
@@ -10,7 +10,7 @@ h1 {
   font-family: gamegirl;
   text-align: center;
   letter-spacing: 15px;
-  padding: 3% 0 1% 0;
+  padding: 3% 0 1%;
   margin-top: -1%; }
 
 h2 {
@@ -19,7 +19,7 @@ h2 {
   font-family: gamegirl;
   float: left;
   letter-spacing: 15px;
-  padding: 3% 0 1% 0;
+  padding: 3% 0 1%;
   margin-top: -1%; }
 
 .loginWindow {
@@ -57,7 +57,7 @@ h2 {
   display: inline-block;
   width: 32%;
   height: 580px;
-  margin: .5%;
+  margin: 0.5%;
   background: #333333;
   border-radius: 5px;
   border: 1px solid #333333;
@@ -68,7 +68,7 @@ h2 {
     height: 128px;
     margin-top: -5%;
     margin-top: -5%;
-    background-image: url("/game/assets/player.png");
+    background-image: url(/game/assets/player.png);
     z-index: 1;
     zoom: 3.0;
     overflow: hidden;
@@ -78,7 +78,7 @@ h2 {
     height: 128px;
     margin-top: -5%;
     margin-left: 10%;
-    background-image: url("/game/assets/bear.png");
+    background-image: url(/game/assets/bear.png);
     z-index: 1;
     zoom: 3.0;
     overflow: hidden;
@@ -91,7 +91,7 @@ h2 {
     width: 128px;
     height: 128px;
     margin: 12% auto;
-    background-image: url("/game/assets/dirt-devil.png");
+    background-image: url(/game/assets/dirt-devil.png);
     z-index: 1;
     zoom: 2.0;
     overflow: hidden;
@@ -149,14 +149,15 @@ canvas {
   border-radius: 5px;
   border: 1px solid #333333;
   box-shadow: -2px -2px darkgrey; }
-  .goalsContainer .addGoalsDiv .activityInput, .goalsContainer .addGoalsDiv .intervalInput {
+  .goalsContainer .addGoalsDiv .activityInput,
+  .goalsContainer .addGoalsDiv .intervalInput {
     width: 77%;
     margin-left: 11%;
     margin-top: 5%; }
   .goalsContainer .addGoalsDiv #grubSection {
     width: 128px;
     height: 128px;
-    background-image: url("/game/assets/grub.png");
+    background-image: url(/game/assets/grub.png);
     margin-left: 30%;
     margin-top: -7%;
     z-index: 1;
@@ -171,14 +172,16 @@ canvas {
 .goalsContainer #eggSection {
   width: 128px;
   height: 128px;
-  background-image: url("/game/assets/easter-egg.png");
+  background-image: url(/game/assets/easter-egg.png);
   margin-left: 30%;
   margin-top: -2%;
   z-index: 1;
   zoom: 5.0;
   overflow: hidden; }
 
-.goalsContainer .viewStatsBtn, .goalsContainer .mainMenuBtn, .goalsContainer .playGameBtn {
+.goalsContainer .viewStatsBtn,
+.goalsContainer .mainMenuBtn,
+.goalsContainer .playGameBtn {
   background: #C0C0C0;
   padding: 1.5%;
   font-family: gamegirl;
@@ -187,7 +190,9 @@ canvas {
   border-radius: 4px;
   text-decoration: none;
   box-shadow: -2px -2px #A9A9A9; }
-  .goalsContainer .viewStatsBtn:hover, .goalsContainer .mainMenuBtn:hover, .goalsContainer .playGameBtn:hover {
+  .goalsContainer .viewStatsBtn:hover,
+  .goalsContainer .mainMenuBtn:hover,
+  .goalsContainer .playGameBtn:hover {
     background: #a9a9a9;
     box-shadow: -2px -2px #ccc; }
 
@@ -205,7 +210,8 @@ canvas {
       background: #F3F3F3;
       border-radius: 4px;
       width: 70%;
-      box-shadow: -2px -2px #A9A9A9; }
+      box-shadow: -2px -2px #A9A9A9;
+      font-family: gamegirl; }
   .goalsContainer .viewStatsContainer .addGoalBtn {
     background: #C0C0C0;
     padding: 1%;
@@ -244,7 +250,7 @@ canvas {
       .goalsDiv .mainList > li a {
         text-decoration: none;
         color: #333;
-        margin-top: .5%;
+        margin-top: 0.5%;
         text-align: center; }
 
 .background {

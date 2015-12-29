@@ -1,10 +1,10 @@
 <h1>EXPERIENCE</h1>
 
 <div class="loginWindow">
-    <form class="" action="index.html" method="post">
-      <input class="form-control" type="text" autocomplete="off" name="name" value="" placeholder="Username"/>
-      <input class="form-control" type="password" autocomplete="off" name="name" value="" placeholder="Password"/>
-      <a href="#/"><button class="registerBtn" type="submit" name="button">Register</button></a>
-      <a href="#/main-page"><button class="loginBtn" type="submit" name="button">Login</button></a>
+    <form>
+      <input class="form-control" ng-model="user.username" type="text" autocomplete="off" name="name" value="" placeholder="Username"/>
+      <input class="form-control" ng-model="user.password" type="password" autocomplete="off" name="name" value="" placeholder="Password"/>
+      <button class="registerBtn" type="button" name="button">Register</button>
+      <button class="loginBtn" type="submit" name="button" ng-click="loginCtrl.login(user)">Login</button>
     </form>
 </div>

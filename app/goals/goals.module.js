@@ -12,10 +12,6 @@
         templateUrl: 'goals/views/add-goals.html',
         controller: 'GoalsController as goalCtrl'
       })
-      .when('/view-goals', {
-        templateUrl: 'goals/views/view-goals.html',
-        controller: 'GoalsController as goalCtrl'
-      })
       .when('/goals/strength', {
         templateUrl: 'goals/views/strength.html',
         controller: 'GoalsController as goalCtrl'

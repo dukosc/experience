@@ -72,7 +72,7 @@ function create() {
   slashes = game.add.group();
   slashes.enableBody = true;
   slashes.physicsBodyType = Phaser.Physics.ARCADE;
-  slashes.createMultiple(1, 'slash', 0, false);
+  slashes.createMultiple(10, 'slash', 0, false);
   slashes.setAll('anchor.x', 0.5);
   slashes.setAll('anchor.y', 0.5);
   slashes.setAll('outOfBoundsKill', true);
@@ -95,6 +95,8 @@ function create() {
   player.body.setSize(64, 64);
   player.body.collideWorldBounds = true;
   player.ammo = 60;
+  // player.health = 3;
+  // player.enableBody = true;
   addWeapon('gun');
   game.camera.follow(player);
   enemies = [];

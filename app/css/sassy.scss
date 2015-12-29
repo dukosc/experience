@@ -1,10 +1,12 @@
 body {
   margin: 0;
   padding: 0;
+
   background: #d3d3d3;
   background-image: url(https://images.unsplash.com/photo-1431975583576-a57c07327f71?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=b7f9541dd87eb21160d982a0649536d6);
   background-size: cover;
   background-repeat: no-repeat;
+
 }
 h1 {
   font-size: 4.75em;
@@ -25,7 +27,9 @@ h2 {
   margin-top: -1%;
 }
 
+
 ////////////////////////////////////////// Login
+
 .loginWindow {
   background: #333333;
   background: rgba(51, 51, 51, 0.85);

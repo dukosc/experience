@@ -34,6 +34,9 @@ Enemy.prototype.damage = function() {
   if (gunEquipped) {
     this.health -= 1;
   }
+  // if (ggunEquipped) {
+  //   this.health -= 3;
+  // }
   if (swordEquipped) {
     this.health -= 3;
   }

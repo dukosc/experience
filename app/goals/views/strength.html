@@ -3,15 +3,15 @@
 
 <section class="goalsContainer">
   <div class="addGoalsDiv">
-      <a href="#/stats" class="viewStatsBtn"> View Stats </a>
-      <a href="#/main-page" class="mainMenuBtn"> Main Menu </a>
       <a href="#/game-window" class="playGameBtn"> Play Game </a>
+      <a href="#/main-page" class="mainMenuBtn"> Main Menu </a>
+      <a href="#/stats" class="viewStatsBtn"> View Stats </a>
 
       <div class="goalsDiv">
         <span uib-dropdown ng-class='{open: open}'>
         <ul class="mainList">
 
-          <li><a href="#/goals">Strength</a><i class="fa fa-caret-up"></i>
+          <li><a href="#/add-goals">Strength</a><i class="fa fa-caret-up"></i>
             <div>
               <form class="addGoalForm" ng-submit="goalCtrl.addGoal(user, newGoal)" ng-init="newGoal = {}">
                 <select name="select" ng-model="newGoal.activity">
@@ -40,22 +40,8 @@
         </span>
       </div>
 
-      <section id="grubSection"></section>
+      <section class="spriteImg2"></section>
 
-
-      <section class="viewGoalsContainer">
-        <div class="viewGoalsDiv">
-          <h3>Activity: {{newGoal.activity}}</h3>
-          <h3>Interval: {{newGoal.interval}}</h3>
-        </div>
-      </section>
 
   </div>
 </section>
-
-
-<!-- <form class="addGoalForm" action="index.html" method="post">
-  <input type="text" class="form-control activityInput" name="activity" ng-model="newGoal.activity" placeholder="New Activity" value="">
-  <input type="text" class="form-control intervalInput" name="interval" ng-model="newGoal.interval" placeholder="New Interval" value="">
-  <button type="button" class="btn addGoalBtn" ng-click="addGoal(newGoal)" name="button">Add Goal</button>
-</form> -->

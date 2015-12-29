@@ -1,0 +1,9 @@
+<section class="viewGoalsContainer">
+  <div class="viewGoalsDiv">
+    <h3>Activity: {{newGoal.activity}}</h3>
+    <h3>Interval: {{newGoal.interval}}</h3>
+  </div>
+  <div class="viewGoalsDiv" ng-repeat="goal in goalCtrl.goals">
+    <h3>{{goal}}</h3>
+  </div>
+</section>

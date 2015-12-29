@@ -5,6 +5,7 @@
       'ngRoute',
       'experience',
       'goals',
+      'vgoals',
       'game',
       'stats'
     ])

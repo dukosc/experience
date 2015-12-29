@@ -222,6 +222,7 @@ canvas {
 
   ///////////////////STATS PAGE
   .viewStatsBtn,
+  .viewGoalsBtn,
   .mainMenuBtn,
   .playGameBtn {
     background: #C0C0C0;
@@ -275,7 +276,6 @@ canvas {
   margin-top: 5%;
   margin-left: 1%;
   width: 93%;
-  background: rgba(51, 51, 51, 0.85);
   .mainList {
     font-family: gamegirl;
     &>li {

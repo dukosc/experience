@@ -173,6 +173,7 @@ canvas {
     background-position: -512px; } }
 
 .goalsContainer .viewStatsBtn,
+.goalsContainer .viewGoalsBtn,
 .goalsContainer .mainMenuBtn,
 .goalsContainer .playGameBtn {
   background: #C0C0C0;
@@ -184,6 +185,7 @@ canvas {
   text-decoration: none;
   box-shadow: -2px -2px #A9A9A9; }
   .goalsContainer .viewStatsBtn:hover,
+  .goalsContainer .viewGoalsBtn:hover,
   .goalsContainer .mainMenuBtn:hover,
   .goalsContainer .playGameBtn:hover {
     background: #a9a9a9;
@@ -221,8 +223,7 @@ canvas {
 .goalsDiv {
   margin-top: 5%;
   margin-left: 1%;
-  width: 93%;
-  background: rgba(51, 51, 51, 0.85); }
+  width: 93%; }
   .goalsDiv .mainList {
     font-family: gamegirl; }
     .goalsDiv .mainList > li {

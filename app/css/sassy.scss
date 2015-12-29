@@ -1,39 +1,40 @@
 body {
   margin: 0;
   padding: 0;
-  background-image: url('https://images.unsplash.com/photo-1446716336919-df838e44ce7b?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=0543a683e1899d191e56a57419fa1a59');
-  background-position: center;
+  background: #d3d3d3;
+  background-image: url(https://images.unsplash.com/photo-1431975583576-a57c07327f71?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=b7f9541dd87eb21160d982a0649536d6);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
-
 h1 {
   font-size: 4.75em;
-  text-shadow: -2px -2px darkgray;
+  text-shadow: -2px -2px #F3F3F3;
   font-family: gamegirl;
   text-align: center;
   letter-spacing: 15px;
-  padding: 3% 0 1% 0;
+  padding: 3% 0 1%;
   margin-top: -1%;
 }
-
 h2 {
   font-size: 1.75em;
-  text-shadow: -2px -2px darkgray;
+  text-shadow: -2px -2px #F3F3F3;
   font-family: gamegirl;
   float: left;
   letter-spacing: 15px;
-  padding: 3% 0 1% 0;
+  padding: 3% 0 1%;
   margin-top: -1%;
 }
 
+////////////////////////////////////////// Login
 .loginWindow {
   background: #333333;
-  margin-left: 24%;
-  margin-top: 8%;
-  height: 200px;
-  border: 2px solid #333333;
+  background: rgba(51, 51, 51, 0.85);
+  margin: 10% auto;
+  min-height: 200px;
+  border: 1px solid #333;
+  box-shadow: -2px -2px #A9A9A9;
   border-radius: 4px;
-  width: 50%;
-  box-shadow: -2px -2px darkgray;
+  width: 70%;
   form {
     margin: 5% 10%;
     a {
@@ -44,38 +45,34 @@ h2 {
     input {
       width: 100%;
       margin-bottom: 3%;
-
     }
     button {
-      background: #F3F3F3;
+      background: #C0C0C0;
       border: none;
       box-shadow: -2px -2px darkgrey;
       border-radius: 4px;
-      margin: 2% 0 0 2%;
+      margin: 1% 0 1% 2%;
       &:hover {
         background: #a9a9a9;
         box-shadow: -2px -2px #ccc;
       }
     }
   }
-
 }
-
 .hide {
   display: none;
 }
-
 ////////////////////////////////////////// Main Page
-
 #mainMenu {
   div {
     display: inline-block;
     width: 32%;
     height: 580px;
-    margin: .5%;
+    margin: 0.5%;
     background: #333333;
+    background: rgba(51, 51, 51, 0.85);
     border-radius: 5px;
-    border: 1px solid #333333;
+    border: 1px solid #333;
     box-shadow: -2px -2px darkgrey;
     vertical-align: top;
     .spriteImg {
@@ -83,61 +80,67 @@ h2 {
       height: 128px;
       margin-top: -5%;
       margin-top: -5%;
-      background-image: url('/game/assets/player.png');
+      background-image: url(/game/assets/player.png);
       z-index: 1;
       zoom: 3.0;
       overflow: hidden;
       -webkit-animation: sprite 1s steps(4) infinite;
     }
-    .spriteImg2 {
+    #grubSection {
       width: 128px;
       height: 128px;
-      margin-top: -5%;
-      margin-left: 10%;
-      background-image: url('/game/assets/bear.png');
+      background-image: url(/game/assets/grub.png);
+      margin-left: 1%;
       z-index: 1;
       zoom: 3.0;
       overflow: hidden;
-      animation: sprite 1s steps(4) infinite
+      animation: sprite 1s steps(4) infinite;
     }
+    // .spriteImg2 {
+    //   width: 128px;
+    //   height: 128px;
+    //   margin-top: -5%;
+    //   margin-left: 10%;
+    //   background-image: url(/game/assets/bear.png);
+    //   z-index: 1;
+    //   zoom: 3.0;
+    //   overflow: hidden;
+    //   animation: sprite 1s steps(4) infinite;
+    // }
     @keyframes sprite {
-       100% {
-         background-position: -512px;
-       }
+      100% {
+        background-position: -512px;
+      }
     }
     .spriteImg3 {
       width: 128px;
       height: 128px;
       margin: 12% auto;
-      background-image: url('/game/assets/dirt-devil.png');
+      background-image: url(/game/assets/dirt-devil.png);
       z-index: 1;
-      zoom: 2.0;
+      zoom: 1.75;
       overflow: hidden;
-      -webkit-animation: sprite .4s steps(4) infinite;
+      -webkit-animation: sprite 0.4s steps(4) infinite;
     }
     .btn {
       margin: 55% 35% 0 25%;
       box-shadow: -2px -2px darkgrey;
       font-family: gamegirl;
       color: #333333;
-      }
-    }
-    button {
-      &:hover {
-        background: #a9a9a9;
-        box-shadow: -2px -2px #ccc;
-      }
     }
   }
-
+  button {
+    &:hover {
+      background: #a9a9a9;
+      box-shadow: -2px -2px #ccc;
+    }
+  }
+}
 canvas {
   margin-left: 18%;
   border: 1px solid #333333;
 }
-
-
 /////////////////////////////////////////// View Goals Page
-
 .form-control {
   width: 95%;
   font-family: gamegirl;
@@ -146,7 +149,6 @@ canvas {
   color: #333;
   box-shadow: -2px -2px darkgray;
 }
-
 .viewGoalsContainer {
   width: 100%;
   div {
@@ -168,142 +170,141 @@ canvas {
     text-align: left;
   }
 }
-
-
-
 ///////////////////////////////////////Add Goals Page
-
 .goalsContainer {
   .addGoalsDiv {
     display: inline-block;
     vertical-align: top;
     background: #333333;
+    background: rgba(51, 51, 51, 0.85);
     width: 75%;
     padding: 2% 0;
     margin-left: 12%;
     min-height: 500px;
+    overflow: hidden;
     border-radius: 5px;
     border: 1px solid #333333;
     box-shadow: -2px -2px darkgrey;
-    .activityInput, .intervalInput {
+    .activityInput,
+    .intervalInput {
       width: 77%;
       margin-left: 11%;
       margin-top: 5%;
     }
-    #grubSection {
+    // #grubSection {
+    //   width: 128px;
+    //   height: 128px;
+    //   background-image: url(/game/assets/grub.png);
+    //   margin-left: 30%;
+    //   margin-top: -7%;
+    //   z-index: 1;
+    //   zoom: 3.0;
+    //   overflow: hidden;
+    //   animation: sprite 1s steps(4) infinite;
+    // }
+    .spriteImg2 {
       width: 128px;
       height: 128px;
-      background-image: url('/game/assets/grub.png');
-      margin-left: 30%;
-      margin-top: -7%;
+      margin-top: -5%;
+      margin-left: 31%;
+      background-image: url(/game/assets/bear.png);
       z-index: 1;
       zoom: 3.0;
       overflow: hidden;
-      animation: sprite 1s steps(4) infinite
+      animation: sprite 1s steps(4) infinite;
     }
     @keyframes sprite {
-       100% {
-         background-position: -512px;
-       }
-    }
-  }
-
-  #eggSection{
-    width: 128px;
-    height: 128px;
-    background-image: url('/game/assets/easter-egg.png');
-    margin-left: 30%;
-    margin-top: -2%;
-    z-index: 1;
-    zoom: 5.0;
-    overflow: hidden;
-  }
-
-///////////////////STATS PAGE
-.viewStatsBtn, .mainMenuBtn, .playGameBtn {
-  background: #C0C0C0;
-  padding: 1.5%;
-  font-family: gamegirl;
-  color: #333;
-  &:hover {
-    background: #a9a9a9;
-    box-shadow: -2px -2px #ccc;
-  }
-  margin: 1% 1% 1% 11%;
-  border-radius: 4px;
-  text-decoration: none;
-  box-shadow: -2px -2px #A9A9A9;
-}
-.viewStatsContainer {
-  width: 100%;
-  height: 100px;
-  div {
-    background: #333333;
-    padding: 1% 0;
-    min-height: 500px;
-    border-radius: 5px;
-    h3 {
-      margin-left: 12%;
-      padding: 1%;
-      background: #F3F3F3;
-      border-radius: 4px;
-      width: 70%;
-      box-shadow: -2px -2px #A9A9A9;
-    }
-  }
-
-  .addGoalBtn {
-    background: #C0C0C0;
-    padding: 1%;
-    font-family: gamegirl;
-    color: #333;
-    margin: 0 1% 1% 11%;
-    border-radius: 4px;
-    text-decoration: none;
-    box-shadow: -2px -2px #A9A9A9;
-    &:hover {
-      background: #a9a9a9;
-      box-shadow: -2px -2px #ccc;
-    }
-  }
-}
-
-  }
-  .goalsDiv {
-    margin-top: 5%;
-    margin-left: 1%;
-    width: 93%;
-    .mainList {
-      font-family: gamegirl;
-      &>li {
-        background: #F3F3F3;
-        margin: 1.5%;
-        padding: 1%;
-        font-size: 1.5em;
-        border-radius: 4px;
-        box-shadow: -2px -2px #A9A9A9;
-        text-align: center;
-        list-style-type: none;
-        ul {
-          width: 100%;
-          list-style-type: none;
-          background: #F3F3F3;
-          li {
-            margin-top: 2%;
-            text-align: center;
-          }
-        }
-        a {
-          text-decoration: none;
-          color: #333;
-          margin-top: .5%;
-          text-align: center;
-        }
+      100% {
+        background-position: -512px;
       }
     }
   }
 
-
+  ///////////////////STATS PAGE
+  .viewStatsBtn,
+  .mainMenuBtn,
+  .playGameBtn {
+    background: #C0C0C0;
+    padding: 1.5%;
+    font-family: gamegirl;
+    color: #333;
+    &:hover {
+      background: #a9a9a9;
+      box-shadow: -2px -2px #ccc;
+    }
+    margin: 1% 1% 1% 11%;
+    border-radius: 4px;
+    text-decoration: none;
+    box-shadow: -2px -2px #A9A9A9;
+  }
+  .viewStatsContainer {
+    width: 100%;
+    height: 100px;
+    div {
+      width: 100%;
+      padding: 1% 0;
+      min-height: 500px;
+      border-radius: 5px;
+      h3 {
+        margin-left: 12%;
+        padding: 1%;
+        background: #F3F3F3;
+        border-radius: 4px;
+        width: 70%;
+        box-shadow: -2px -2px #A9A9A9;
+        font-family: gamegirl;
+      }
+    }
+    .addGoalBtn {
+      background: #C0C0C0;
+      padding: 1%;
+      font-family: gamegirl;
+      color: #333;
+      margin: 0 1% 1% 11%;
+      border-radius: 4px;
+      text-decoration: none;
+      box-shadow: -2px -2px #A9A9A9;
+      &:hover {
+        background: #a9a9a9;
+        box-shadow: -2px -2px #ccc;
+      }
+    }
+  }
+}
+.goalsDiv {
+  margin-top: 5%;
+  margin-left: 1%;
+  width: 93%;
+  background: rgba(51, 51, 51, 0.85);
+  .mainList {
+    font-family: gamegirl;
+    &>li {
+      background: #F3F3F3;
+      margin: 1.5%;
+      padding: 1%;
+      font-size: 1.5em;
+      border-radius: 4px;
+      box-shadow: -2px -2px #A9A9A9;
+      text-align: center;
+      list-style-type: none;
+      ul {
+        width: 100%;
+        list-style-type: none;
+        background: #F3F3F3;
+        li {
+          margin-top: 2%;
+          text-align: center;
+        }
+      }
+      a {
+        text-decoration: none;
+        color: #333;
+        margin-top: 0.5%;
+        text-align: center;
+      }
+    }
+  }
+}
 .background {
   background: #C0C0C0;
   padding: 1.5%;

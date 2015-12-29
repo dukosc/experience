@@ -8,8 +8,12 @@
     ])
     .config(function ($routeProvider) {
       $routeProvider
-      .when('/goals', {
-        templateUrl: 'goals/views/goals.html',
+      .when('/add-goals', {
+        templateUrl: 'goals/views/add-goals.html',
+        controller: 'GoalsController as goalCtrl'
+      })
+      .when('/view-goals', {
+        templateUrl: 'goals/views/view-goals.html',
         controller: 'GoalsController as goalCtrl'
       })
       .when('/goals/strength', {

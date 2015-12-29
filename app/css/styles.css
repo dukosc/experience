@@ -27,7 +27,7 @@ h2 {
 .loginWindow {
   background: #333333;
   background: rgba(51, 51, 51, 0.85);
-  margin: 10% auto;
+  margin: 5% auto;
   min-height: 200px;
   border: 1px solid #333;
   box-shadow: -2px -2px #A9A9A9;
@@ -44,6 +44,7 @@ h2 {
       margin-bottom: 3%; }
     .loginWindow form button {
       background: #C0C0C0;
+      font-family: gamegirl;
       border: none;
       box-shadow: -2px -2px darkgrey;
       border-radius: 4px;
@@ -154,8 +155,7 @@ canvas {
   width: 75%;
   padding: 2% 0;
   margin-left: 12%;
-  min-height: 500px;
-  overflow: hidden;
+  height: 600px;
   border-radius: 5px;
   border: 1px solid #333333;
   box-shadow: -2px -2px darkgrey; }
@@ -167,12 +167,11 @@ canvas {
   .goalsContainer .addGoalsDiv .spriteImg2 {
     width: 128px;
     height: 128px;
-    margin-top: -5%;
-    margin-left: 31%;
+    margin-top: -7.5%;
+    margin-left: 35%;
     background-image: url(/game/assets/bear.png);
     z-index: 1;
-    zoom: 3.0;
-    overflow: hidden;
+    zoom: 2.5;
     animation: sprite 1s steps(4) infinite; }
 
 @keyframes sprite {

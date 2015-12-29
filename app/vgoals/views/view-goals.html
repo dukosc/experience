@@ -1,18 +1,10 @@
 
 <h1>View Goals</h1>
 
-
-<div class="viewGoalsContainer">
-  <section class="viewGoalsSection">
-    <div class="viewGoalsDiv" ng-repeat="goal in viewGoalCtrl.goals">
-      <h3>Activity: {{goal.activity}}</h3>
-      <h3>Interval: {{goal.interval}}</h3>
-    </div>
-  </section>
-  <!-- <section class="completedGoalsSection">
-    <div class="completedGoalsDiv" ng-repeat="goal in viewGoalCtrl.goals">
-      <h3>Activity: {{goal.activity}}</h3>
-      <h3>Interval: {{goal.interval}}</h3>
-    </div>
-  </section> -->
-</div>
+<section class="viewGoalsContainer">
+  <div class="viewGoalsDiv" ng-repeat="goal in viewGoalCtrl.goals">
+    <h3>Activity: {{goal.activity}}</h3>
+    <h3>Interval: {{goal.interval}}</h3>
+    <button ng-click="viewGoalCtrl.completeGoal(user, goal)" type="button" name="button">Complete</button>
+  </div>
+</section>

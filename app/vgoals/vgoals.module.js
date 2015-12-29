@@ -9,8 +9,8 @@
     .config(function ($routeProvider) {
       $routeProvider
       .when('/view-goals', {
-        templateUrl: 'goals/views/view-goals.html',
-        controller: 'GoalsController as goalCtrl'
+        templateUrl: 'vgoals/views/view-goals.html',
+        controller: 'ViewGoalsController as viewGoalCtrl'
       })
         .otherwise({ redirectTo: '/404'});
     });

@@ -66,15 +66,17 @@ h2 {
 #mainMenu {
   div {
     display: inline-block;
-    width: 32%;
-    height: 580px;
-    margin: 0.5%;
+    width: 28%;
+    height: 400px;
+    margin: 2.5%;
     background: #333333;
     background: rgba(51, 51, 51, 0.85);
     border-radius: 5px;
-    border: 1px solid #333;
     box-shadow: -2px -2px darkgrey;
     vertical-align: top;
+    &:hover {
+      background: #333;
+    }
     .spriteImg {
       width: 128px;
       height: 128px;
@@ -123,16 +125,16 @@ h2 {
       -webkit-animation: sprite 0.4s steps(4) infinite;
     }
     .btn {
-      margin: 55% 35% 0 25%;
       box-shadow: -2px -2px darkgrey;
       font-family: gamegirl;
       color: #333333;
     }
   }
   button {
-    &:hover {
-      background: #a9a9a9;
-      box-shadow: -2px -2px #ccc;
+    width: 100%;
+    a {
+      text-decoration: none;
+      color: #333333;
     }
   }
 }

@@ -7,7 +7,6 @@
     }).controller('LoginController', function($http, $location, $rootScope, $scope, $route, $routeParams, LoginService) {
       var vm = this;
       vm.x = 0;
-      vm.users = [];
       vm.getUsers = function() {
         LoginService.on('all:users', function(data) {
           vm.users = data;
@@ -46,14 +45,20 @@
         }
       }
       LoginService.on('new:user', function(data) {
+        console.log(data);
         var user = {
           username: data.username,
           password: data.password,
-          stats: {},
-          currGoals: [],
-          completedGoals: []
+          // stats: {
+          //   strength: 10,
+          //   endurance: 10,
+          //   dexterity: 10,
+          //   intelligence: 10,
+          //   wisdom: 10
+          // },
+          // currGoals: [],
+          // completedGoals: []
         };
-        vm.users.push(user);
       });
     });
 })();

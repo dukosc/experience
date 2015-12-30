@@ -3,7 +3,7 @@
   angular.module('goals')
     .controller('GoalsController', function($scope, $rootScope, GoalsService) {
       var vm = this;
-      vm.putGoal = function(user){
+      vm.putGoal = function(user) {
         GoalsService.emit('new:goal', user);
         vm.newGoal = "";
       };
@@ -17,12 +17,12 @@
       };
       GoalsService.on('all:users', function(data) {
         var user = JSON.parse(localStorage.getItem('user'));
-        for(var i in data){
-          if(user._id === data[i]._id){
+        for (var i in data) {
+          if (user._id === data[i]._id) {
             vm.goals = data[i].currGoals;
           };
         }
       });
       console.log(vm);
-});
+    });
 })();

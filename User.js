@@ -1,9 +1,15 @@
 var mongoose = require('mongoose');
 
 var userSchema = new mongoose.Schema({
-  username: {type: String},
-  password: {type: String},
-  stats: {type: Object},
+  username: {type: String, lowercase: true},
+  password: {type: String, lowercase: true},
+  stats: {
+    strength: {type: Number},
+    endurance: {type: Number},
+    dexterity: {type: Number},
+    intelligence: {type: Number},
+    wisdom: {type: Number}
+  },
   currGoals: {type: Array},
   completedGoals: {type: Array}
 });

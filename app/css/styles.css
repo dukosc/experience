@@ -2,9 +2,10 @@ body {
   margin: 0;
   padding: 0;
   background: #d3d3d3;
-  background-image: url(https://images.unsplash.com/photo-1431975583576-a57c07327f71?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=b7f9541dd87eb21160d982a0649536d6);
+  background-image: url("desert-map.png");
   background-size: cover;
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+  background-position: top; }
 
 h1 {
   font-size: 4.75em;
@@ -117,35 +118,59 @@ canvas {
   margin-left: 18%;
   border: 1px solid #333333; }
 
-.form-control {
-  width: 95%;
-  font-family: gamegirl;
-  margin: 4% 2%;
-  background: #F3F3F3;
-  color: #333;
-  box-shadow: -2px -2px darkgray; }
-
 .viewGoalsContainer {
-  margin: 5% auto;
+  margin: 4% auto;
+  padding-left: 1%;
   background: rgba(51, 51, 51, 0.85);
   width: 75%;
   height: 500px;
   border-radius: 5px; }
-  .viewGoalsContainer .vewGoalsSection {
-    background: #333333;
-    padding: 1% 0;
-    border-radius: 5px; }
-  .viewGoalsContainer h3 {
-    background: #F3F3F3;
-    font-family: gamegirl;
-    font-size: 1em;
-    padding: 1%;
-    width: 40.5%;
+  .viewGoalsContainer .viewGoalsDiv,
+  .viewGoalsContainer .compGoalsDiv {
+    margin-left: 5%;
+    width: 40%;
     display: inline-block;
-    margin-left: 6%;
-    border-radius: 4px;
-    box-shadow: -2px -2px #A9A9A9;
-    text-align: left; }
+    vertical-align: top; }
+    .viewGoalsContainer .viewGoalsDiv h3,
+    .viewGoalsContainer .compGoalsDiv h3 {
+      font-family: gamegirl;
+      text-align: center;
+      font-size: 2em;
+      background: #A9A9A9;
+      text-shadow: -1px -1px #F3F3F3;
+      padding: 2% 1% 1%;
+      border-radius: 5px; }
+    .viewGoalsContainer .viewGoalsDiv .goalDisplay,
+    .viewGoalsContainer .compGoalsDiv .goalDisplay {
+      background: #F3F3F3;
+      font-family: gamegirl;
+      font-size: 1em;
+      padding: 1%;
+      width: 37%;
+      display: inline-block;
+      margin-left: 2%;
+      border-radius: 4px;
+      box-shadow: -2px -2px #A9A9A9;
+      text-align: left; }
+    .viewGoalsContainer .viewGoalsDiv .compGoalDisplay,
+    .viewGoalsContainer .compGoalsDiv .compGoalDisplay {
+      background: #F3F3F3;
+      font-family: gamegirl;
+      font-size: 1em;
+      padding: 1%;
+      width: 44%;
+      display: inline-block;
+      margin-left: 2%;
+      border-radius: 4px;
+      box-shadow: -2px -2px #A9A9A9;
+      text-align: left; }
+  .viewGoalsContainer .deleteBtn,
+  .viewGoalsContainer .completeBtn {
+    margin-left: 1%;
+    background: #4A4A4A;
+    border: 1px solid #A9A9A9;
+    color: #F3F3F3;
+    box-shadow: -1px -1px #A9A9A9; }
 
 .goalsContainer .addGoalsDiv {
   display: inline-block;

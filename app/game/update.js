@@ -70,6 +70,10 @@ function update() {
       player.body.velocity.x = -300;
       player.animations.play('run', 20, true);
     }
+    if (wasd.left.isDown && wasd.e.isDown) {
+      player.body.velocity.x = -600;
+      player.animations.play('run', 20, true);
+    }
   if (wasd.right.isDown) {
     player.body.velocity.x = 150;
     player.animations.play('run', 10, true);
@@ -77,6 +81,10 @@ function update() {
  if (wasd.right.isDown && wasd.space.isDown) {
   player.body.velocity.x = 300;
   player.animations.play('run', 20, true);
+}
+if (wasd.right.isDown && wasd.e.isDown) {
+ player.body.velocity.x = 600;
+ player.animations.play('run', 20, true);
 }
   if (wasd.up.isDown) {
     player.body.velocity.y = -150;
@@ -86,12 +94,20 @@ function update() {
     player.body.velocity.y = -300;
     player.animations.play('run', 20, true);
   }
+  if (wasd.up.isDown && wasd.e.isDown) {
+    player.body.velocity.y = -600;
+    player.animations.play('run', 20, true);
+  }
  if (wasd.down.isDown) {
     player.body.velocity.y = 150;
     player.animations.play('run', 10, true);
   }
   if (wasd.down.isDown && wasd.space.isDown) {
     player.body.velocity.y = 300;
+    player.animations.play('run', 20, true);
+  }
+  if (wasd.down.isDown && wasd.e.isDown) {
+    player.body.velocity.y = 600;
     player.animations.play('run', 20, true);
   }
   if (!wasd.up.isDown && !wasd.down.isDown) {

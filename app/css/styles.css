@@ -96,10 +96,10 @@ h2 {
     #mainMenu div .spriteImg3 {
       width: 128px;
       height: 128px;
-      margin: 36% 0 9% 20%;
+      margin-left: -3%;
       background-image: url(/game/assets/dirt-devil.png);
       z-index: 1;
-      zoom: 1.75;
+      zoom: 3;
       overflow: hidden;
       -webkit-animation: sprite 0.4s steps(4) infinite; }
     #mainMenu div .btn {

@@ -62,7 +62,7 @@ h2 {
   #mainMenu div {
     display: inline-block;
     width: 28%;
-    height: 450px;
+    height: 550px;
     margin: 2.5%;
     background: #333333;
     background: rgba(51, 51, 51, 0.85);
@@ -104,16 +104,15 @@ h2 {
       -webkit-animation: sprite 0.4s steps(4) infinite; }
     #mainMenu div .btn {
       box-shadow: -2px -2px darkgrey;
+      margin-bottom: -55%;
       font-family: gamegirl;
       color: #333333;
-      vertical-align: top;
-      padding: 10%; }
-  #mainMenu button {
-    width: 100%;
-    font-size: 3rem; }
-    #mainMenu button a {
-      text-decoration: none;
-      color: #333333; }
+      padding: 10%;
+      width: 100%;
+      font-size: 3rem; }
+      #mainMenu div .btn a {
+        text-decoration: none;
+        color: #333333; }
 
 canvas {
   margin-left: 18%;

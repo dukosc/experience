@@ -57,62 +57,63 @@ h2 {
 .hide {
   display: none; }
 
-#mainMenu div {
-  display: inline-block;
-  width: 28%;
-  height: 400px;
-  margin: 2.5%;
-  background: #333333;
-  background: rgba(51, 51, 51, 0.85);
-  border-radius: 5px;
-  box-shadow: -2px -2px darkgrey;
-  vertical-align: top; }
-  #mainMenu div:hover {
-    background: #333; }
-  #mainMenu div .spriteImg {
-    width: 128px;
-    height: 128px;
-    margin: 9% 0 -9% -5%;
-    background-image: url(/game/assets/player.png);
-    z-index: 1;
-    zoom: 3.0;
-    overflow: hidden;
-    -webkit-animation: sprite 1s steps(4) infinite; }
-  #mainMenu div #grubSection {
-    width: 128px;
-    height: 128px;
-    background-image: url(/game/assets/grub.png);
-    margin: 20% 0 -20% -6%;
-    z-index: 1;
-    zoom: 3.0;
-    overflow: hidden;
-    animation: sprite 1s steps(4) infinite; }
+#mainMenu {
+  margin-top: 3%; }
+  #mainMenu div {
+    display: inline-block;
+    width: 28%;
+    height: 450px;
+    margin: 2.5%;
+    background: #333333;
+    background: rgba(51, 51, 51, 0.85);
+    border-radius: 5px;
+    box-shadow: -2px -2px darkgrey;
+    vertical-align: top; }
+    #mainMenu div:hover {
+      background: #333; }
+    #mainMenu div .spriteImg {
+      width: 128px;
+      height: 128px;
+      margin: 9% 0 -9% -5%;
+      background-image: url(/game/assets/player.png);
+      z-index: 1;
+      zoom: 3.0;
+      overflow: hidden;
+      -webkit-animation: sprite 1s steps(4) infinite; }
+    #mainMenu div #grubSection {
+      width: 128px;
+      height: 128px;
+      background-image: url(/game/assets/grub.png);
+      margin: 20% 0 -20% -6%;
+      z-index: 1;
+      zoom: 3.0;
+      overflow: hidden;
+      animation: sprite 1s steps(4) infinite; }
 
 @keyframes sprite {
   100% {
     background-position: -512px; } }
-  #mainMenu div .spriteImg3 {
-    width: 128px;
-    height: 128px;
-    margin: 36% 0 9% 20%;
-    background-image: url(/game/assets/dirt-devil.png);
-    z-index: 1;
-    zoom: 1.75;
-    overflow: hidden;
-    -webkit-animation: sprite 0.4s steps(4) infinite; }
-  #mainMenu div .btn {
-    box-shadow: -2px -2px darkgrey;
-    font-family: gamegirl;
-    color: #333333;
-    vertical-align: top;
-    padding: 10%; }
-
-#mainMenu button {
-  width: 100%;
-  font-size: 3rem; }
-  #mainMenu button a {
-    text-decoration: none;
-    color: #333333; }
+    #mainMenu div .spriteImg3 {
+      width: 128px;
+      height: 128px;
+      margin: 36% 0 9% 20%;
+      background-image: url(/game/assets/dirt-devil.png);
+      z-index: 1;
+      zoom: 1.75;
+      overflow: hidden;
+      -webkit-animation: sprite 0.4s steps(4) infinite; }
+    #mainMenu div .btn {
+      box-shadow: -2px -2px darkgrey;
+      font-family: gamegirl;
+      color: #333333;
+      vertical-align: top;
+      padding: 10%; }
+  #mainMenu button {
+    width: 100%;
+    font-size: 3rem; }
+    #mainMenu button a {
+      text-decoration: none;
+      color: #333333; }
 
 canvas {
   margin-left: 18%;
@@ -128,13 +129,13 @@ canvas {
   height: 500px;
   border-radius: 5px; }
   .viewGoalsContainer nav {
-    margin-left: 2%; }
+    margin-left: -3%; }
     .viewGoalsContainer nav a {
       background: #C0C0C0;
       padding: 1.5%;
       font-family: gamegirl;
       color: #333;
-      margin: 1% 0 0 4%;
+      margin: 1% 0 0 6%;
       border-radius: 4px;
       text-decoration: none;
       box-shadow: -2px -2px #A9A9A9; }
@@ -194,7 +195,8 @@ canvas {
   width: 100%;
   margin-top: 3%; }
   .goalsContainer nav {
-    margin-top: 1%; }
+    margin-top: 1%;
+    margin-bottom: 2%; }
   .goalsContainer .addGoalsDiv {
     display: inline-block;
     vertical-align: top;
@@ -225,6 +227,7 @@ canvas {
 @keyframes sprite {
   100% {
     background-position: -512px; } }
+  .goalsContainer .addGoalsBtn,
   .goalsContainer .viewStatsBtn,
   .goalsContainer .viewGoalsBtn,
   .goalsContainer .mainMenuBtn,
@@ -237,6 +240,7 @@ canvas {
     border-radius: 4px;
     text-decoration: none;
     box-shadow: -2px -2px #A9A9A9; }
+    .goalsContainer .addGoalsBtn:hover,
     .goalsContainer .viewStatsBtn:hover,
     .goalsContainer .viewGoalsBtn:hover,
     .goalsContainer .mainMenuBtn:hover,

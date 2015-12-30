@@ -65,10 +65,11 @@ h2 {
 }
 ////////////////////////////////////////// Main Page
 #mainMenu {
+  margin-top: 3%;
   div {
     display: inline-block;
     width: 28%;
-    height: 400px;
+    height: 450px;
     margin: 2.5%;
     background: #333333;
     background: rgba(51, 51, 51, 0.85);
@@ -146,13 +147,13 @@ canvas {
   height: 500px;
   border-radius: 5px;
   nav {
-    margin-left: 2%;
+    margin-left: -3%;
     a {
       background: #C0C0C0;
       padding: 1.5%;
       font-family: gamegirl;
       color: #333;
-      margin: 1% 0 0 4%;
+      margin: 1% 0 0 6%;
       border-radius: 4px;
       text-decoration: none;
       box-shadow: -2px -2px #A9A9A9;
@@ -219,6 +220,7 @@ canvas {
   margin-top: 3%;
   nav {
     margin-top: 1%;
+    margin-bottom: 2%;
   }
   .addGoalsDiv {
     display: inline-block;
@@ -255,6 +257,7 @@ canvas {
     }
   }
   ///////////////////STATS PAGE
+  .addGoalsBtn,
   .viewStatsBtn,
   .viewGoalsBtn,
   .mainMenuBtn,

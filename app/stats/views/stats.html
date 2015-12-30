@@ -1,15 +1,20 @@
+<h1>STATS</h1>
 
+<section class="goalsContainer">
+  <div class="addGoalsDiv">
+    <form class="" action="index.html" method="post">
+      <a href="#/game-window" class="playGameBtn"> Play Game </a>
+      <a href="#/main-page" class="mainMenuBtn"> Main Menu </a>
+      <a href="#/add-goals" class="viewStatsBtn"> View Goals </a>
 
-
-<div ng-repeat="stat in myStats">
-  <!-- <h2>{{stats.strenght}}</h2>
-  <h2>{{stats.stamina}}</h2>
-  <h2>{{stats.wisdom}}</h2>
-  <h2>{{stats.intellect}}</h2>
-  <h2>{{stats.dexterity}}</h2> -->
-  {{stat | json}}
-
-</div>
-<player-stats data="stat">
-  <h2>Main Menu</h2>
-</player-stats>
+      <section class="viewStatsContainer">
+        <div class="viewStatsDiv">
+          <h3>Strength: {{statCtrl.stats.strength}}</h3>
+          <h3>Endurance: {{statCtrl.stats.endurance}}</h3>
+          <h3>Dexterity: {{statCtrl.stats.dexterity}}</h3>
+          <h3>Intelligence: {{statCtrl.stats.intelligence}}</h3>
+          <h3>Wisdom: {{statCtrl.stats.wisdom}}</h3>
+        </div>
+      </section>
+  </div>
+</section>

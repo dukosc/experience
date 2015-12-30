@@ -2,9 +2,10 @@ body {
   margin: 0;
   padding: 0;
   background: #d3d3d3;
-  background-image: url(https://images.unsplash.com/photo-1431975583576-a57c07327f71?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=b7f9541dd87eb21160d982a0649536d6);
+  background-image: url("desert-map.png");
   background-size: cover;
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+  background-position: center right; }
 
 h1 {
   font-size: 4.75em;
@@ -27,7 +28,7 @@ h2 {
 .loginWindow {
   background: #333333;
   background: rgba(51, 51, 51, 0.85);
-  margin: 10% auto;
+  margin: 5% auto;
   min-height: 200px;
   border: 1px solid #333;
   box-shadow: -2px -2px #A9A9A9;
@@ -44,6 +45,7 @@ h2 {
       margin-bottom: 3%; }
     .loginWindow form button {
       background: #C0C0C0;
+      font-family: gamegirl;
       border: none;
       box-shadow: -2px -2px darkgrey;
       border-radius: 4px;
@@ -55,170 +57,223 @@ h2 {
 .hide {
   display: none; }
 
-#mainMenu div {
-  display: inline-block;
-  width: 32%;
-  height: 580px;
-  margin: 0.5%;
-  background: #333333;
-  background: rgba(51, 51, 51, 0.85);
-  border-radius: 5px;
-  border: 1px solid #333;
-  box-shadow: -2px -2px darkgrey;
-  vertical-align: top; }
-  #mainMenu div .spriteImg {
-    width: 128px;
-    height: 128px;
-    margin-top: -5%;
-    margin-top: -5%;
-    background-image: url(/game/assets/player.png);
-    z-index: 1;
-    zoom: 3.0;
-    overflow: hidden;
-    -webkit-animation: sprite 1s steps(4) infinite; }
-  #mainMenu div #grubSection {
-    width: 128px;
-    height: 128px;
-    background-image: url(/game/assets/grub.png);
-    margin-left: 1%;
-    z-index: 1;
-    zoom: 3.0;
-    overflow: hidden;
-    animation: sprite 1s steps(4) infinite; }
+#mainMenu {
+  margin-top: 3%; }
+  #mainMenu div {
+    display: inline-block;
+    width: 28%;
+    height: 550px;
+    margin: 2.5%;
+    background: #333333;
+    background: rgba(51, 51, 51, 0.85);
+    border-radius: 5px;
+    box-shadow: -2px -2px darkgrey;
+    vertical-align: top; }
+    #mainMenu div:hover {
+      background: #333; }
+    #mainMenu div .spriteImg {
+      width: 128px;
+      height: 128px;
+      margin: 9% 0 -9% -5%;
+      background-image: url(/game/assets/player.png);
+      z-index: 1;
+      zoom: 3.0;
+      overflow: hidden;
+      -webkit-animation: sprite 1s steps(4) infinite; }
+    #mainMenu div #grubSection {
+      width: 128px;
+      height: 128px;
+      background-image: url(/game/assets/grub.png);
+      margin: 20% 0 -20% -6%;
+      z-index: 1;
+      zoom: 3.0;
+      overflow: hidden;
+      animation: sprite 1s steps(4) infinite; }
 
 @keyframes sprite {
   100% {
     background-position: -512px; } }
-  #mainMenu div .spriteImg3 {
-    width: 128px;
-    height: 128px;
-    margin: 12% auto;
-    background-image: url(/game/assets/dirt-devil.png);
-    z-index: 1;
-    zoom: 1.75;
-    overflow: hidden;
-    -webkit-animation: sprite 0.4s steps(4) infinite; }
-  #mainMenu div .btn {
-    margin: 55% 35% 0 25%;
-    box-shadow: -2px -2px darkgrey;
-    font-family: gamegirl;
-    color: #333333; }
-
-#mainMenu button:hover {
-  background: #a9a9a9;
-  box-shadow: -2px -2px #ccc; }
+    #mainMenu div .spriteImg3 {
+      width: 128px;
+      height: 128px;
+      margin: 36% 0 9% 20%;
+      background-image: url(/game/assets/dirt-devil.png);
+      z-index: 1;
+      zoom: 1.75;
+      overflow: hidden;
+      -webkit-animation: sprite 0.4s steps(4) infinite; }
+    #mainMenu div .btn {
+      box-shadow: -2px -2px darkgrey;
+      margin-bottom: -55%;
+      font-family: gamegirl;
+      color: #333333;
+      padding: 10%;
+      width: 100%;
+      font-size: 3rem; }
+      #mainMenu div .btn a {
+        text-decoration: none;
+        color: #333333; }
 
 canvas {
   margin-left: 18%;
   border: 1px solid #333333; }
 
-.form-control {
-  width: 95%;
-  font-family: gamegirl;
-  margin: 4% 2%;
-  background: #F3F3F3;
-  color: #333;
-  box-shadow: -2px -2px darkgray; }
-
 .viewGoalsContainer {
-  width: 100%; }
-  .viewGoalsContainer div {
-    background: #333333;
-    padding: 1% 0;
-    min-height: 500px;
-    border-radius: 5px; }
-  .viewGoalsContainer h3 {
-    background: #F3F3F3;
-    font-family: gamegirl;
-    font-size: 1em;
-    padding: 1%;
-    width: 40.5%;
-    display: inline-block;
-    margin-left: 6%;
-    border-radius: 4px;
-    box-shadow: -2px -2px #A9A9A9;
-    text-align: left; }
-
-.goalsContainer .addGoalsDiv {
-  display: inline-block;
-  vertical-align: top;
-  background: #333333;
+  box-shadow: -2px -2px darkgrey;
+  margin: 3% auto;
+  padding-top: 3%;
+  padding-left: 1%;
   background: rgba(51, 51, 51, 0.85);
   width: 75%;
-  padding: 2% 0;
-  margin-left: 12%;
-  min-height: 500px;
-  overflow: hidden;
-  border-radius: 5px;
-  border: 1px solid #333333;
-  box-shadow: -2px -2px darkgrey; }
-  .goalsContainer .addGoalsDiv .activityInput,
-  .goalsContainer .addGoalsDiv .intervalInput {
-    width: 77%;
-    margin-left: 11%;
-    margin-top: 5%; }
-  .goalsContainer .addGoalsDiv .spriteImg2 {
-    width: 128px;
-    height: 128px;
-    margin-top: -5%;
-    margin-left: 31%;
-    background-image: url(/game/assets/bear.png);
-    z-index: 1;
-    zoom: 3.0;
-    overflow: hidden;
-    animation: sprite 1s steps(4) infinite; }
+  height: 500px;
+  border-radius: 5px; }
+  .viewGoalsContainer nav {
+    margin-left: -3%; }
+    .viewGoalsContainer nav a {
+      background: #C0C0C0;
+      padding: 1.5%;
+      font-family: gamegirl;
+      color: #333;
+      margin: 1% 0 0 6%;
+      border-radius: 4px;
+      text-decoration: none;
+      box-shadow: -2px -2px #A9A9A9; }
+      .viewGoalsContainer nav a:hover {
+        background: #a9a9a9;
+        box-shadow: -2px -2px #ccc; }
+  .viewGoalsContainer .viewGoalsDiv,
+  .viewGoalsContainer .compGoalsDiv {
+    margin-left: 5%;
+    margin-top: 2%;
+    width: 40%;
+    display: inline-block;
+    vertical-align: top; }
+    .viewGoalsContainer .viewGoalsDiv h3,
+    .viewGoalsContainer .compGoalsDiv h3 {
+      box-shadow: -2px -2px darkgrey;
+      font-family: gamegirl;
+      text-align: center;
+      font-size: 2em;
+      background: #F3F3F3;
+      text-shadow: -1px -1px #F3F3F3;
+      padding: 2% 1% 1%;
+      border-radius: 5px; }
+    .viewGoalsContainer .viewGoalsDiv .goalDisplay,
+    .viewGoalsContainer .compGoalsDiv .goalDisplay {
+      background: #F3F3F3;
+      font-family: gamegirl;
+      font-size: 1em;
+      padding: 1%;
+      width: 37%;
+      display: inline-block;
+      margin-left: 2%;
+      border-radius: 4px;
+      box-shadow: -2px -2px #A9A9A9;
+      text-align: left; }
+    .viewGoalsContainer .viewGoalsDiv .compGoalDisplay,
+    .viewGoalsContainer .compGoalsDiv .compGoalDisplay {
+      background: #F3F3F3;
+      font-family: gamegirl;
+      font-size: 1em;
+      padding: 1%;
+      width: 47%;
+      display: inline-block;
+      margin-left: 2%;
+      border-radius: 4px;
+      box-shadow: -2px -2px #A9A9A9;
+      text-align: left; }
+  .viewGoalsContainer .deleteBtn,
+  .viewGoalsContainer .completeBtn {
+    margin-left: 1%;
+    background: #4A4A4A;
+    border: 1px solid #A9A9A9;
+    color: #F3F3F3;
+    box-shadow: -1px -1px #A9A9A9; }
+
+.goalsContainer {
+  width: 100%;
+  margin-top: 3%; }
+  .goalsContainer nav {
+    margin-top: 1%;
+    margin-bottom: 2%; }
+  .goalsContainer .addGoalsDiv {
+    display: inline-block;
+    vertical-align: top;
+    background: #333333;
+    background: rgba(51, 51, 51, 0.85);
+    width: 75%;
+    padding: 2% 0;
+    margin-left: 12%;
+    height: 600px;
+    border-radius: 5px;
+    border: 1px solid #333333;
+    box-shadow: -2px -2px darkgrey; }
+    .goalsContainer .addGoalsDiv .activityInput,
+    .goalsContainer .addGoalsDiv .intervalInput {
+      width: 77%;
+      margin-left: 11%;
+      margin-top: 5%; }
+    .goalsContainer .addGoalsDiv .spriteImg2 {
+      width: 128px;
+      height: 128px;
+      margin-top: -7.5%;
+      margin-left: 35%;
+      background-image: url(/game/assets/bear.png);
+      z-index: 1;
+      zoom: 2.5;
+      animation: sprite 1s steps(4) infinite; }
 
 @keyframes sprite {
   100% {
     background-position: -512px; } }
-
-.goalsContainer .viewStatsBtn,
-.goalsContainer .viewGoalsBtn,
-.goalsContainer .mainMenuBtn,
-.goalsContainer .playGameBtn {
-  background: #C0C0C0;
-  padding: 1.5%;
-  font-family: gamegirl;
-  color: #333;
-  margin: 1% 1% 1% 11%;
-  border-radius: 4px;
-  text-decoration: none;
-  box-shadow: -2px -2px #A9A9A9; }
-  .goalsContainer .viewStatsBtn:hover,
-  .goalsContainer .viewGoalsBtn:hover,
-  .goalsContainer .mainMenuBtn:hover,
-  .goalsContainer .playGameBtn:hover {
-    background: #a9a9a9;
-    box-shadow: -2px -2px #ccc; }
-
-.goalsContainer .viewStatsContainer {
-  width: 100%;
-  height: 100px; }
-  .goalsContainer .viewStatsContainer div {
-    width: 100%;
-    padding: 1% 0;
-    min-height: 500px;
-    border-radius: 5px; }
-    .goalsContainer .viewStatsContainer div h3 {
-      margin-left: 12%;
-      padding: 1%;
-      background: #F3F3F3;
-      border-radius: 4px;
-      width: 70%;
-      box-shadow: -2px -2px #A9A9A9;
-      font-family: gamegirl; }
-  .goalsContainer .viewStatsContainer .addGoalBtn {
+  .goalsContainer .addGoalsBtn,
+  .goalsContainer .viewStatsBtn,
+  .goalsContainer .viewGoalsBtn,
+  .goalsContainer .mainMenuBtn,
+  .goalsContainer .playGameBtn {
     background: #C0C0C0;
-    padding: 1%;
+    padding: 1.5%;
     font-family: gamegirl;
     color: #333;
-    margin: 0 1% 1% 11%;
+    margin: 1% 1% 1% 5%;
     border-radius: 4px;
     text-decoration: none;
     box-shadow: -2px -2px #A9A9A9; }
-    .goalsContainer .viewStatsContainer .addGoalBtn:hover {
+    .goalsContainer .addGoalsBtn:hover,
+    .goalsContainer .viewStatsBtn:hover,
+    .goalsContainer .viewGoalsBtn:hover,
+    .goalsContainer .mainMenuBtn:hover,
+    .goalsContainer .playGameBtn:hover {
       background: #a9a9a9;
       box-shadow: -2px -2px #ccc; }
+  .goalsContainer .viewStatsContainer {
+    width: 100%;
+    height: 100px; }
+    .goalsContainer .viewStatsContainer div {
+      width: 60%;
+      padding: 1% 0;
+      min-height: 500px;
+      border-radius: 5px; }
+      .goalsContainer .viewStatsContainer div h3 {
+        margin-left: 12%;
+        padding: 1%;
+        background: #F3F3F3;
+        border-radius: 4px;
+        width: 70%;
+        box-shadow: -2px -2px #A9A9A9;
+        font-family: gamegirl; }
+    .goalsContainer .viewStatsContainer .addGoalBtn {
+      background: #C0C0C0;
+      padding: 1%;
+      font-family: gamegirl;
+      color: #333;
+      margin: 0 1% 1% 11%;
+      border-radius: 4px;
+      text-decoration: none;
+      box-shadow: -2px -2px #A9A9A9; }
+      .goalsContainer .viewStatsContainer .addGoalBtn:hover {
+        background: #a9a9a9;
+        box-shadow: -2px -2px #ccc; }
 
 .goalsDiv {
   margin-top: 5%;

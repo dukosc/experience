@@ -1,26 +1,28 @@
 
-<h1>Goals</h1>
 
 <section class="goalsContainer">
   <div class="addGoalsDiv">
-      <a href="#/game-window" class="playGameBtn"> Play Game </a>
-      <a href="#/main-page" class="mainMenuBtn"> Main Menu </a>
-      <a href="#/stats" class="viewStatsBtn"> View Stats </a>
+    <a href="#/game-window" class="playGameBtn"> Play Game </a>
+    <a href="#/main-page" class="mainMenuBtn"> Main Menu </a>
+    <a href="#/stats" class="viewStatsBtn"> View Stats </a>
+    <a href="#/view-goals" class="viewGoalsBtn"> View Goals </a>
 
       <div class="goalsDiv">
         <span uib-dropdown ng-class='{open: open}'>
         <ul class="mainList">
 
           <li><a href="#/goals/strength">Strength</a><i class="fa fa-caret-down"></i></li>
+          <li><a href="#/goals/endurance">Endurance</a><i class="fa fa-caret-down"></i></li>
+          <li><a href="#/goals/wisdom">Wisdom</a><i class="fa fa-caret-down"></i></li>
 
-          <li><a href="#/add-goals">Stamina</a><i class="fa fa-caret-up"></i>
+          <li><a href="#/add-goals">Intellegence</a><i class="fa fa-caret-up"></i>
             <div>
               <form class="addGoalForm" ng-submit="goalCtrl.addGoal(user, newGoal)" ng-init="newGoal = {}">
                 <select name="select" ng-model="newGoal.activity">
-                  <option value="" disabled selected hidden>Stamina</option>
-                  <option value="run">Run</option>
-                  <option value="bike">Bike</option>
-                  <option value="aerobic">Aerobic</option>
+                  <option value="" disabled selected hidden>Intellegence</option>
+                  <option value="read">Read</option>
+                  <option value="practice music">Practice Music</option>
+                  <option value="puzzle">Puzzle</option>
                 </select>
                 <select name="select" ng-model="newGoal.interval">
                   <option value="" disabled selected hidden>Interval</option>
@@ -33,8 +35,6 @@
             </div>
           </li>
 
-          <li><a href="#/goals/wisdom">Wisdom</a><i class="fa fa-caret-down"></i></li>
-          <li><a href="#/goals/intellect">Intellect</a><i class="fa fa-caret-down"></i></li>
           <li><a href="#/goals/dexterity">Dexterity</a><i class="fa fa-caret-down"></i></li>
 
         </ul>

@@ -1,40 +1,40 @@
 
-<h1>Goals</h1>
 
 <section class="goalsContainer">
   <div class="addGoalsDiv">
-      <a href="#/game-window" class="playGameBtn"> Play Game </a>
-      <a href="#/main-page" class="mainMenuBtn"> Main Menu </a>
-      <a href="#/stats" class="viewStatsBtn"> View Stats </a>
+    <a href="#/game-window" class="playGameBtn"> Play Game </a>
+    <a href="#/main-page" class="mainMenuBtn"> Main Menu </a>
+    <a href="#/stats" class="viewStatsBtn"> View Stats </a>
+    <a href="#/view-goals" class="viewGoalsBtn"> View Goals </a>
 
       <div class="goalsDiv">
         <span uib-dropdown ng-class='{open: open}'>
         <ul class="mainList">
 
           <li><a href="#/goals/strength">Strength</a><i class="fa fa-caret-down"></i></li>
-          <li><a href="#/goals/stamina">Stamina</a><i class="fa fa-caret-down"></i></li>
+          <li><a href="#/goals/endurance">Endurance</a><i class="fa fa-caret-down"></i></li>
 
           <li><a href="#/add-goals">Wisdom</a><i class="fa fa-caret-up"></i>
             <div>
               <form class="addGoalForm" ng-submit="goalCtrl.addGoal(user, newGoal)" ng-init="newGoal = {}">
                 <select name="select" ng-model="newGoal.activity">
                   <option value="" disabled selected hidden>Wisdom</option>
-                  <option value="activity 1">Push-ups</option>
-                  <option value="activity 2">Squats</option>
-                  <option value="activity 3">Sit-ups</option>
+                  <option value="meditate">Meditate</option>
+                  <option value="study">Study</option>
+                  <option value="rest">Rest</option>
                 </select>
                 <select name="select" ng-model="newGoal.interval">
                   <option value="" disabled selected hidden>Interval</option>
-                  <option value="interval 1">interval 1</option>
-                  <option value="interval 2">interval 2</option>
-                  <option value="interval 3">interval 3</option>
+                  <option value="15 min">15 Min</option>
+                  <option value="30 min">30 min</option>
+                  <option value="1 hour">1 hour</option>
                 </select>
                 <button type="submit" class="btn addGoalBtn" name="button">Add Goal</button>
               </form>
             </div>
           </li>
 
-          <li><a href="#/goals/intellect">Intellect</a><i class="fa fa-caret-down"></i></li>
+          <li><a href="#/goals/intellegence">Intellegence</a><i class="fa fa-caret-down"></i></li>
           <li><a href="#/goals/dexterity">Dexterity</a><i class="fa fa-caret-down"></i></li>
 
         </ul>

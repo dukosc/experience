@@ -73,6 +73,8 @@ function update() {
     if (wasd.left.isDown && wasd.e.isDown) {
       player.body.velocity.x = -600;
       player.animations.play('run', 20, true);
+      game.time.events.add(Phaser.Timer.SECOND * 1, player.body.velocity.x = -150, this);
+      player.body.velocity.x = -150;
     }
   if (wasd.right.isDown) {
     player.body.velocity.x = 150;

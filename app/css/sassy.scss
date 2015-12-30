@@ -1,12 +1,11 @@
 body {
   margin: 0;
   padding: 0;
-
   background: #d3d3d3;
-  background-image: url(https://images.unsplash.com/photo-1431975583576-a57c07327f71?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=b7f9541dd87eb21160d982a0649536d6);
+  background-image: url("desert-map.png");
   background-size: cover;
   background-repeat: no-repeat;
-
+  background-position: center right;
 }
 h1 {
   font-size: 4.75em;
@@ -26,14 +25,11 @@ h2 {
   padding: 3% 0 1%;
   margin-top: -1%;
 }
-
-
 ////////////////////////////////////////// Login
-
 .loginWindow {
   background: #333333;
   background: rgba(51, 51, 51, 0.85);
-  margin: 10% auto;
+  margin: 5% auto;
   min-height: 200px;
   border: 1px solid #333;
   box-shadow: -2px -2px #A9A9A9;
@@ -52,6 +48,7 @@ h2 {
     }
     button {
       background: #C0C0C0;
+      font-family: gamegirl;
       border: none;
       box-shadow: -2px -2px darkgrey;
       border-radius: 4px;
@@ -68,22 +65,24 @@ h2 {
 }
 ////////////////////////////////////////// Main Page
 #mainMenu {
+  margin-top: 3%;
   div {
     display: inline-block;
-    width: 32%;
-    height: 580px;
-    margin: 0.5%;
+    width: 28%;
+    height: 550px;
+    margin: 2.5%;
     background: #333333;
     background: rgba(51, 51, 51, 0.85);
     border-radius: 5px;
-    border: 1px solid #333;
     box-shadow: -2px -2px darkgrey;
     vertical-align: top;
+    &:hover {
+      background: #333;
+    }
     .spriteImg {
       width: 128px;
       height: 128px;
-      margin-top: -5%;
-      margin-top: -5%;
+      margin: 9% 0 -9% -5%;
       background-image: url(/game/assets/player.png);
       z-index: 1;
       zoom: 3.0;
@@ -94,23 +93,12 @@ h2 {
       width: 128px;
       height: 128px;
       background-image: url(/game/assets/grub.png);
-      margin-left: 1%;
+      margin: 20% 0 -20% -6%;
       z-index: 1;
       zoom: 3.0;
       overflow: hidden;
       animation: sprite 1s steps(4) infinite;
     }
-    // .spriteImg2 {
-    //   width: 128px;
-    //   height: 128px;
-    //   margin-top: -5%;
-    //   margin-left: 10%;
-    //   background-image: url(/game/assets/bear.png);
-    //   z-index: 1;
-    //   zoom: 3.0;
-    //   overflow: hidden;
-    //   animation: sprite 1s steps(4) infinite;
-    // }
     @keyframes sprite {
       100% {
         background-position: -512px;
@@ -119,7 +107,7 @@ h2 {
     .spriteImg3 {
       width: 128px;
       height: 128px;
-      margin: 12% auto;
+      margin: 36% 0 9% 20%;
       background-image: url(/game/assets/dirt-devil.png);
       z-index: 1;
       zoom: 1.75;
@@ -127,16 +115,17 @@ h2 {
       -webkit-animation: sprite 0.4s steps(4) infinite;
     }
     .btn {
-      margin: 55% 35% 0 25%;
       box-shadow: -2px -2px darkgrey;
+      margin-bottom: -55%;
       font-family: gamegirl;
       color: #333333;
-    }
-  }
-  button {
-    &:hover {
-      background: #a9a9a9;
-      box-shadow: -2px -2px #ccc;
+      padding: 10%;
+      width: 100%;
+      font-size: 3rem;
+      a {
+        text-decoration: none;
+        color: #333333;
+      }
     }
   }
 }
@@ -145,37 +134,92 @@ canvas {
   border: 1px solid #333333;
 }
 /////////////////////////////////////////// View Goals Page
-.form-control {
-  width: 95%;
-  font-family: gamegirl;
-  margin: 4% 2%;
-  background: #F3F3F3;
-  color: #333;
-  box-shadow: -2px -2px darkgray;
-}
+
 .viewGoalsContainer {
-  width: 100%;
-  div {
-    background: #333333;
-    padding: 1% 0;
-    min-height: 500px;
-    border-radius: 5px;
+  box-shadow: -2px -2px darkgrey;
+  margin: 3% auto;
+  padding-top: 3%;
+  padding-left: 1%;
+  background: rgba(51, 51, 51, 0.85);
+  width: 75%;
+  height: 500px;
+  border-radius: 5px;
+  nav {
+    margin-left: -3%;
+    a {
+      background: #C0C0C0;
+      padding: 1.5%;
+      font-family: gamegirl;
+      color: #333;
+      margin: 1% 0 0 6%;
+      border-radius: 4px;
+      text-decoration: none;
+      box-shadow: -2px -2px #A9A9A9;
+      &:hover {
+        background: #a9a9a9;
+        box-shadow: -2px -2px #ccc;
+      }
+    }
   }
-  h3 {
-    background: #F3F3F3;
-    font-family: gamegirl;
-    font-size: 1em;
-    padding: 1%;
-    width: 40.5%;
+  .viewGoalsDiv,
+  .compGoalsDiv {
+    margin-left: 5%;
+    margin-top: 2%;
+    width: 40%;
     display: inline-block;
-    margin-left: 6%;
-    border-radius: 4px;
-    box-shadow: -2px -2px #A9A9A9;
-    text-align: left;
+    vertical-align: top;
+    h3 {
+      box-shadow: -2px -2px darkgrey;
+      font-family: gamegirl;
+      text-align: center;
+      font-size: 2em;
+      background: #F3F3F3;
+      text-shadow: -1px -1px #F3F3F3;
+      padding: 2% 1% 1%;
+      border-radius: 5px;
+    }
+    .goalDisplay {
+      background: #F3F3F3;
+      font-family: gamegirl;
+      font-size: 1em;
+      padding: 1%;
+      width: 37%;
+      display: inline-block;
+      margin-left: 2%;
+      border-radius: 4px;
+      box-shadow: -2px -2px #A9A9A9;
+      text-align: left;
+    }
+    .compGoalDisplay {
+      background: #F3F3F3;
+      font-family: gamegirl;
+      font-size: 1em;
+      padding: 1%;
+      width: 47%;
+      display: inline-block;
+      margin-left: 2%;
+      border-radius: 4px;
+      box-shadow: -2px -2px #A9A9A9;
+      text-align: left;
+    }
+  }
+  .deleteBtn,
+  .completeBtn {
+    margin-left: 1%;
+    background: #4A4A4A;
+    border: 1px solid #A9A9A9;
+    color: #F3F3F3;
+    box-shadow: -1px -1px #A9A9A9;
   }
 }
 ///////////////////////////////////////Add Goals Page
 .goalsContainer {
+  width: 100%;
+  margin-top: 3%;
+  nav {
+    margin-top: 1%;
+    margin-bottom: 2%;
+  }
   .addGoalsDiv {
     display: inline-block;
     vertical-align: top;
@@ -184,8 +228,7 @@ canvas {
     width: 75%;
     padding: 2% 0;
     margin-left: 12%;
-    min-height: 500px;
-    overflow: hidden;
+    height: 600px;
     border-radius: 5px;
     border: 1px solid #333333;
     box-shadow: -2px -2px darkgrey;
@@ -195,26 +238,14 @@ canvas {
       margin-left: 11%;
       margin-top: 5%;
     }
-    // #grubSection {
-    //   width: 128px;
-    //   height: 128px;
-    //   background-image: url(/game/assets/grub.png);
-    //   margin-left: 30%;
-    //   margin-top: -7%;
-    //   z-index: 1;
-    //   zoom: 3.0;
-    //   overflow: hidden;
-    //   animation: sprite 1s steps(4) infinite;
-    // }
     .spriteImg2 {
       width: 128px;
       height: 128px;
-      margin-top: -5%;
-      margin-left: 31%;
+      margin-top: -7.5%;
+      margin-left: 35%;
       background-image: url(/game/assets/bear.png);
       z-index: 1;
-      zoom: 3.0;
-      overflow: hidden;
+      zoom: 2.5;
       animation: sprite 1s steps(4) infinite;
     }
     @keyframes sprite {
@@ -223,8 +254,8 @@ canvas {
       }
     }
   }
-
   ///////////////////STATS PAGE
+  .addGoalsBtn,
   .viewStatsBtn,
   .viewGoalsBtn,
   .mainMenuBtn,
@@ -237,7 +268,7 @@ canvas {
       background: #a9a9a9;
       box-shadow: -2px -2px #ccc;
     }
-    margin: 1% 1% 1% 11%;
+    margin: 1% 1% 1% 5%;
     border-radius: 4px;
     text-decoration: none;
     box-shadow: -2px -2px #A9A9A9;
@@ -246,7 +277,7 @@ canvas {
     width: 100%;
     height: 100px;
     div {
-      width: 100%;
+      width: 60%;
       padding: 1% 0;
       min-height: 500px;
       border-radius: 5px;

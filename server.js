@@ -35,12 +35,30 @@ io.on('connection', function(socket) {
   });
   socket.on('complete:goal', function(val) {
     console.log('completed goal', val);
-
+    var item = val.completedGoals.pop();
     User.findByIdAndUpdate(
       val._id, {
         $push: {
-          completedGoals: val.completedGoals.pop()
+          completedGoals: item
+        },
+      }, {
+        safe: true,
+        upsert: true,
+        new: true
+      },
+      function(err, pitch) {
+        if (err) {
+          console.log("UPDATE ERR", err);
+          throw err;
         }
+        //  socket.emit('new:goal', user);
+      }
+    );
+    User.findByIdAndUpdate(
+      val._id, {
+        $pull: {
+          currGoals: item
+        },
       }, {
         safe: true,
         upsert: true,
@@ -78,14 +96,21 @@ io.on('connection', function(socket) {
     );
   });
   socket.on('new:user', function(val) {
-    console.log('val', val);
+    console.log(val);
     var user = new User({
       username: val.username,
       password: val.password,
-      stats: val.stats,
-      currGoals: val.currGoals,
-      completedGoals: val.completedGoals
+      stats: {
+        strength: 10,
+        endurance: 10,
+        dexterity: 10,
+        intelligence: 10,
+        wisdom: 10,
+      },
+      currGoals: [],
+      completedGoals: []
     });
+    console.log(user.stats);
     user.save(function(err, data) {
       if (err) {
         console.log("OH FUCK", err);

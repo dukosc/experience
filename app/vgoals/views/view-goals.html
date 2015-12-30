@@ -2,6 +2,14 @@
 <h1>View Goals</h1>
 
 <section class="viewGoalsContainer">
+
+  <nav>
+    <a href="#/game-window" class="playGameBtn"> Play Game </a>
+    <a href="#/main-page" class="mainMenuBtn"> Main Menu </a>
+    <a href="#/stats" class="viewStatsBtn"> View Stats </a>
+    <a href="#/add-goals"> Add Goals </a>
+  </nav>
+
   <div class="viewGoalsDiv">
     <h3>Goals</h3>
     <div class="" ng-repeat="goal in viewGoalCtrl.goals">
@@ -15,7 +23,7 @@
     <div class="" ng-repeat="compGoal in viewGoalCtrl.completedGoals">
       <h4 class="compGoalDisplay">{{compGoal.activity}}</h4>
       <h4 class="compGoalDisplay">{{compGoal.interval}}</h4>
-      <button class="btn btn-xs deleteBtn" type="button" name="button">x</button>
     </div>
   </div>
+
 </section>

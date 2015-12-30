@@ -16,16 +16,16 @@
         templateUrl: 'goals/views/strength.html',
         controller: 'GoalsController as goalCtrl'
       })
-      .when('/goals/stamina', {
-        templateUrl: 'goals/views/stamina.html',
+      .when('/goals/endurance', {
+        templateUrl: 'goals/views/endurance.html',
         controller: 'GoalsController as goalCtrl'
       })
       .when('/goals/wisdom', {
         templateUrl: 'goals/views/wisdom.html',
         controller: 'GoalsController as goalCtrl'
       })
-      .when('/goals/intellect', {
-        templateUrl: 'goals/views/intellect.html',
+      .when('/goals/intellegence', {
+        templateUrl: 'goals/views/intellegence.html',
         controller: 'GoalsController as goalCtrl'
       })
       .when('/goals/dexterity', {

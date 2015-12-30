@@ -1,20 +1,29 @@
-(function(){
+(function() {
 
   angular.module('stats')
-    .controller('StatsController', function ($scope, StatsService) {
+    .controller('StatsController', function($scope, StatsService) {
+      var vm = this;
 
-      angular.element($('canvas').hide());
-      angular.element($('#game-window').hide());
-
-      StatsService.getStats().success(function (stats) {
-        console.log(stats);
-        $scope.myStats = stats;
-
-        $scope.addStat = function(newStat){
-          StatsService.createStat(newStat);
-        };
-  });
-
-});
+      StatsService.on('all:users', function(data) {
+        var user = JSON.parse(localStorage.getItem('user'));
+        var getGoals = function() {
+          for (var i in data) {
+            if (user._id === data[i]._id) {
+              return data[i].completedGoals;
+            };
+          }
+        }
+        var getStats = function() {
+          for (var i in data) {
+            if (user._id === data[i]._id) {
+              console.log(data[i]);
+              return data[i].stats;
+            };
+          }
+        }
+        vm.compGoals = getGoals();
+        vm.stats = getStats();
+      });
+    });
 
 })();

@@ -35,12 +35,30 @@ io.on('connection', function(socket) {
   });
   socket.on('complete:goal', function(val) {
     console.log('completed goal', val);
-
+    var item = val.completedGoals.pop();
     User.findByIdAndUpdate(
       val._id, {
         $push: {
-          completedGoals: val.completedGoals.pop()
+          completedGoals: item
+        },
+      }, {
+        safe: true,
+        upsert: true,
+        new: true
+      },
+      function(err, pitch) {
+        if (err) {
+          console.log("UPDATE ERR", err);
+          throw err;
         }
+        //  socket.emit('new:goal', user);
+      }
+    );
+    User.findByIdAndUpdate(
+      val._id, {
+        $pull: {
+          currGoals: item
+        },
       }, {
         safe: true,
         upsert: true,

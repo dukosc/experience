@@ -1,7 +1,7 @@
 <h1>EXPERIENCE</h1>
 
 <div class="loginWindow">
-    <form>
+    <form ng-init="loginCtrl.getUsers()">
       <input class="form-control" ng-model="newUser.username" type="text" autocomplete="off" name="name" value="" placeholder="Username"/>
       <input class="form-control" ng-model="newUser.password" type="password" autocomplete="off" name="name" value="" placeholder="Password"/>
       <button class="registerBtn" type="button" name="button" ng-click="loginCtrl.addUser(newUser)">Register</button>

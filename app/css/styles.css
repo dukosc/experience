@@ -14,7 +14,8 @@ h1 {
   text-align: center;
   letter-spacing: 15px;
   padding: 3% 0 1%;
-  margin-top: -1%; }
+  margin-top: 6%;
+  margin-bottom: -1%; }
 
 h2 {
   font-size: 1.75em;
@@ -57,6 +58,12 @@ h2 {
 .hide {
   display: none; }
 
+<<<<<<< HEAD
+=======
+#game-window {
+  margin-top: 4%; }
+
+>>>>>>> dc818504418c6a8673372c62f77fc18fc02c739b
 #mainMenu {
   margin-top: 3%; }
   #mainMenu div {
@@ -96,10 +103,17 @@ h2 {
     #mainMenu div .spriteImg3 {
       width: 128px;
       height: 128px;
+<<<<<<< HEAD
       margin: 36% 0 9% 20%;
       background-image: url(/game/assets/dirt-devil.png);
       z-index: 1;
       zoom: 1.75;
+=======
+      margin-left: -3%;
+      background-image: url(/game/assets/dirt-devil.png);
+      z-index: 1;
+      zoom: 3;
+>>>>>>> dc818504418c6a8673372c62f77fc18fc02c739b
       overflow: hidden;
       -webkit-animation: sprite 0.4s steps(4) infinite; }
     #mainMenu div .btn {
@@ -249,17 +263,31 @@ canvas {
   .goalsContainer .viewStatsContainer {
     width: 100%;
     height: 100px; }
+<<<<<<< HEAD
+=======
+    .goalsContainer .viewStatsContainer nav {
+      margin-top: 2%; }
+>>>>>>> dc818504418c6a8673372c62f77fc18fc02c739b
     .goalsContainer .viewStatsContainer div {
       width: 60%;
       padding: 1% 0;
       min-height: 500px;
+<<<<<<< HEAD
       border-radius: 5px; }
+=======
+      border-radius: 5px;
+      margin-left: 15%; }
+>>>>>>> dc818504418c6a8673372c62f77fc18fc02c739b
       .goalsContainer .viewStatsContainer div h3 {
         margin-left: 12%;
         padding: 1%;
         background: #F3F3F3;
         border-radius: 4px;
+<<<<<<< HEAD
         width: 70%;
+=======
+        width: 90%;
+>>>>>>> dc818504418c6a8673372c62f77fc18fc02c739b
         box-shadow: -2px -2px #A9A9A9;
         font-family: gamegirl; }
     .goalsContainer .viewStatsContainer .addGoalBtn {

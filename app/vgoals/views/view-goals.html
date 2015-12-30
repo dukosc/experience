@@ -2,13 +2,28 @@
 <h1>View Goals</h1>
 
 <section class="viewGoalsContainer">
-  <div class="viewGoalsDiv" ng-repeat="goal in viewGoalCtrl.goals">
-    <h3>Activity: {{goal.activity}}</h3>
-    <h3>Interval: {{goal.interval}}</h3>
-    <button ng-click="viewGoalCtrl.completeGoal(user, goal)" type="button" name="button">Complete</button>
+
+  <nav>
+    <a href="#/game-window" class="playGameBtn"> Play Game </a>
+    <a href="#/main-page" class="mainMenuBtn"> Main Menu </a>
+    <a href="#/stats" class="viewStatsBtn"> View Stats </a>
+    <a href="#/add-goals"> Add Goals </a>
+  </nav>
+
+  <div class="viewGoalsDiv">
+    <h3>Goals</h3>
+    <div class="" ng-repeat="goal in viewGoalCtrl.goals">
+      <h4 class="goalDisplay">{{goal.activity}}</h4>
+      <h4 class="goalDisplay">{{goal.interval}}</h4>
+      <button class="btn btn-xs completeBtn" ng-click="viewGoalCtrl.completeGoal(user, goal)" type="button" name="button">Complete</button>
+    </div>
   </div>
-  <div class="viewGoalsDiv" ng-repeat="compGoal in viewGoalCtrl.completedGoals">
-    <h3>Activity: {{compGoal.activity}}</h3>
-    <h3>Interval: {{compGoal.interval}}</h3>
+  <div class="compGoalsDiv">
+    <h3>Completed</h3>
+    <div class="" ng-repeat="compGoal in viewGoalCtrl.completedGoals">
+      <h4 class="compGoalDisplay">{{compGoal.activity}}</h4>
+      <h4 class="compGoalDisplay">{{compGoal.interval}}</h4>
+    </div>
   </div>
+
 </section>

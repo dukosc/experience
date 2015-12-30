@@ -1,12 +1,11 @@
 body {
   margin: 0;
   padding: 0;
-
   background: #d3d3d3;
-  background-image: url(https://images.unsplash.com/photo-1431975583576-a57c07327f71?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=b7f9541dd87eb21160d982a0649536d6);
+  background-image: url("desert-map.png");
   background-size: cover;
   background-repeat: no-repeat;
-
+  background-position: center right;
 }
 h1 {
   font-size: 4.75em;
@@ -26,10 +25,7 @@ h2 {
   padding: 3% 0 1%;
   margin-top: -1%;
 }
-
-
 ////////////////////////////////////////// Login
-
 .loginWindow {
   background: #333333;
   background: rgba(51, 51, 51, 0.85);
@@ -139,40 +135,91 @@ canvas {
   border: 1px solid #333333;
 }
 /////////////////////////////////////////// View Goals Page
-.form-control {
-  width: 95%;
-  font-family: gamegirl;
-  margin: 4% 2%;
-  background: #F3F3F3;
-  color: #333;
-  box-shadow: -2px -2px darkgray;
-}
+
 .viewGoalsContainer {
-  margin: 5% auto;
+  box-shadow: -2px -2px darkgrey;
+  margin: 3% auto;
+  padding-top: 3%;
+  padding-left: 1%;
   background: rgba(51, 51, 51, 0.85);
   width: 75%;
   height: 500px;
   border-radius: 5px;
-  .vewGoalsSection {
-    background: #333333;
-    padding: 1% 0;
-    border-radius: 5px;
+  nav {
+    margin-left: 2%;
+    a {
+      background: #C0C0C0;
+      padding: 1.5%;
+      font-family: gamegirl;
+      color: #333;
+      margin: 1% 0 0 4%;
+      border-radius: 4px;
+      text-decoration: none;
+      box-shadow: -2px -2px #A9A9A9;
+      &:hover {
+        background: #a9a9a9;
+        box-shadow: -2px -2px #ccc;
+      }
+    }
   }
-  h3 {
-    background: #F3F3F3;
-    font-family: gamegirl;
-    font-size: 1em;
-    padding: 1%;
-    width: 40.5%;
+  .viewGoalsDiv,
+  .compGoalsDiv {
+    margin-left: 5%;
+    margin-top: 2%;
+    width: 40%;
     display: inline-block;
-    margin-left: 6%;
-    border-radius: 4px;
-    box-shadow: -2px -2px #A9A9A9;
-    text-align: left;
+    vertical-align: top;
+    h3 {
+      box-shadow: -2px -2px darkgrey;
+      font-family: gamegirl;
+      text-align: center;
+      font-size: 2em;
+      background: #F3F3F3;
+      text-shadow: -1px -1px #F3F3F3;
+      padding: 2% 1% 1%;
+      border-radius: 5px;
+    }
+    .goalDisplay {
+      background: #F3F3F3;
+      font-family: gamegirl;
+      font-size: 1em;
+      padding: 1%;
+      width: 37%;
+      display: inline-block;
+      margin-left: 2%;
+      border-radius: 4px;
+      box-shadow: -2px -2px #A9A9A9;
+      text-align: left;
+    }
+    .compGoalDisplay {
+      background: #F3F3F3;
+      font-family: gamegirl;
+      font-size: 1em;
+      padding: 1%;
+      width: 47%;
+      display: inline-block;
+      margin-left: 2%;
+      border-radius: 4px;
+      box-shadow: -2px -2px #A9A9A9;
+      text-align: left;
+    }
+  }
+  .deleteBtn,
+  .completeBtn {
+    margin-left: 1%;
+    background: #4A4A4A;
+    border: 1px solid #A9A9A9;
+    color: #F3F3F3;
+    box-shadow: -1px -1px #A9A9A9;
   }
 }
 ///////////////////////////////////////Add Goals Page
 .goalsContainer {
+  width: 100%;
+  margin-top: 3%;
+  nav {
+    margin-top: 1%;
+  }
   .addGoalsDiv {
     display: inline-block;
     vertical-align: top;
@@ -207,7 +254,6 @@ canvas {
       }
     }
   }
-
   ///////////////////STATS PAGE
   .viewStatsBtn,
   .viewGoalsBtn,

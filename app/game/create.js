@@ -126,6 +126,7 @@ function create() {
     left: game.input.keyboard.addKey(Phaser.Keyboard.A),
     right: game.input.keyboard.addKey(Phaser.Keyboard.D),
     space: game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR),
+    e: game.input.keyboard.addKey(Phaser.Keyboard.E),
   };
 
 }

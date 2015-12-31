@@ -95,7 +95,7 @@ function create() {
   player.body.setSize(64, 64);
   player.body.collideWorldBounds = true;
   player.ammo = 60;
-  // player.health = 3;
+  // player.health = 10;
   // player.enableBody = true;
   addWeapon('gun');
   game.camera.follow(player);

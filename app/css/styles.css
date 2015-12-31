@@ -90,6 +90,10 @@ h2 {
       font-size: 3em;
       text-decoration: none;
       text-shadow: -1px -1px #F3F3F3; }
+      .mainMenu .mainNav ul a:hover {
+        background: #A9A9A9;
+        padding: 2% 0;
+        border-radius: 5px; }
 
 canvas {
   margin-left: 18%;

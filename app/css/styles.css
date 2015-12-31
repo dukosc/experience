@@ -2,20 +2,20 @@ body {
   margin: 0;
   padding: 0;
   background: #d3d3d3;
-  background-image: url("desert-map.png");
+  background-image: url(desert-map.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center right; }
 
 h1 {
-  font-size: 4.75em;
+  font-size: 6em;
   text-shadow: -2px -2px #F3F3F3;
   font-family: gamegirl;
   text-align: center;
   letter-spacing: 15px;
   padding: 3% 0 1%;
   margin-top: 6%;
-  margin-bottom: -1%; }
+  margin-bottom: -5%; }
 
 h2 {
   font-size: 1.75em;
@@ -27,9 +27,8 @@ h2 {
   margin-top: -1%; }
 
 .loginWindow {
-  background: #333333;
   background: rgba(51, 51, 51, 0.85);
-  margin: 5% auto;
+  margin: 9% auto;
   min-height: 200px;
   border: 1px solid #333;
   box-shadow: -2px -2px #A9A9A9;
@@ -61,62 +60,36 @@ h2 {
 #game-window {
   margin-top: 4%; }
 
-#mainMenu {
-  margin-top: 3%; }
-  #mainMenu div {
-    display: inline-block;
-    width: 28%;
-    height: 550px;
-    margin: 2.5%;
-    background: #333333;
-    background: rgba(51, 51, 51, 0.85);
-    border-radius: 5px;
-    box-shadow: -2px -2px darkgrey;
-    vertical-align: top; }
-    #mainMenu div:hover {
-      background: #333; }
-    #mainMenu div .spriteImg {
-      width: 128px;
-      height: 128px;
-      margin: 9% 0 -9% -5%;
-      background-image: url(/game/assets/player.png);
-      z-index: 1;
-      zoom: 3.0;
-      overflow: hidden;
-      -webkit-animation: sprite 1s steps(4) infinite; }
-    #mainMenu div #grubSection {
-      width: 128px;
-      height: 128px;
-      background-image: url(/game/assets/grub.png);
-      margin: 20% 0 -20% -6%;
-      z-index: 1;
-      zoom: 3.0;
-      overflow: hidden;
-      animation: sprite 1s steps(4) infinite; }
+.mainMenu div {
+  display: inline-block;
+  margin-left: 5%; }
+
+.mainMenu .spriteImg {
+  width: 128px;
+  height: 128px;
+  margin: 9% -4% -9% 15%;
+  background-image: url(/game/assets/player.png);
+  z-index: 1;
+  zoom: 3.0;
+  overflow: hidden;
+  -webkit-animation: sprite 1s steps(4) infinite; }
 
 @keyframes sprite {
   100% {
     background-position: -512px; } }
-    #mainMenu div .spriteImg3 {
-      width: 128px;
-      height: 128px;
-      margin-left: -3%;
-      background-image: url(/game/assets/dirt-devil.png);
-      z-index: 1;
-      zoom: 3;
-      overflow: hidden;
-      -webkit-animation: sprite 0.4s steps(4) infinite; }
-    #mainMenu div .btn {
-      box-shadow: -2px -2px darkgrey;
-      margin-bottom: -55%;
+
+.mainMenu .mainNav {
+  margin-top: 2%; }
+  .mainMenu .mainNav ul {
+    list-style-type: none; }
+    .mainMenu .mainNav ul li {
+      margin-bottom: 2%; }
+    .mainMenu .mainNav ul a {
       font-family: gamegirl;
-      color: #333333;
-      padding: 10%;
-      width: 100%;
-      font-size: 3rem; }
-      #mainMenu div .btn a {
-        text-decoration: none;
-        color: #333333; }
+      color: #333;
+      font-size: 3em;
+      text-decoration: none;
+      text-shadow: -1px -1px #F3F3F3; }
 
 canvas {
   margin-left: 18%;

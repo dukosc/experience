@@ -15,26 +15,21 @@ var map;
 var layer;
 
 function create() {
+  var stats = JSON.parse(localStorage.getItem('stats'));
+  console.log(stats);
   game.stage.backgroundColor = '#787878';
 
-  //  The 'mario' key here is the Loader key given in game.load.tilemap
   map = game.add.tilemap('snowmap');
 
-  //  The first parameter is the tileset name, as specified in the Tiled map editor (and in the tilemap json file)
-  //  The second parameter maps this name to the Phaser.Cache key 'tiles'
+
   map.addTilesetImage('tiles', 'tiles');
   map.setCollisionByExclusion([13, 14, 8]);
 
-  //  Creates a layer from the World1 layer in the map data.
-  //  A Layer is effectively like a Phaser.Sprite, so is added to the display list.
-  layer = map.createLayer('SnowLevel');
-  // wallLayer = map.createLayer('Walls');
 
-  //  This resizes the game world to match the layer dimensions
-  // wallLayer.resizeWorld();
+  layer = map.createLayer('SnowLevel');
+
   game.physics.startSystem(Phaser.Physics.ARCADE);
-  //backgound
-  // game.add.sprite(0, 0, 'background');
+
 
 
 
@@ -95,7 +90,8 @@ function create() {
   player.body.setSize(64, 64);
   player.body.collideWorldBounds = true;
   player.ammo = 60;
-  // player.health = 10;
+  player.health = 10 + stats.endurance;
+  console.log(player.health);
   // player.enableBody = true;
   addWeapon('gun');
   game.camera.follow(player);

@@ -23,6 +23,8 @@
         }
         vm.compGoals = getGoals();
         vm.stats = getStats();
+        localStorage.setItem('stats', JSON.stringify(vm.stats));
+
       });
     });
 

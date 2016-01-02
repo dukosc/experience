@@ -27,12 +27,12 @@ function gunFire() {
 function swordSwing() {
   if (!game.paused) {
     if (game.time.now > nextFire && slashes.countDead() > 0) {
-      nextSlash - game.time.now + swingRate;
+      nextSlash = game.time.now + swingRate;
       slash = slashes.getFirstExists(false);
       slash.rotation = game.physics.arcade.angleToPointer(weapon) + 0.80;
       slash.reset(player.body.center.x, player.body.center.y);
       game.physics.arcade.moveToPointer(slash, 750, game.input.activePointer);
-      timer.start();
+      swingTimer.start();
     }
     if (swung === true) {
       swung = false;
@@ -69,11 +69,13 @@ function collectAmmo() {
 }
 
 function attack() {
+  attackTimer.start();
   if (gunEquipped) {
     gunFire();
   }
-  if (swordEquipped) {
+  if (swordEquipped && attackTimer.seconds > 0.5) {
     swordSwing();
+    attackTimer.stop();
   }
 }
 

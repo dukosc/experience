@@ -15,7 +15,7 @@ function gunFire() {
     bullet.body.setSize(32, 32);
     game.physics.arcade.moveToPointer(bullet, 750, game.input.activePointer);
     player.ammo--;
-    text.text = 'Ammo:' + player.ammo;
+    ammo.text = 'Ammo: ' + player.ammo;
   }
   else{
     return;
@@ -59,7 +59,7 @@ function dropAmmo(x,y){
 function collectAmmo(){
   ammo.kill();
   player.ammo += 25;
-  text.text = 'Ammo:' + player.ammo;
+  ammo.text = 'Ammo: ' + player.ammo;
 }
 function attack() {
   if (gunEquipped) {
@@ -80,7 +80,14 @@ function bulletHitEnemy(enemy, bullet) {
   }
   var destroyed = enemies[enemy.name].damage();
 }
-
+function bulletHitPlayer(player, bullet){
+  bullet.kill();
+  player.health = player.health - 1;
+  health.text = 'Health: ' + player.health;
+}
 function processHandler(projectile, enemy) {
   return true;
+}
+function gameOver(){
+  game.state.restart();
 }

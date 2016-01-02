@@ -6,7 +6,7 @@ function update() {
   game.physics.arcade.collide(enemyBullets, layer, collided);
   weapon.x = player.body.x + 32;
   weapon.y = player.body.y + 32;
-  // game.physics.arcade.overlap(bullets, enemies, collisionDetection, processHandler, this);
+  game.physics.arcade.overlap(enemyBullets, player, bulletHitPlayer, null, this);
   // game.physics.arcade.overlap(slashes, enemies, collisionDetection, processHandler, this);
   if (swordEquipped) {
     weapon.anchor.setTo(0, 1);
@@ -26,7 +26,9 @@ function update() {
     }
   }
   enemiesAlive = 0;
-
+  if(player.health <= 0){
+    gameOver();
+  }
   for (var i = 0; i < enemies.length; i++) {
     if (enemies[i].alive) {
       enemiesAlive++;
@@ -65,29 +67,29 @@ function update() {
   if (wasd.left.isDown) {
     player.body.velocity.x = -150;
     player.animations.play('run', 10, true);
-}
-    if (wasd.left.isDown && wasd.space.isDown) {
-      player.body.velocity.x = -300;
-      player.animations.play('run', 20, true);
-    }
-    if (wasd.left.isDown && wasd.e.isDown) {
-      player.body.velocity.x = -600;
-      player.animations.play('run', 20, true);
-      game.time.events.add(Phaser.Timer.SECOND * 1, player.body.velocity.x = -150, this);
-      player.body.velocity.x = -150;
-    }
+  }
+  if (wasd.left.isDown && wasd.space.isDown) {
+    player.body.velocity.x = -300;
+    player.animations.play('run', 20, true);
+  }
+  if (wasd.left.isDown && wasd.e.isDown) {
+    player.body.velocity.x = -600;
+    player.animations.play('run', 20, true);
+    game.time.events.add(Phaser.Timer.SECOND * 1, player.body.velocity.x = -150, this);
+    player.body.velocity.x = -150;
+  }
   if (wasd.right.isDown) {
     player.body.velocity.x = 150;
     player.animations.play('run', 10, true);
   }
- if (wasd.right.isDown && wasd.space.isDown) {
-  player.body.velocity.x = 300;
-  player.animations.play('run', 20, true);
-}
-if (wasd.right.isDown && wasd.e.isDown) {
- player.body.velocity.x = 600;
- player.animations.play('run', 20, true);
-}
+  if (wasd.right.isDown && wasd.space.isDown) {
+    player.body.velocity.x = 300;
+    player.animations.play('run', 20, true);
+  }
+  if (wasd.right.isDown && wasd.e.isDown) {
+    player.body.velocity.x = 600;
+    player.animations.play('run', 20, true);
+  }
   if (wasd.up.isDown) {
     player.body.velocity.y = -150;
     player.animations.play('run', 10, true);
@@ -100,7 +102,7 @@ if (wasd.right.isDown && wasd.e.isDown) {
     player.body.velocity.y = -600;
     player.animations.play('run', 20, true);
   }
- if (wasd.down.isDown) {
+  if (wasd.down.isDown) {
     player.body.velocity.y = 150;
     player.animations.play('run', 10, true);
   }

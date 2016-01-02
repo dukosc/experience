@@ -10,7 +10,8 @@ var gunEquipped = true;
 var swordEquipped = false;
 var swung = false;
 var timer;
-var text;
+var ammo;
+var health;
 var map;
 var layer;
 
@@ -103,13 +104,20 @@ function create() {
   for (var i = 0; i < enemiesTotal; i++) {
     enemies.push(new Enemy(i, game, player, bullets));
   }
-  text = game.add.text(0, 0, "Ammo: " + player.ammo, {
+  ammo = game.add.text(0, 0, "Ammo: " + player.ammo, {
     font: "30px Arial",
     fill: "#ff0044",
     align: "left"
   });
-  text.fixedToCamera = true;
-  text.cameraOffset.setTo(0, 0);
+  ammo.fixedToCamera = true;
+  ammo.cameraOffset.setTo(0, 0);
+  health = game.add.text(0, 0, "Health: " + player.health, {
+    font: "30px Arial",
+    fill: "#ff0044",
+    align: "left"
+  });
+  health.fixedToCamera = true;
+  health.cameraOffset.setTo(150, 0);
   //movement animations
 
   var run = player.animations.add('run', [4, 5, 6, 7, 8]);

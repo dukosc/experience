@@ -94,7 +94,7 @@ function create() {
   player.body.collideWorldBounds = true;
   player.ammo = 60;
   player.health = 10 + stats.endurance;
-  player.stamina = 100 + (stats.endurance/5);
+  player.stamina = 100 + Math.floor(stats.endurance/5);
   player.mana = 100 + (stats.wisdom/2);
   console.log(player.health);
   // player.enableBody = true;

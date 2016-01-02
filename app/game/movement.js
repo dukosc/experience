@@ -1,5 +1,5 @@
 function move(){
-  if(player.stamina < (100 + stats.endurance/5)){
+  if(player.stamina < (100 + Math.floor(stats.endurance/5))){
     player.stamina++;
     stamina.text = "Stamina: " + player.stamina;
   }
@@ -106,15 +106,35 @@ function move(){
     player.stamina++;
   }
   if(wasd.up.isDown && wasd.right.isDown && wasd.space.isDown){
+    if(player.stamina <= 1){
+      player.body.velocity.y = -150 - (stats.dexterity/5);
+      player.body.velocity.x = 150 + (stats.dexterity/5);
+      player.stamina = 0;
+    }
     player.stamina++;
   }
   if(wasd.up.isDown && wasd.left.isDown && wasd.space.isDown){
+    if(player.stamina <= 1){
+      player.body.velocity.y = -150 - (stats.dexterity/5);
+      player.body.velocity.x = -150 - (stats.dexterity/5);
+      player.stamina = 0;
+    }
     player.stamina++;
   }
   if(wasd.down.isDown && wasd.right.isDown && wasd.space.isDown){
+    if(player.stamina <= 1){
+      player.body.velocity.y = 150 + (stats.dexterity/5);
+      player.body.velocity.x = 150 + (stats.dexterity/5);
+      player.stamina = 0;
+    }
     player.stamina++;
   }
   if(wasd.down.isDown && wasd.left.isDown && wasd.space.isDown){
+    if(player.stamina <= 1){
+      player.body.velocity.y = 150 + (stats.dexterity/5);
+      player.body.velocity.x = -150 - (stats.dexterity/5);
+      player.stamina = 0;
+    }
     player.stamina++;
   }
 }

@@ -42,14 +42,27 @@ function swordSwing() {
   }
 }
 
+function shieldBlock() {
+  if (game.time.now > nextFire && blocks.bullet() > 0) {
+}
+}
+
 function addWeapon(wpn, type) {
   if (type === 'sword') {
     swordEquipped = true;
     gunEquipped = false;
+    shieldEquipped = false;
   }
   if (type === 'gun') {
     gunEquipped = true;
     swordEquipped = false;
+    shieldEquipped = false;
+  }
+  //added this below
+  if (type === 'shield') {
+    gunEquipped = false;
+    swordEquipped = false;
+    shieldEquipped = true;
   }
   weapon = game.add.sprite(player.body.x, player.body.y, wpn);
   weapon.scale.setTo(0.5, 0.5);

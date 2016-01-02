@@ -10,7 +10,8 @@ var enemies;
 var gunEquipped = true;
 var swordEquipped = false;
 var swung = false;
-var timer;
+var swingTimer;
+var attackTimer;
 var ammo;
 var health;
 var map;
@@ -40,7 +41,8 @@ function create() {
 
   //bullet physics
   layer.resizeWorld();
-  timer = game.time.create();
+  swingTimer = game.time.create();
+  attackTimer = game.time.create();
   game.input.onDown.add(attack, this);
   game.stage.backgroundColor = '#fff000';
 
@@ -102,6 +104,7 @@ function create() {
   player.ammo = 60;
   player.health = 10 + stats.endurance;
   player.stamina = 100 + (stats.endurance/5);
+  player.mana = 100 + (stats.wisdom/2);
   console.log(player.health);
   addWeapon('gun');
   game.camera.follow(player);

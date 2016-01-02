@@ -37,6 +37,13 @@ function update() {
       enemies[i].update();
     }
   }
+  if(wasd.p.isDown) {
+    game.paused = true;
+    menu = game.add.sprite(game.camera.x + 400, game.camera.y +300, 'menu');
+        menu.anchor.setTo(0.5, 0.5);
+        choiseLabel = game.add.text(game.camera.x + 400/2, game.camera.y+150, 'Click outside menu to continue', { font: '30px Arial', fill: '#fff' });
+        choiseLabel.anchor.setTo(0.5, 0.5);
+  }
   // for (var i = 0; i < enemies.length; i++) {
   //   if(player.x < enemies.getAt(i).body.x + 144 && player.x > enemies.getAt(i).body.x - 144 && player.y > enemies.getAt(i).body.y - 144 && player.y < enemies.getAt(i).body.y + 144){
   //     enemies.getAt(i).isRunning = true;
@@ -56,6 +63,10 @@ function update() {
   //     enemies.getAt(i).animations.play('run', 10, true);
   //   }
   // }
+  if(player.stamina < (100 + stats.endurance/5)){
+    player.stamina++;
+    stamina.text = "Stamina: " + player.stamina;
+  }
   if (game.input.keyboard.isDown(Phaser.KeyCode.ONE)) {
     weapon.kill();
     addWeapon('gun', 'gun');
@@ -65,11 +76,19 @@ function update() {
     addWeapon('sword', 'sword');
   }
   if (wasd.left.isDown) {
-    player.body.velocity.x = -150;
+    player.body.velocity.x = -150 - (stats.dexterity/5);
+    player.stamina--;
     player.animations.play('run', 10, true);
   }
   if (wasd.left.isDown && wasd.space.isDown) {
-    player.body.velocity.x = -300;
+    if(player.stamina <= 0){
+      player.stamina = 0;
+      player.body.velocity.x = -150 - (stats.dexterity/5);
+    }else{
+      player.body.velocity.x = -300 - (stats.dexterity/5);
+      player.stamina--;
+      stamina.text = 'Stamina: ' + player.stamina;
+    }
     player.animations.play('run', 20, true);
   }
   if (wasd.left.isDown && wasd.e.isDown) {
@@ -79,11 +98,19 @@ function update() {
     player.body.velocity.x = -150;
   }
   if (wasd.right.isDown) {
-    player.body.velocity.x = 150;
+    player.body.velocity.x = 150 + (stats.dexterity/5);
+    player.stamina--;
     player.animations.play('run', 10, true);
   }
   if (wasd.right.isDown && wasd.space.isDown) {
-    player.body.velocity.x = 300;
+    if(player.stamina <= 0){
+      player.stamina = 0;
+      player.body.velocity.x = 150 + (stats.dexterity/5);
+    }else{
+      player.body.velocity.x = 300 + (stats.dexterity/5);
+      player.stamina--;
+      stamina.text = 'Stamina: ' + player.stamina;
+    }
     player.animations.play('run', 20, true);
   }
   if (wasd.right.isDown && wasd.e.isDown) {
@@ -91,11 +118,19 @@ function update() {
     player.animations.play('run', 20, true);
   }
   if (wasd.up.isDown) {
-    player.body.velocity.y = -150;
+    player.body.velocity.y = -150 - (stats.dexterity/5);
+    player.stamina--;
     player.animations.play('run', 10, true);
   }
   if (wasd.up.isDown && wasd.space.isDown) {
-    player.body.velocity.y = -300;
+    if(player.stamina <= 0){
+      player.stamina = 0;
+      player.body.velocity.y = -150 - (stats.dexterity/5);
+    }else{
+      player.body.velocity.y = -300 - (stats.dexterity/5);
+      player.stamina--;
+      stamina.text = 'Stamina: ' + player.stamina;
+    }
     player.animations.play('run', 20, true);
   }
   if (wasd.up.isDown && wasd.e.isDown) {
@@ -103,11 +138,19 @@ function update() {
     player.animations.play('run', 20, true);
   }
   if (wasd.down.isDown) {
-    player.body.velocity.y = 150;
+    player.body.velocity.y = 150 + (stats.dexterity/5);
+    player.stamina--;
     player.animations.play('run', 10, true);
   }
   if (wasd.down.isDown && wasd.space.isDown) {
-    player.body.velocity.y = 300;
+    if(player.stamina <= 0){
+      player.stamina = 0;
+      player.body.velocity.y = 150 + (stats.dexterity/5);
+    }else{
+      player.body.velocity.y = 300 + (stats.dexterity/5);
+      player.stamina--;
+      stamina.text = 'Stamina: ' + player.stamina;
+    }
     player.animations.play('run', 20, true);
   }
   if (wasd.down.isDown && wasd.e.isDown) {
@@ -122,7 +165,30 @@ function update() {
     player.animations.play('idle', 10, true);
     player.body.velocity.y = 0;
   }
-
+  if(wasd.up.isDown && wasd.right.isDown){
+    player.stamina++;
+  }
+  if(wasd.up.isDown && wasd.left.isDown){
+    player.stamina++;
+  }
+  if(wasd.down.isDown && wasd.right.isDown){
+    player.stamina++;
+  }
+  if(wasd.down.isDown && wasd.left.isDown){
+    player.stamina++;
+  }
+  if(wasd.up.isDown && wasd.right.isDown && wasd.space.isDown){
+    player.stamina++;
+  }
+  if(wasd.up.isDown && wasd.left.isDown && wasd.space.isDown){
+    player.stamina++;
+  }
+  if(wasd.down.isDown && wasd.right.isDown && wasd.space.isDown){
+    player.stamina++;
+  }
+  if(wasd.down.isDown && wasd.left.isDown && wasd.space.isDown){
+    player.stamina++;
+  }
   if (swung === true && swordEquipped) {
     weapon.angle = weapon.angle + 90;
   }

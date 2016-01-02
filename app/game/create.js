@@ -14,9 +14,9 @@ var ammo;
 var health;
 var map;
 var layer;
-
+var stats = JSON.parse(localStorage.getItem('stats'));
 function create() {
-  var stats = JSON.parse(localStorage.getItem('stats'));
+
   console.log(stats);
   game.stage.backgroundColor = '#787878';
 
@@ -92,6 +92,7 @@ function create() {
   player.body.collideWorldBounds = true;
   player.ammo = 60;
   player.health = 10 + stats.endurance;
+  player.stamina = 100 + (stats.endurance/5);
   console.log(player.health);
   // player.enableBody = true;
   addWeapon('gun');
@@ -104,6 +105,7 @@ function create() {
   for (var i = 0; i < enemiesTotal; i++) {
     enemies.push(new Enemy(i, game, player, bullets));
   }
+  game.input.onDown.add(unpause, self);
   ammo = game.add.text(0, 0, "Ammo: " + player.ammo, {
     font: "30px Arial",
     fill: "#ff0044",
@@ -118,6 +120,13 @@ function create() {
   });
   health.fixedToCamera = true;
   health.cameraOffset.setTo(150, 0);
+  stamina = game.add.text(0, 0, "Stamina: " + player.stamina, {
+    font: "30px Arial",
+    fill: "#ff0044",
+    align: "left"
+  });
+  stamina.fixedToCamera = true;
+  stamina.cameraOffset.setTo(300, 0);
   //movement animations
 
   var run = player.animations.add('run', [4, 5, 6, 7, 8]);
@@ -131,6 +140,7 @@ function create() {
     right: game.input.keyboard.addKey(Phaser.Keyboard.D),
     space: game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR),
     e: game.input.keyboard.addKey(Phaser.Keyboard.E),
+    p: game.input.keyboard.addKey(Phaser.Keyboard.P),
   };
 
 }

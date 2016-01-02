@@ -11,14 +11,11 @@
       vm.getUsers = function() {
         LoginService.on('all:users', function(data) {
           vm.users = data;
-          console.log(data);
         });
       };
       vm.addUser = function(newUser) {
-        console.log('fire');
-        console.log(newUser);
         LoginService.emit('new:user', newUser);
-        vm.newUser = "";
+        location.reload();
       };
       vm.login = function(user){
         vm.getUsers();
@@ -42,7 +39,6 @@
         }
       }
       LoginService.on('new:user', function(data) {
-        console.log(data);
         var user = {
           username: data.username,
           password: data.password,

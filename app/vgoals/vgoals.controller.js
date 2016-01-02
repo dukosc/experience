@@ -3,7 +3,6 @@
     angular.module('vgoals')
       .controller('ViewGoalsController', function($location, $scope, $route, $rootScope, ViewGoalsService) {
           var vm = this;
-          console.log($rootScope.visited);
           if($rootScope.visited === false){
             location.reload();
             $rootScope.visited = true;
@@ -98,7 +97,6 @@
             var getGoals = function(){
               for (var i in data) {
                 if (user._id === data[i]._id) {
-                  console.log(data[i].currGoals);
                   return data[i].currGoals;
                 };
               }

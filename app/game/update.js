@@ -44,35 +44,20 @@ function update() {
         choiseLabel = game.add.text(game.camera.x + 400/2, game.camera.y+150, 'Click outside menu to continue', { font: '30px Arial', fill: '#fff' });
         choiseLabel.anchor.setTo(0.5, 0.5);
   }
-  // for (var i = 0; i < enemies.length; i++) {
-  //   if(player.x < enemies.getAt(i).body.x + 144 && player.x > enemies.getAt(i).body.x - 144 && player.y > enemies.getAt(i).body.y - 144 && player.y < enemies.getAt(i).body.y + 144){
-  //     enemies.getAt(i).isRunning = true;
-  //   }
-  //   if(enemies.getAt(i).isRunning === undefined || enemies.getAt(i).isRunning === false){
-  //     enemies.getAt(i).isRunning = false;
-  //     enemies.getAt(i).animations.play('idle', 10, true);
-  //   }
-  //   if(enemies.getAt(i).isRunning === true){
-  //     moveToPlayer(enemies.getAt(i));
-  //     if(enemies.getAt(i).x < player.x){
-  //       enemies.getAt(i).scale.x = 1;
-  //     }
-  //     else{
-  //       enemies.getAt(i).scale.x = -1;
-  //     }
-  //     enemies.getAt(i).animations.play('run', 10, true);
-  //   }
-  // }
   move();
+  if (game.input.keyboard.isDown(Phaser.KeyCode.ONE)) {
+    weapon.kill();
+    addWeapon('gun', 'gun');
+  }
+  if (game.input.keyboard.isDown(Phaser.KeyCode.TWO)) {
+    weapon.kill();
+    addWeapon('sword', 'sword');
+  }
   if (swung === true && swordEquipped) {
     weapon.angle = weapon.angle + 90;
   }
-  if (timer.seconds > 0.1) {
+  if (swingTimer.seconds > 0.1) {
     slash.kill();
-    timer.stop();
+    swingTimer.stop();
   }
-
-  //collision
-  // game.physics.arcade.collide(player, walls);
-
 }

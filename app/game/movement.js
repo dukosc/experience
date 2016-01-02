@@ -3,14 +3,6 @@ function move(){
     player.stamina++;
     stamina.text = "Stamina: " + player.stamina;
   }
-  if (game.input.keyboard.isDown(Phaser.KeyCode.ONE)) {
-    weapon.kill();
-    addWeapon('gun', 'gun');
-  }
-  if (game.input.keyboard.isDown(Phaser.KeyCode.TWO)) {
-    weapon.kill();
-    addWeapon('sword', 'sword');
-  }
   if (wasd.left.isDown) {
     player.body.velocity.x = -150 - (stats.dexterity/5);
     player.stamina--;

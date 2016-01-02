@@ -9,7 +9,8 @@ var enemies;
 var gunEquipped = true;
 var swordEquipped = false;
 var swung = false;
-var timer;
+var swingTimer;
+var attackTimer;
 var ammo;
 var health;
 var map;
@@ -39,7 +40,8 @@ function create() {
 
   //bullet physics
   layer.resizeWorld();
-  timer = game.time.create();
+  swingTimer = game.time.create();
+  attackTimer = game.time.create();
   game.input.onDown.add(attack, this);
   game.stage.backgroundColor = '#fff000';
 

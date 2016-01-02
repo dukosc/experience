@@ -11,31 +11,27 @@ var gunEquipped = true;
 var swordEquipped = false;
 var swung = false;
 var timer;
-var text;
+var ammo;
+var health;
 var map;
 var layer;
-
+var stats = JSON.parse(localStorage.getItem('stats'));
 function create() {
+
+  console.log(stats);
   game.stage.backgroundColor = '#787878';
 
-  //  The 'mario' key here is the Loader key given in game.load.tilemap
   map = game.add.tilemap('snowmap');
 
-  //  The first parameter is the tileset name, as specified in the Tiled map editor (and in the tilemap json file)
-  //  The second parameter maps this name to the Phaser.Cache key 'tiles'
+
   map.addTilesetImage('tiles', 'tiles');
   map.setCollisionByExclusion([13, 14, 8]);
 
-  //  Creates a layer from the World1 layer in the map data.
-  //  A Layer is effectively like a Phaser.Sprite, so is added to the display list.
-  layer = map.createLayer('SnowLevel');
-  // wallLayer = map.createLayer('Walls');
 
-  //  This resizes the game world to match the layer dimensions
-  // wallLayer.resizeWorld();
+  layer = map.createLayer('SnowLevel');
+
   game.physics.startSystem(Phaser.Physics.ARCADE);
-  //backgound
-  // game.add.sprite(0, 0, 'background');
+
 
 
 
@@ -104,8 +100,9 @@ function create() {
   player.body.setSize(64, 64);
   player.body.collideWorldBounds = true;
   player.ammo = 60;
-  // player.health = 10;
-  // player.enableBody = true;
+  player.health = 10 + stats.endurance;
+  player.stamina = 100 + (stats.endurance/5);
+  console.log(player.health);
   addWeapon('gun');
   game.camera.follow(player);
   enemies = [];
@@ -116,13 +113,28 @@ function create() {
   for (var i = 0; i < enemiesTotal; i++) {
     enemies.push(new Enemy(i, game, player, bullets));
   }
-  text = game.add.text(0, 0, "Ammo: " + player.ammo, {
+  game.input.onDown.add(unpause, self);
+  ammo = game.add.text(0, 0, "Ammo: " + player.ammo, {
     font: "30px Arial",
     fill: "#ff0044",
     align: "left"
   });
-  text.fixedToCamera = true;
-  text.cameraOffset.setTo(0, 0);
+  ammo.fixedToCamera = true;
+  ammo.cameraOffset.setTo(0, 0);
+  health = game.add.text(0, 0, "Health: " + player.health, {
+    font: "30px Arial",
+    fill: "#ff0044",
+    align: "left"
+  });
+  health.fixedToCamera = true;
+  health.cameraOffset.setTo(150, 0);
+  stamina = game.add.text(0, 0, "Stamina: " + player.stamina, {
+    font: "30px Arial",
+    fill: "#ff0044",
+    align: "left"
+  });
+  stamina.fixedToCamera = true;
+  stamina.cameraOffset.setTo(300, 0);
   //movement animations
 
   var run = player.animations.add('run', [4, 5, 6, 7, 8]);
@@ -136,6 +148,7 @@ function create() {
     right: game.input.keyboard.addKey(Phaser.Keyboard.D),
     space: game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR),
     e: game.input.keyboard.addKey(Phaser.Keyboard.E),
+    p: game.input.keyboard.addKey(Phaser.Keyboard.P),
   };
 
 }

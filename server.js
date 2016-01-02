@@ -22,7 +22,7 @@ app.get('/', function(req, res) {
 });
 
 
-
+var users;
 http.listen(port);
 
 
@@ -30,12 +30,20 @@ http.listen(port);
 io.on('connection', function(socket) {
   console.log("WE CONNECTED");
   User.find({}, function(err, data) {
+    users = data;
     console.log(data);
-    socket.emit('all:users', data);
   });
+  setInterval(function(){socket.emit('all:users', users)}, 1000);
+
   socket.on('complete:goal', function(val) {
+    console.log(User.stats);
     console.log('completed goal', val);
     var item = val.completedGoals.pop();
+    var svalue = val.svalue;
+    var evalue = val.evalue;
+    var dvalue = val.dvalue;
+    var ivalue = val.ivalue;
+    var wvalue = val.wvalue;
     User.findByIdAndUpdate(
       val._id, {
         $push: {
@@ -58,6 +66,30 @@ io.on('connection', function(socket) {
       val._id, {
         $pull: {
           currGoals: item
+        },
+      }, {
+        safe: true,
+        upsert: true,
+        new: true
+      },
+      function(err, pitch) {
+        if (err) {
+          console.log("UPDATE ERR", err);
+          throw err;
+        }
+        //  socket.emit('new:goal', user);
+      }
+    );
+    User.findByIdAndUpdate(
+      val._id, {
+        $set: {
+          stats: {
+            strength: val.stats.strength + svalue,
+            endurance: val.stats.endurance + evalue,
+            dexterity: val.stats.dexterity + dvalue,
+            intelligence: val.stats.intelligence + ivalue,
+            wisdom: val.stats.wisdom + wvalue
+          }
         },
       }, {
         safe: true,

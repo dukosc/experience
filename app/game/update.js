@@ -62,6 +62,10 @@ function update() {
     weapon.kill();
     addWeapon('sword', 'sword');
   }
+  if (game.input.keyboard.isDown(Phaser.KeyCode.THREE)) {
+    weapon.kill();
+    addWeapon('shield', 'shield');
+  }
   if (wasd.left.isDown) {
     player.body.velocity.x = -150;
     player.animations.play('run', 10, true);
@@ -72,9 +76,12 @@ function update() {
     }
     if (wasd.left.isDown && wasd.e.isDown) {
       player.body.velocity.x = -600;
-      player.animations.play('run', 20, true);
-      game.time.events.add(Phaser.Timer.SECOND * 1, player.body.velocity.x = -150, this);
+      player.animations.play('run', 40, true);
+      game.time.events.add(Phaser.Timer.HALF * 1, slowDownLeft, this);
+    }
+    function slowDownLeft() {
       player.body.velocity.x = -150;
+      player.animations.play('run', 10, true);
     }
   if (wasd.right.isDown) {
     player.body.velocity.x = 150;
@@ -87,6 +94,11 @@ function update() {
 if (wasd.right.isDown && wasd.e.isDown) {
  player.body.velocity.x = 600;
  player.animations.play('run', 20, true);
+ game.time.events.add(Phaser.Timer.HALF * 1, slowDownRight, this);
+}
+function slowDownRight() {
+  player.body.velocity.x = 150;
+  player.animations.play('run', 10, true);
 }
   if (wasd.up.isDown) {
     player.body.velocity.y = -150;
@@ -99,6 +111,11 @@ if (wasd.right.isDown && wasd.e.isDown) {
   if (wasd.up.isDown && wasd.e.isDown) {
     player.body.velocity.y = -600;
     player.animations.play('run', 20, true);
+    game.time.events.add(Phaser.Timer.HALF * 1, slowDownUp, this);
+  }
+  function slowDownUp() {
+    player.body.velocity.y = -150;
+    player.animations.play('run', 10, true);
   }
  if (wasd.down.isDown) {
     player.body.velocity.y = 150;
@@ -111,6 +128,11 @@ if (wasd.right.isDown && wasd.e.isDown) {
   if (wasd.down.isDown && wasd.e.isDown) {
     player.body.velocity.y = 600;
     player.animations.play('run', 20, true);
+    game.time.events.add(Phaser.Timer.HALF * 1, slowDownDown, this);
+  }
+  function slowDownDown() {
+    player.body.velocity.y = 150;
+    player.animations.play('run', 10, true);
   }
   if (!wasd.up.isDown && !wasd.down.isDown) {
     player.body.velocity.y = 0;

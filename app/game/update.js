@@ -53,6 +53,10 @@ function update() {
     weapon.kill();
     addWeapon('sword', 'sword');
   }
+  if(game.input.keyboard.isDown(Phaser.KeyCode.THREE)) {
+    weapon.kill();
+    addWeapon('shield', 'shield');
+  }
   if (swung === true && swordEquipped) {
     weapon.angle = weapon.angle + 90;
   }

@@ -1,8 +1,12 @@
 (function() {
 
     angular.module('vgoals')
-      .controller('ViewGoalsController', function($scope, $route, $rootScope, ViewGoalsService) {
+      .controller('ViewGoalsController', function($location, $scope, $route, $rootScope, ViewGoalsService) {
           var vm = this;
+          if($rootScope.visited === false){
+            location.reload();
+            $rootScope.visited = true;
+          }
           vm.putCompGoal = function(user){
             ViewGoalsService.emit('complete:goal', user);
           }
@@ -86,16 +90,13 @@
             }
             user.completedGoals.push(compGoal);
             vm.putCompGoal(user);
-            console.log(user);
+            location.reload();
           }
           ViewGoalsService.on('all:users', function(data) {
             var user = JSON.parse(localStorage.getItem('user'));
-            // console.log(user);
-            // console.log(data);
             var getGoals = function(){
               for (var i in data) {
                 if (user._id === data[i]._id) {
-                  console.log(data[i].currGoals);
                   return data[i].currGoals;
                 };
               }
@@ -121,6 +122,5 @@
             vm.completedGoals = getCompGoals();
             vm.stats = getStats();
           });
-          console.log(vm);
         });
 })();

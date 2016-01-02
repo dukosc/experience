@@ -9,7 +9,7 @@
       $routeProvider
       .when('/game-window', {
         templateUrl: 'gamewin/views/game-window.html',
-        controller: 'GameWindowController'
+        controller: 'GameController as gameCtrl'
       })
         .otherwise({ redirectTo: '/404'});
     });

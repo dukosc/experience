@@ -22,7 +22,7 @@ app.get('/', function(req, res) {
 });
 
 
-
+var users;
 http.listen(port);
 
 
@@ -30,9 +30,11 @@ http.listen(port);
 io.on('connection', function(socket) {
   console.log("WE CONNECTED");
   User.find({}, function(err, data) {
+    users = data;
     console.log(data);
-    socket.emit('all:users', data);
   });
+  setInterval(function(){socket.emit('all:users', users)}, 1000);
+
   socket.on('complete:goal', function(val) {
     console.log(User.stats);
     console.log('completed goal', val);

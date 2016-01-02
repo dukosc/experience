@@ -22,9 +22,14 @@ Enemy = function(index, game, player, bullets) {
   this.gun.scale.setTo(0.5, 0.5);
   this.enemy.anchor.set(0.5);
   this.gun.anchor.set(0.05, 0.45);
-
   this.enemy.name = index.toString();
   game.physics.enable(this.enemy, Phaser.Physics.ARCADE);
+  this.healthText = game.add.text(this.enemy.x, this.enemy.y - 50, "Health: " + this.health, {
+    font: "12px Arial",
+    fill: "#ff0044",
+    align: "left"
+  });
+  this.healthText.anchor.setTo(0.5, 0.5);
   this.enemy.body.setSize(64, 64, 0, 0);
   this.enemy.body.immovable = false;
   this.enemy.body.collideWorldBounds = true;
@@ -32,23 +37,25 @@ Enemy = function(index, game, player, bullets) {
 };
 Enemy.prototype.damage = function() {
   if (gunEquipped) {
-    this.health -= 1;
+    this.health -= 1 + (stats.dexterity/10);
   }
   // if (ggunEquipped) {
   //   this.health -= 3;
   // }
   if (swordEquipped) {
-    this.health -= 3;
+    this.health -= 3 + (stats.strength/10);
   }
   if (this.health <= 0) {
     this.alive = false;
     this.enemy.kill();
+    this.healthText.kill();
     this.gun.kill();
     if(Math.random() < 0.20){
       dropAmmo(this.enemy.x, this.enemy.y);
     }
     return true;
   }
+  this.healthText.text = "Health " + this.health;
   return false;
 };
 
@@ -114,4 +121,6 @@ Enemy.prototype.update = function() {
       this.timer.stop();
     }
   }
+  this.healthText.x = this.enemy.x;
+  this.healthText.y = this.enemy.y - 50;
 };

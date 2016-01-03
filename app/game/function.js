@@ -44,7 +44,6 @@ function swordSwing() {
   }
 }
 
-
 function addWeapon(wpn, type) {
   if (type === 'sword') {
     drawSword.play();

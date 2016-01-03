@@ -56,10 +56,6 @@ function addWeapon(wpn, type) {
     swordEquipped = false;
   }
   //added this below
-  if (type === 'shield') {
-    gunEquipped = false;
-    swordEquipped = false;
-  }
   weapon = game.add.sprite(player.body.x, player.body.y, wpn);
   if (wpn === "shield") {
 

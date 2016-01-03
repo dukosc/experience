@@ -33,8 +33,10 @@ var preload = function() {
   game.load.audio ('gunClick', 'game/audio/gun-click.mp3');
   game.load.audio ('drawSword', 'game/audio/draw-sword.mp3');
   game.load.audio ('drawGun', 'game/audio/draw-gun.mp3');
+  game.load.audio ('drawShield', 'game/audio/draw-shield.mp3');
   game.load.audio ('swordSlash', 'game/audio/sword-slash.mp3');
   game.load.audio ('laserSwordOn', 'game/audio/laser-sword-on.mp3');
   game.load.audio ('ammoEquip', 'game/audio/ammo-equip.mp3');
   game.load.audio ('themeSong', 'game/audio/theme-song.mp3');
+  game.load.audio ('fireball', 'game/audio/fireball.mp3');
 };

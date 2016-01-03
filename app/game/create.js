@@ -28,11 +28,13 @@ var gunshot;
 var gunClick;
 var drawSword;
 var drawGun;
+var drawShield;
 var swordSlash;
 var ammoEquip;
 var laserSwordOn;
 var laserSwordOff;
-var drawShield;
+var fireball;
+
 
 function create() {
   wasd = {
@@ -72,6 +74,9 @@ function create() {
   game.input.onDown.add(attack, this);
   wasd.e.onDown.add(function(){
     rollDelay.start();
+  }, this);
+  wasd.q.onDown.add(function(){
+    drawShield.play();
   }, this);
   game.stage.backgroundColor = '#fff000';
 
@@ -191,7 +196,8 @@ function create() {
   laserSwordOn = game.add.audio('laserSwordOn');
   laserSwordOff = game.add.audio('laserSwordOff');
   drawShield = game.add.audio('drawShield');
-  game.sound.setDecodedCallback([ gunshot, gunClick, drawSword, drawGun, swordSlash, ammoEquip, themeSong, laserSwordOn, laserSwordOff, drawShield ], start, this);
+  fireball = game.add.audio('fireball');
+  game.sound.setDecodedCallback([ gunshot, gunClick, drawSword, drawGun, drawShield, swordSlash, ammoEquip, themeSong, laserSwordOn, laserSwordOff, fireball], start, this);
 }
 
 

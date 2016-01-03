@@ -8,6 +8,7 @@ var ranOnce = true;
 
 function gunFire() {
   if (!game.paused) {
+    gunshot.play();
     if (game.time.now > nextFire && bullets.countDead() > 0 && player.ammo > 0) {
       nextFire = game.time.now + fireRate;
       bullet = bullets.getFirstExists(false);
@@ -48,11 +49,13 @@ function shieldBlock() {
 
 function addWeapon(wpn, type) {
   if (type === 'sword') {
+    drawSword.play();
     swordEquipped = true;
     gunEquipped = false;
     shieldEquipped = false;
   }
   if (type === 'gun') {
+    drawGun.play();
     gunEquipped = true;
     swordEquipped = false;
     shieldEquipped = false;
@@ -76,6 +79,7 @@ function dropAmmo(x, y) {
 
 function collectAmmo() {
   ammo.kill();
+  ammoEquip.play();
   player.ammo += 25;
   ammo.text = 'Ammo: ' + player.ammo;
 }
@@ -86,6 +90,7 @@ function attack() {
     gunFire();
   }
   if (swordEquipped && attackTimer.seconds > 0.5) {
+    swordSlash.play();
     swordSwing();
     attackTimer.stop();
   }

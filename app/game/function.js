@@ -48,6 +48,14 @@ function addWeapon(wpn, type) {
   if (type === 'sword') {
     drawSword.play();
     swordEquipped = true;
+    laserSwordEquipped = false;
+    gunEquipped = false;
+    shieldEquipped = false;
+  }
+  if (type === 'laserSword') {
+    laserSwordOn.play();
+    laserSwordEquipped = true;
+    swordEquipped = false;
     gunEquipped = false;
     shieldEquipped = false;
   }
@@ -55,12 +63,14 @@ function addWeapon(wpn, type) {
     drawGun.play();
     gunEquipped = true;
     swordEquipped = false;
+    laserSwordEquipped = false;
     shieldEquipped = false;
   }
   //added this below
   if (type === 'shield') {
     gunEquipped = false;
     swordEquipped = false;
+    laserSwordEquipped = false;
     shieldEquipped = true;
   }
   weapon = game.add.sprite(player.body.x, player.body.y, wpn);
@@ -93,6 +103,11 @@ function attack() {
   }
   if (swordEquipped && attackTimer.seconds > 0.5) {
     swordSlash.play();
+    swordSwing();
+    attackTimer.stop();
+  }
+  if (laserSwordEquipped && attackTimer.seconds > 0.5) {
+    laserSwordSlash.play();
     swordSwing();
     attackTimer.stop();
   }

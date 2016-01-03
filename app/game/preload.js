@@ -19,6 +19,7 @@ var preload = function() {
   game.load.image('tiles', 'game/assets/tiles/tiles.png');
   game.load.image('ammo', 'game/assets/ammo-crate.png');
   game.load.image('sword', 'game/assets/sword.png');
+  game.load.spritesheet('laserSword', 'game/assets/red-sword.png', 128, 128);
   game.load.image('slash', 'game/assets/slash.png');
   game.load.image('gun', 'game/assets/pistol.png');
   game.load.image('bullet', 'game/assets/bullet.png');
@@ -32,6 +33,7 @@ var preload = function() {
   game.load.audio ('drawSword', 'game/assets/audio/draw-sword.mp3');
   game.load.audio ('drawGun', 'game/assets/audio/draw-gun.mp3');
   game.load.audio ('swordSlash', 'game/assets/audio/sword-slash.mp3');
+  game.load.audio ('laserSwordOn', 'game/assets/audio/laser-sword-on.mp3');
   game.load.audio ('ammoEquip', 'game/assets/audio/ammo-equip.mp3');
   game.load.audio ('themeSong', 'game/assets/audio/theme-song.mp3');
 };

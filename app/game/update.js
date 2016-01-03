@@ -64,4 +64,10 @@ function update() {
     slash.kill();
     swingTimer.stop();
   }
+  if(rollTimer.seconds >= 0.5){
+    console.log('beep');
+    clearInterval(rollInt);
+    player.angle = 0;
+    rollTimer.stop();
+  }
 }

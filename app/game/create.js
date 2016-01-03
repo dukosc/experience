@@ -12,13 +12,22 @@ var swordEquipped = false;
 var swung = false;
 var swingTimer;
 var attackTimer;
+var rollTimer;
 var ammo;
 var health;
 var map;
 var layer;
 var stats = JSON.parse(localStorage.getItem('stats'));
 function create() {
-
+  wasd = {
+    up: game.input.keyboard.addKey(Phaser.Keyboard.W),
+    down: game.input.keyboard.addKey(Phaser.Keyboard.S),
+    left: game.input.keyboard.addKey(Phaser.Keyboard.A),
+    right: game.input.keyboard.addKey(Phaser.Keyboard.D),
+    space: game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR),
+    e: game.input.keyboard.addKey(Phaser.Keyboard.E),
+    p: game.input.keyboard.addKey(Phaser.Keyboard.P),
+  };
   console.log(stats);
   game.stage.backgroundColor = '#787878';
 
@@ -43,7 +52,12 @@ function create() {
   layer.resizeWorld();
   swingTimer = game.time.create();
   attackTimer = game.time.create();
+  rollTimer = game.time.create();
   game.input.onDown.add(attack, this);
+  wasd.e.onDown.add(function(){
+    rollTimer.start();
+    rollInt = setInterval(roll, 10);
+  }, this);
   game.stage.backgroundColor = '#fff000';
 
   game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -144,14 +158,5 @@ function create() {
   var idle = player.animations.add('idle', [0, 1, 2, 3]);
   cursors = game.input.keyboard.createCursorKeys();
 
-  wasd = {
-    up: game.input.keyboard.addKey(Phaser.Keyboard.W),
-    down: game.input.keyboard.addKey(Phaser.Keyboard.S),
-    left: game.input.keyboard.addKey(Phaser.Keyboard.A),
-    right: game.input.keyboard.addKey(Phaser.Keyboard.D),
-    space: game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR),
-    e: game.input.keyboard.addKey(Phaser.Keyboard.E),
-    p: game.input.keyboard.addKey(Phaser.Keyboard.P),
-  };
 
 }

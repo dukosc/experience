@@ -43,8 +43,7 @@ function swordSwing() {
 }
 
 function shieldBlock() {
-  if (game.time.now > nextFire && blocks.bullet() > 0) {
-}
+  if (game.time.now > nextFire && blocks.bullet() > 0) {}
 }
 
 function addWeapon(wpn, type) {
@@ -152,3 +151,52 @@ function unpause(event) {
     }
   }
 };
+
+
+
+function roll() {
+    if (wasd.up.isDown) {
+      player.body.velocity.y = -600;
+      player.animations.play('run', 20, true);
+      player.angle += 20;
+      game.time.events.add(Phaser.Timer.HALF * 1, slowDownUp, this);
+  }
+
+  function slowDownUp() {
+    player.body.velocity.y = -150;
+    player.animations.play('run', 10, true);
+  }
+  if (wasd.down.isDown) {
+    player.body.velocity.y = 600;
+    player.animations.play('run', 20, true);
+    player.angle += 20;
+    game.time.events.add(Phaser.Timer.HALF * 1, slowDownDown, this);
+  }
+
+  function slowDownDown() {
+    player.body.velocity.y = 150;
+    player.animations.play('run', 10, true);
+  }
+  if (wasd.left.isDown) {
+    player.body.velocity.x = -600;
+    player.animations.play('run', 40, true);
+    player.angle += 20;
+    game.time.events.add(Phaser.Timer.HALF * 1, slowDownLeft, this);
+  }
+
+  function slowDownLeft() {
+    player.body.velocity.x = -150;
+    player.animations.play('run', 10, true);
+  }
+  if (wasd.right.isDown) {
+    player.body.velocity.x = 600;
+    player.animations.play('run', 20, true);
+    player.angle += 20;
+    game.time.events.add(Phaser.Timer.HALF * 1, slowDownRight, this);
+  }
+
+  function slowDownRight() {
+    player.body.velocity.x = 150;
+    player.animations.play('run', 10, true);
+  }
+}

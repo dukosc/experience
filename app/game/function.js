@@ -7,9 +7,9 @@ var bullet;
 var ranOnce = true;
 
 function gunFire() {
-  if (!game.paused) {
-    gunshot.play();
+  if (!game.paused && !shieldEquipped) {
     if (game.time.now > nextFire && bullets.countDead() > 0 && player.ammo > 0) {
+      gunshot.play();
       nextFire = game.time.now + fireRate;
       bullet = bullets.getFirstExists(false);
       bullet.scale.setTo(0.5, 0.5);
@@ -20,13 +20,14 @@ function gunFire() {
       player.ammo--;
       ammo.text = 'Ammo: ' + player.ammo;
     } else {
+      gunClick.play();
       return;
     }
   }
 }
 
 function swordSwing() {
-  if (!game.paused) {
+  if (!game.paused && !shieldEquipped) {
     if (game.time.now > nextFire && slashes.countDead() > 0) {
       nextSlash = game.time.now + swingRate;
       slash = slashes.getFirstExists(false);
@@ -57,7 +58,6 @@ function addWeapon(wpn, type) {
     laserSwordEquipped = true;
     swordEquipped = false;
     gunEquipped = false;
-    shieldEquipped = false;
   }
   if (type === 'gun') {
     drawGun.play();
@@ -74,14 +74,24 @@ function addWeapon(wpn, type) {
     shieldEquipped = true;
   }
   weapon = game.add.sprite(player.body.x, player.body.y, wpn);
-  if(wpn === "shield"){
-    var shieldFlicker = weapon.animations.add('shieldFlicker', [0, 1, 2, 3, 4], 1);
+  if (wpn === "shield") {
+
   }
   weapon.enableBody = true;
   game.physics.arcade.enable(weapon);
   weapon.scale.setTo(0.5, 0.5);
   weapon.anchor.setTo(0.05, 0.45);
   // game.physics.arcade.enable(weapon);
+}
+
+function addShield() {
+  shield = game.add.sprite(player.body.x, player.body.y, 'shield');
+  var shieldFlicker = shield.animations.add('shieldFlicker', [0, 1, 2, 3, 4], 1);
+  shield.enableBody = true;
+  shieldEquipped = true;
+  game.physics.arcade.enable(shield);
+  shield.anchor.setTo(0.5, 0.5);
+  shield.scale.setTo(1, 1);
 }
 
 function dropAmmo(x, y) {
@@ -125,10 +135,11 @@ function bulletHitEnemy(enemy, bullet) {
   }
   var destroyed = enemies[enemy.name].damage();
 }
-function bulletBlocked(shield, bullet){
-  console.log('fire');
+
+function bulletBlocked(shield, bullet) {
   bullet.kill();
 }
+
 function bulletHitPlayer(player, bullet) {
   bullet.kill();
   player.health = player.health - 1;
@@ -180,11 +191,11 @@ function unpause(event) {
 
 
 function roll() {
-    if (wasd.up.isDown) {
-      player.body.velocity.y = -600;
-      player.animations.play('run', 20, true);
-      player.angle += 20;
-      game.time.events.add(Phaser.Timer.HALF * 1, slowDownUp, this);
+  if (wasd.up.isDown) {
+    player.body.velocity.y = -600;
+    player.animations.play('run', 20, true);
+    player.angle += 20;
+    game.time.events.add(Phaser.Timer.HALF * 1, slowDownUp, this);
   }
 
   function slowDownUp() {

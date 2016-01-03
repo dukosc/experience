@@ -6,11 +6,13 @@ function update() {
   game.physics.arcade.collide(enemyBullets, layer, collided);
   weapon.x = player.body.x + 32;
   weapon.y = player.body.y + 32;
+  shield.x = player.body.x + 32;
+  shield.y = player.body.y + 32;
+  shield.visible = false;
+  shieldEquipped = false;
+  weapon.visible = true;
+  shield.body.enable = false;
   game.physics.arcade.overlap(enemyBullets, player, bulletHitPlayer, null, this);
-  if(shieldEquipped){
-    game.physics.arcade.overlap(enemyBullets, weapon, bulletBlocked, null, this);
-    weapon.animations.play('shieldFlicker', 10);
-  }
   if (swordEquipped) {
     weapon.anchor.setTo(0, 1);
     weapon.y = player.body.y + 40;
@@ -20,11 +22,6 @@ function update() {
     weapon.y = player.body.y + 40;
   }
   weapon.rotation = game.physics.arcade.angleToPointer(weapon);
-  if(shieldEquipped) {
-    weapon.anchor.setTo(0.5, 0.5);
-    weapon.scale.setTo(1, 1);
-    weapon.rotation = game.physics.arcade.angleToPointer(weapon) + 0.75;
-  }
   if (game.input.mousePointer.x < player.x - game.camera.x) {
     player.scale.x = -1;
     if (gunEquipped) {
@@ -36,6 +33,10 @@ function update() {
     if (gunEquipped) {
       weapon.scale.y = 0.5;
     }
+  }
+  if(shieldEquipped){
+
+    weapon.animations.play('shieldFlicker', 10);
   }
   enemiesAlive = 0;
   if(player.health <= 0){
@@ -68,12 +69,10 @@ function update() {
   }
   if(game.input.keyboard.isDown(Phaser.KeyCode.THREE)) {
     weapon.kill();
-    addWeapon('shield', 'shield');
+    addWeapon('laserSword', 'laserSword');
   }
-  if(game.input.keyboard.isDown(Phaser.KeyCode.FOUR)) {
-    weapon.kill();
-    addWeapon('laserSword', 'sword');
-  }
+  activateShield();
+
   if (swung === true && swordEquipped) {
     weapon.angle = weapon.angle + 90;
   }
@@ -81,10 +80,12 @@ function update() {
     slash.kill();
     swingTimer.stop();
   }
-  if(rollTimer.seconds >= 0.5){
-    console.log('beep');
-    clearInterval(rollInt);
-    player.angle = 0;
-    rollTimer.stop();
+  if(rollDelay.seconds < 0.5 && rollDelay.running === true){
+    roll();
   }
+  if(rollDelay.seconds > 0.5){
+    rollDelay.stop();
+    player.angle = 0;
+  }
+  restoreMana();
 }

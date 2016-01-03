@@ -29,11 +29,12 @@ var preload = function() {
   game.load.spritesheet('player', 'game/assets/player.png', 128, 128, 10);
   /////////////////////////////////////////////////////////////////////////audio
 
-  game.load.audio ('gunshot', 'game/assets/audio/gunshot.mp3');
-  game.load.audio ('drawSword', 'game/assets/audio/draw-sword.mp3');
-  game.load.audio ('drawGun', 'game/assets/audio/draw-gun.mp3');
-  game.load.audio ('swordSlash', 'game/assets/audio/sword-slash.mp3');
-  game.load.audio ('laserSwordOn', 'game/assets/audio/laser-sword-on.mp3');
-  game.load.audio ('ammoEquip', 'game/assets/audio/ammo-equip.mp3');
-  game.load.audio ('themeSong', 'game/assets/audio/theme-song.mp3');
+  game.load.audio ('gunshot', 'game/audio/gunshot.mp3');
+  game.load.audio ('gunClick', 'game/audio/gun-click.mp3');
+  game.load.audio ('drawSword', 'game/audio/draw-sword.mp3');
+  game.load.audio ('drawGun', 'game/audio/draw-gun.mp3');
+  game.load.audio ('swordSlash', 'game/audio/sword-slash.mp3');
+  game.load.audio ('laserSwordOn', 'game/audio/laser-sword-on.mp3');
+  game.load.audio ('ammoEquip', 'game/audio/ammo-equip.mp3');
+  game.load.audio ('themeSong', 'game/audio/theme-song.mp3');
 };

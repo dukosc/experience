@@ -44,29 +44,7 @@ function update() {
         choiseLabel = game.add.text(game.camera.x + 400/2, game.camera.y+150, 'Click outside menu to continue', { font: '30px Arial', fill: '#fff' });
         choiseLabel.anchor.setTo(0.5, 0.5);
   }
-  // for (var i = 0; i < enemies.length; i++) {
-  //   if(player.x < enemies.getAt(i).body.x + 144 && player.x > enemies.getAt(i).body.x - 144 && player.y > enemies.getAt(i).body.y - 144 && player.y < enemies.getAt(i).body.y + 144){
-  //     enemies.getAt(i).isRunning = true;
-  //   }
-  //   if(enemies.getAt(i).isRunning === undefined || enemies.getAt(i).isRunning === false){
-  //     enemies.getAt(i).isRunning = false;
-  //     enemies.getAt(i).animations.play('idle', 10, true);
-  //   }
-  //   if(enemies.getAt(i).isRunning === true){
-  //     moveToPlayer(enemies.getAt(i));
-  //     if(enemies.getAt(i).x < player.x){
-  //       enemies.getAt(i).scale.x = 1;
-  //     }
-  //     else{
-  //       enemies.getAt(i).scale.x = -1;
-  //     }
-  //     enemies.getAt(i).animations.play('run', 10, true);
-  //   }
-  // }
-  if(player.stamina < (100 + stats.endurance/5)){
-    player.stamina++;
-    stamina.text = "Stamina: " + player.stamina;
-  }
+  move();
   if (game.input.keyboard.isDown(Phaser.KeyCode.ONE)) {
     weapon.kill();
     addWeapon('gun', 'gun');
@@ -76,129 +54,21 @@ function update() {
     weapon.kill();
     addWeapon('sword', 'sword');
   }
-  if (wasd.left.isDown) {
-    player.body.velocity.x = -150 - (stats.dexterity/5);
-    player.stamina--;
-    player.animations.play('run', 10, true);
-  }
-  if (wasd.left.isDown && wasd.space.isDown) {
-    if(player.stamina <= 0){
-      player.stamina = 0;
-      player.body.velocity.x = -150 - (stats.dexterity/5);
-    }else{
-      player.body.velocity.x = -300 - (stats.dexterity/5);
-      player.stamina--;
-      stamina.text = 'Stamina: ' + player.stamina;
-    }
-    player.animations.play('run', 20, true);
-  }
-  if (wasd.left.isDown && wasd.e.isDown) {
-    player.body.velocity.x = -600;
-    player.animations.play('run', 20, true);
-    game.time.events.add(Phaser.Timer.SECOND * 1, player.body.velocity.x = -150, this);
-    player.body.velocity.x = -150;
-  }
-  if (wasd.right.isDown) {
-    player.body.velocity.x = 150 + (stats.dexterity/5);
-    player.stamina--;
-    player.animations.play('run', 10, true);
-  }
-  if (wasd.right.isDown && wasd.space.isDown) {
-    if(player.stamina <= 0){
-      player.stamina = 0;
-      player.body.velocity.x = 150 + (stats.dexterity/5);
-    }else{
-      player.body.velocity.x = 300 + (stats.dexterity/5);
-      player.stamina--;
-      stamina.text = 'Stamina: ' + player.stamina;
-    }
-    player.animations.play('run', 20, true);
-  }
-  if (wasd.right.isDown && wasd.e.isDown) {
-    player.body.velocity.x = 600;
-    player.animations.play('run', 20, true);
-  }
-  if (wasd.up.isDown) {
-    player.body.velocity.y = -150 - (stats.dexterity/5);
-    player.stamina--;
-    player.animations.play('run', 10, true);
-  }
-  if (wasd.up.isDown && wasd.space.isDown) {
-    if(player.stamina <= 0){
-      player.stamina = 0;
-      player.body.velocity.y = -150 - (stats.dexterity/5);
-    }else{
-      player.body.velocity.y = -300 - (stats.dexterity/5);
-      player.stamina--;
-      stamina.text = 'Stamina: ' + player.stamina;
-    }
-    player.animations.play('run', 20, true);
-  }
-  if (wasd.up.isDown && wasd.e.isDown) {
-    player.body.velocity.y = -600;
-    player.animations.play('run', 20, true);
-  }
-  if (wasd.down.isDown) {
-    player.body.velocity.y = 150 + (stats.dexterity/5);
-    player.stamina--;
-    player.animations.play('run', 10, true);
-  }
-  if (wasd.down.isDown && wasd.space.isDown) {
-    if(player.stamina <= 0){
-      player.stamina = 0;
-      player.body.velocity.y = 150 + (stats.dexterity/5);
-    }else{
-      player.body.velocity.y = 300 + (stats.dexterity/5);
-      player.stamina--;
-      stamina.text = 'Stamina: ' + player.stamina;
-    }
-    player.animations.play('run', 20, true);
-  }
-  if (wasd.down.isDown && wasd.e.isDown) {
-    player.body.velocity.y = 600;
-    player.animations.play('run', 20, true);
-  }
-  if (!wasd.up.isDown && !wasd.down.isDown) {
-    player.body.velocity.y = 0;
-  }
-  if (!wasd.down.isDown && !wasd.up.isDown && !wasd.right.isDown && !wasd.left.isDown) {
-    // player.animations.stop();
-    player.animations.play('idle', 10, true);
-    player.body.velocity.y = 0;
-  }
-  if(wasd.up.isDown && wasd.right.isDown){
-    player.stamina++;
-  }
-  if(wasd.up.isDown && wasd.left.isDown){
-    player.stamina++;
-  }
-  if(wasd.down.isDown && wasd.right.isDown){
-    player.stamina++;
-  }
-  if(wasd.down.isDown && wasd.left.isDown){
-    player.stamina++;
-  }
-  if(wasd.up.isDown && wasd.right.isDown && wasd.space.isDown){
-    player.stamina++;
-  }
-  if(wasd.up.isDown && wasd.left.isDown && wasd.space.isDown){
-    player.stamina++;
-  }
-  if(wasd.down.isDown && wasd.right.isDown && wasd.space.isDown){
-    player.stamina++;
-  }
-  if(wasd.down.isDown && wasd.left.isDown && wasd.space.isDown){
-    player.stamina++;
+  if(game.input.keyboard.isDown(Phaser.KeyCode.THREE)) {
+    weapon.kill();
+    addWeapon('shield', 'shield');
   }
   if (swung === true && swordEquipped) {
     weapon.angle = weapon.angle + 90;
   }
-  if (timer.seconds > 0.1) {
+  if (swingTimer.seconds > 0.1) {
     slash.kill();
-    timer.stop();
+    swingTimer.stop();
   }
-
-  //collision
-  // game.physics.arcade.collide(player, walls);
-
+  if(rollTimer.seconds >= 0.5){
+    console.log('beep');
+    clearInterval(rollInt);
+    player.angle = 0;
+    rollTimer.stop();
+  }
 }

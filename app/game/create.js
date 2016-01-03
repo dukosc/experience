@@ -3,13 +3,16 @@ var walls;
 var cursors;
 var wasd;
 var weapon;
+var shield;
 var bullets;
 var slashes;
 var enemies;
 var gunEquipped = true;
 var swordEquipped = false;
 var swung = false;
-var timer;
+var swingTimer;
+var attackTimer;
+var rollTimer;
 var ammo;
 var health;
 var map;
@@ -25,7 +28,15 @@ var swordSlash;
 var ammoEquip;
 
 function create() {
-
+  wasd = {
+    up: game.input.keyboard.addKey(Phaser.Keyboard.W),
+    down: game.input.keyboard.addKey(Phaser.Keyboard.S),
+    left: game.input.keyboard.addKey(Phaser.Keyboard.A),
+    right: game.input.keyboard.addKey(Phaser.Keyboard.D),
+    space: game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR),
+    e: game.input.keyboard.addKey(Phaser.Keyboard.E),
+    p: game.input.keyboard.addKey(Phaser.Keyboard.P),
+  };
   console.log(stats);
   game.stage.backgroundColor = '#787878';
 
@@ -47,8 +58,14 @@ function create() {
 
   //bullet physics
   layer.resizeWorld();
-  timer = game.time.create();
+  swingTimer = game.time.create();
+  attackTimer = game.time.create();
+  rollTimer = game.time.create();
   game.input.onDown.add(attack, this);
+  wasd.e.onDown.add(function(){
+    rollTimer.start();
+    rollInt = setInterval(roll, 10);
+  }, this);
   game.stage.backgroundColor = '#fff000';
 
   game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -81,6 +98,14 @@ function create() {
   slashes.setAll('anchor.y', 0.5);
   slashes.setAll('outOfBoundsKill', true);
   slashes.setAll('checkWorldBounds', true);
+  shield = game.add.group();
+  shield.enableBody = true;
+  shield.physicsBodyType = Phaser.Physics.ARCADE;
+  shield.createMultiple(10, 'slash', 0, false);
+  shield.setAll('anchor.x', 0.5);
+  shield.setAll('anchor.y', 0.5);
+  shield.setAll('outOfBoundsKill', true);
+  shield.setAll('checkWorldBounds', true);
   enemies = game.add.group();
   enemies.enableBody = true;
   enemies.physicsBodyType = Phaser.Physics.ARCADE;
@@ -100,9 +125,9 @@ function create() {
   player.body.collideWorldBounds = true;
   player.ammo = 60;
   player.health = 10 + stats.endurance;
-  player.stamina = 100 + (stats.endurance/5);
+  player.stamina = 100 + Math.floor(stats.endurance/5);
+  player.mana = 100 + (stats.wisdom/2);
   console.log(player.health);
-  // player.enableBody = true;
   addWeapon('gun');
   game.camera.follow(player);
   enemies = [];
@@ -141,15 +166,6 @@ function create() {
   var idle = player.animations.add('idle', [0, 1, 2, 3]);
   cursors = game.input.keyboard.createCursorKeys();
 
-  wasd = {
-    up: game.input.keyboard.addKey(Phaser.Keyboard.W),
-    down: game.input.keyboard.addKey(Phaser.Keyboard.S),
-    left: game.input.keyboard.addKey(Phaser.Keyboard.A),
-    right: game.input.keyboard.addKey(Phaser.Keyboard.D),
-    space: game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR),
-    e: game.input.keyboard.addKey(Phaser.Keyboard.E),
-    p: game.input.keyboard.addKey(Phaser.Keyboard.P),
-  };
 
   themeSong = game.add.audio('themeSong');
   themeSong.play();

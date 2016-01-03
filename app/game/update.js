@@ -7,12 +7,20 @@ function update() {
   weapon.x = player.body.x + 32;
   weapon.y = player.body.y + 32;
   game.physics.arcade.overlap(enemyBullets, player, bulletHitPlayer, null, this);
-  // game.physics.arcade.overlap(slashes, enemies, collisionDetection, processHandler, this);
+  if(shieldEquipped){
+    game.physics.arcade.overlap(enemyBullets, weapon, bulletBlocked, null, this);
+    weapon.animations.play('shieldFlicker', 10);
+  }
   if (swordEquipped) {
     weapon.anchor.setTo(0, 1);
     weapon.y = player.body.y + 40;
   }
   weapon.rotation = game.physics.arcade.angleToPointer(weapon);
+  if(shieldEquipped) {
+    weapon.anchor.setTo(0.5, 0.5);
+    weapon.scale.setTo(1, 1);
+    weapon.rotation = game.physics.arcade.angleToPointer(weapon) + 0.75;
+  }
   if (game.input.mousePointer.x < player.x - game.camera.x) {
     player.scale.x = -1;
     if (gunEquipped) {

@@ -43,9 +43,6 @@ function swordSwing() {
   }
 }
 
-function shieldBlock() {
-  if (game.time.now > nextFire && blocks.bullet() > 0) {}
-}
 
 function addWeapon(wpn, type) {
   if (type === 'sword') {
@@ -67,6 +64,11 @@ function addWeapon(wpn, type) {
     shieldEquipped = true;
   }
   weapon = game.add.sprite(player.body.x, player.body.y, wpn);
+  if(wpn === "shield"){
+    var shieldFlicker = weapon.animations.add('shieldFlicker', [0, 1, 2, 3, 4], 1);
+  }
+  weapon.enableBody = true;
+  game.physics.arcade.enable(weapon);
   weapon.scale.setTo(0.5, 0.5);
   weapon.anchor.setTo(0.05, 0.45);
   // game.physics.arcade.enable(weapon);
@@ -108,7 +110,10 @@ function bulletHitEnemy(enemy, bullet) {
   }
   var destroyed = enemies[enemy.name].damage();
 }
-
+function bulletBlocked(shield, bullet){
+  console.log('fire');
+  bullet.kill();
+}
 function bulletHitPlayer(player, bullet) {
   bullet.kill();
   player.health = player.health - 1;

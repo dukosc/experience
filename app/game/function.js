@@ -8,8 +8,8 @@ var ranOnce = true;
 
 function gunFire() {
   if (!game.paused && !shieldEquipped) {
-    gunshot.play();
     if (game.time.now > nextFire && bullets.countDead() > 0 && player.ammo > 0) {
+      gunshot.play();
       nextFire = game.time.now + fireRate;
       bullet = bullets.getFirstExists(false);
       bullet.scale.setTo(0.5, 0.5);
@@ -20,6 +20,7 @@ function gunFire() {
       player.ammo--;
       ammo.text = 'Ammo: ' + player.ammo;
     } else {
+      gunClick.play();
       return;
     }
   }
@@ -47,17 +48,29 @@ function addWeapon(wpn, type) {
   if (type === 'sword') {
     drawSword.play();
     swordEquipped = true;
+    laserSwordEquipped = false;
+    gunEquipped = false;
+    shieldEquipped = false;
+  }
+  if (type === 'laserSword') {
+    laserSwordOn.play();
+    laserSwordEquipped = true;
+    swordEquipped = false;
     gunEquipped = false;
   }
   if (type === 'gun') {
     drawGun.play();
     gunEquipped = true;
     swordEquipped = false;
+    laserSwordEquipped = false;
+    shieldEquipped = false;
   }
   //added this below
   if (type === 'shield') {
     gunEquipped = false;
     swordEquipped = false;
+    laserSwordEquipped = false;
+    shieldEquipped = true;
   }
   weapon = game.add.sprite(player.body.x, player.body.y, wpn);
   if (wpn === "shield") {
@@ -99,6 +112,11 @@ function attack() {
   }
   if (swordEquipped && attackTimer.seconds > 0.5) {
     swordSlash.play();
+    swordSwing();
+    attackTimer.stop();
+  }
+  if (laserSwordEquipped && attackTimer.seconds > 0.5) {
+    laserSwordSlash.play();
     swordSwing();
     attackTimer.stop();
   }
@@ -172,48 +190,48 @@ function unpause(event) {
 
 
 function roll() {
-    if (wasd.up.isDown) {
-      player.body.velocity.y = -600;
-      player.animations.play('run', 20, true);
-      player.angle += 20;
-      game.time.events.add(Phaser.Timer.HALF * 1, slowDownUp, this);
-    }
+  if (wasd.up.isDown) {
+    player.body.velocity.y = -600;
+    player.animations.play('run', 20, true);
+    player.angle += 20;
+    game.time.events.add(Phaser.Timer.HALF * 1, slowDownUp, this);
+  }
 
-    function slowDownUp() {
-      player.body.velocity.y = -150;
-      player.animations.play('run', 10, true);
-    }
-    if (wasd.down.isDown) {
-      player.body.velocity.y = 600;
-      player.animations.play('run', 20, true);
-      player.angle += 20;
-      game.time.events.add(Phaser.Timer.HALF * 1, slowDownDown, this);
-    }
+  function slowDownUp() {
+    player.body.velocity.y = -150;
+    player.animations.play('run', 10, true);
+  }
+  if (wasd.down.isDown) {
+    player.body.velocity.y = 600;
+    player.animations.play('run', 20, true);
+    player.angle += 20;
+    game.time.events.add(Phaser.Timer.HALF * 1, slowDownDown, this);
+  }
 
-    function slowDownDown() {
-      player.body.velocity.y = 150;
-      player.animations.play('run', 10, true);
-    }
-    if (wasd.left.isDown) {
-      player.body.velocity.x = -600;
-      player.animations.play('run', 40, true);
-      player.angle += 20;
-      game.time.events.add(Phaser.Timer.HALF * 1, slowDownLeft, this);
-    }
+  function slowDownDown() {
+    player.body.velocity.y = 150;
+    player.animations.play('run', 10, true);
+  }
+  if (wasd.left.isDown) {
+    player.body.velocity.x = -600;
+    player.animations.play('run', 40, true);
+    player.angle += 20;
+    game.time.events.add(Phaser.Timer.HALF * 1, slowDownLeft, this);
+  }
 
-    function slowDownLeft() {
-      player.body.velocity.x = -150;
-      player.animations.play('run', 10, true);
-    }
-    if (wasd.right.isDown) {
-      player.body.velocity.x = 600;
-      player.animations.play('run', 20, true);
-      player.angle += 20;
-      game.time.events.add(Phaser.Timer.HALF * 1, slowDownRight, this);
-    }
+  function slowDownLeft() {
+    player.body.velocity.x = -150;
+    player.animations.play('run', 10, true);
+  }
+  if (wasd.right.isDown) {
+    player.body.velocity.x = 600;
+    player.animations.play('run', 20, true);
+    player.angle += 20;
+    game.time.events.add(Phaser.Timer.HALF * 1, slowDownRight, this);
+  }
 
-    function slowDownRight() {
-      player.body.velocity.x = 150;
-      player.animations.play('run', 10, true);
-    }
+  function slowDownRight() {
+    player.body.velocity.x = 150;
+    player.animations.play('run', 10, true);
+  }
 }

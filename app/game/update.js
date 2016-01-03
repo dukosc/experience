@@ -17,6 +17,10 @@ function update() {
     weapon.anchor.setTo(0, 1);
     weapon.y = player.body.y + 40;
   }
+  if (laserSwordEquipped) {
+    weapon.anchor.setTo(0, 1);
+    weapon.y = player.body.y + 40;
+  }
   weapon.rotation = game.physics.arcade.angleToPointer(weapon);
   if (game.input.mousePointer.x < player.x - game.camera.x) {
     player.scale.x = -1;
@@ -63,7 +67,12 @@ function update() {
     weapon.kill();
     addWeapon('sword', 'sword');
   }
+  if(game.input.keyboard.isDown(Phaser.KeyCode.THREE)) {
+    weapon.kill();
+    addWeapon('laserSword', 'laserSword');
+  }
   activateShield();
+
   if (swung === true && swordEquipped) {
     weapon.angle = weapon.angle + 90;
   }

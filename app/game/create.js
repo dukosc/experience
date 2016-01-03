@@ -9,6 +9,7 @@ var slashes;
 var enemies;
 var gunEquipped = true;
 var swordEquipped = false;
+var laserSwordEquipped = false;
 var shieldEquipped = false;
 var swung = false;
 var swingTimer;
@@ -24,10 +25,14 @@ var stats = JSON.parse(localStorage.getItem('stats'));
 
 var themeSong;
 var gunshot;
+var gunClick;
 var drawSword;
 var drawGun;
 var swordSlash;
 var ammoEquip;
+var laserSwordOn;
+var laserSwordOff;
+var drawShield;
 
 function create() {
   wasd = {
@@ -178,11 +183,15 @@ function create() {
   themeSong = game.add.audio('themeSong');
   // themeSong.play();
   gunshot = game.add.audio('gunshot');
+  gunClick = game.add.audio('gunClick');
   drawSword = game.add.audio('drawSword');
-  // drawGun = game.add.audio('drawGun');
+  drawGun = game.add.audio('drawGun');
   swordSlash = game.add.audio('swordSlash');
   ammoEquip = game.add.audio('ammoEquip');
-  game.sound.setDecodedCallback([ gunshot, drawSword, drawGun, swordSlash, ammoEquip, themeSong ], start, this);
+  laserSwordOn = game.add.audio('laserSwordOn');
+  laserSwordOff = game.add.audio('laserSwordOff');
+  drawShield = game.add.audio('drawShield');
+  game.sound.setDecodedCallback([ gunshot, gunClick, drawSword, drawGun, swordSlash, ammoEquip, themeSong, laserSwordOn, laserSwordOff, drawShield ], start, this);
 }
 
 

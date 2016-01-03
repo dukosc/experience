@@ -17,7 +17,7 @@
         }
         vm.stats = getStats();
       });
-      vm.test = "test";
+      // vm.test = "test";
   });
 
 })();

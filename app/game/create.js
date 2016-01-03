@@ -38,6 +38,7 @@ function create() {
     space: game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR),
     e: game.input.keyboard.addKey(Phaser.Keyboard.E),
     p: game.input.keyboard.addKey(Phaser.Keyboard.P),
+    q: game.input.keyboard.addKey(Phaser.Keyboard.Q)
   };
   console.log(stats);
   game.stage.backgroundColor = '#787878';

@@ -78,4 +78,5 @@ function update() {
     rollDelay.stop();
     player.angle = 0;
   }
+  restoreMana();
 }

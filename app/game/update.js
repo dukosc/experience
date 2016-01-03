@@ -6,8 +6,13 @@ function update() {
   game.physics.arcade.collide(enemyBullets, layer, collided);
   weapon.x = player.body.x + 32;
   weapon.y = player.body.y + 32;
+  shield.x = player.body.x + 32;
+  shield.y = player.body.y + 32;
+  shield.visible = false;
+  shieldEquipped = false;
+  weapon.visible = true;
+  shield.body.enable = false;
   game.physics.arcade.overlap(enemyBullets, player, bulletHitPlayer, null, this);
-  // game.physics.arcade.overlap(slashes, enemies, collisionDetection, processHandler, this);
   if (swordEquipped) {
     weapon.anchor.setTo(0, 1);
     weapon.y = player.body.y + 40;
@@ -24,6 +29,10 @@ function update() {
     if (gunEquipped) {
       weapon.scale.y = 0.5;
     }
+  }
+  if(shieldEquipped){
+
+    weapon.animations.play('shieldFlicker', 10);
   }
   enemiesAlive = 0;
   if(player.health <= 0){
@@ -49,14 +58,12 @@ function update() {
     weapon.kill();
     addWeapon('gun', 'gun');
   }
+
   if (game.input.keyboard.isDown(Phaser.KeyCode.TWO)) {
     weapon.kill();
     addWeapon('sword', 'sword');
   }
-  if(game.input.keyboard.isDown(Phaser.KeyCode.THREE)) {
-    weapon.kill();
-    addWeapon('shield', 'shield');
-  }
+  activateShield();
   if (swung === true && swordEquipped) {
     weapon.angle = weapon.angle + 90;
   }
@@ -64,4 +71,12 @@ function update() {
     slash.kill();
     swingTimer.stop();
   }
+  if(rollDelay.seconds < 0.5 && rollDelay.running === true){
+    roll();
+  }
+  if(rollDelay.seconds > 0.5){
+    rollDelay.stop();
+    player.angle = 0;
+  }
+  restoreMana();
 }

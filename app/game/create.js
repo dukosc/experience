@@ -15,6 +15,15 @@ var health;
 var map;
 var layer;
 var stats = JSON.parse(localStorage.getItem('stats'));
+////////////////// audio
+
+var themeSong;
+var gunshot;
+var drawSword;
+var drawGun;
+var swordSlash;
+var ammoEquip;
+
 function create() {
 
   console.log(stats);
@@ -30,7 +39,6 @@ function create() {
   layer = map.createLayer('SnowLevel');
 
   game.physics.startSystem(Phaser.Physics.ARCADE);
-
 
 
 
@@ -143,4 +151,18 @@ function create() {
     p: game.input.keyboard.addKey(Phaser.Keyboard.P),
   };
 
+  themeSong = game.add.audio('themeSong');
+  themeSong.play();
+  gunshot = game.add.audio('gunshot');
+  drawSword = game.add.audio('drawSword');
+  drawGun = game.add.audio('drawGun');
+  swordSlash = game.add.audio('swordSlash');
+  ammoEquip = game.add.audio('ammoEquip');
+  game.sound.setDecodedCallback([ gunshot, drawSword, drawGun, swordSlash, ammoEquip, themeSong ], start, this);
 }
+
+
+///////////////////////////////////////////////////////////////////////// audio
+
+// game.audio = {}
+// game.audio.gunshot = game.add.audio(‘gunshot’);

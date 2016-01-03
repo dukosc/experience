@@ -25,4 +25,12 @@ var preload = function() {
   game.load.image('menu', 'game/assets/number-buttons-90x90.png', 270, 180);
   game.load.spritesheet('enemy', 'game/assets/enemy.png', 128, 128, 10);
   game.load.spritesheet('player', 'game/assets/player.png', 128, 128, 10);
+  /////////////////////////////////////////////////////////////////////////audio
+
+  game.load.audio ('gunshot', 'game/assets/audio/gunshot.mp3');
+  game.load.audio ('drawSword', 'game/assets/audio/draw-sword.mp3');
+  game.load.audio ('drawGun', 'game/assets/audio/draw-gun.mp3');
+  game.load.audio ('swordSlash', 'game/assets/audio/sword-slash.mp3');
+  game.load.audio ('ammoEquip', 'game/assets/audio/ammo-equip.mp3');
+  game.load.audio ('themeSong', 'game/assets/audio/theme-song.mp3');
 };

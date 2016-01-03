@@ -179,7 +179,7 @@ function create() {
   // themeSong.play();
   gunshot = game.add.audio('gunshot');
   drawSword = game.add.audio('drawSword');
-  // drawGun = game.add.audio('drawGun');
+  drawGun = game.add.audio('drawGun');
   swordSlash = game.add.audio('swordSlash');
   ammoEquip = game.add.audio('ammoEquip');
   game.sound.setDecodedCallback([ gunshot, drawSword, drawGun, swordSlash, ammoEquip, themeSong ], start, this);

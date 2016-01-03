@@ -15,6 +15,10 @@
         templateUrl: 'common/views/login.html',
         controller: 'LoginController as loginCtrl'
       })
+      .when('/login', {
+        templateUrl: 'common/views/login.html',
+        controller: 'LoginController as loginCtrl'
+      })
       .when('/main-page', {
         templateUrl: 'common/views/main-page.html',
         controller: 'MainController'

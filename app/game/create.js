@@ -167,7 +167,7 @@ function create() {
 
 
   themeSong = game.add.audio('themeSong');
-  themeSong.play();
+  // themeSong.play();
   gunshot = game.add.audio('gunshot');
   drawSword = game.add.audio('drawSword');
   drawGun = game.add.audio('drawGun');

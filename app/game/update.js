@@ -57,6 +57,7 @@ function update() {
     weapon.kill();
     addWeapon('gun', 'gun');
   }
+
   if (game.input.keyboard.isDown(Phaser.KeyCode.TWO)) {
     weapon.kill();
     addWeapon('sword', 'sword');

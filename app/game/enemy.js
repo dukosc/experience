@@ -36,14 +36,16 @@ Enemy = function(index, game, player, bullets) {
   this.enemy.body.bounce.setTo(1, 1);
 };
 Enemy.prototype.damage = function() {
-  if (gunEquipped) {
+  if (gunEquipped && !fireballHit) {
     this.health -= 1 + (stats.dexterity/10);
   }
-  // if (ggunEquipped) {
-  //   this.health -= 3;
-  // }
-  if (swordEquipped) {
+  if (swordEquipped && !fireballHit) {
     this.health -= 3 + (stats.strength/10);
+  }
+  if(fireballHit){
+    this.health -= 1 + (stats.intelligence/2);
+    fireballHit = false;
+    console.log(this.health);
   }
   if (this.health <= 0) {
     this.alive = false;

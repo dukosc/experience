@@ -42,10 +42,10 @@ function swordSwing() {
   }
 }
 
-function shieldBlock() {
-  if (game.time.now > nextFire && blocks.bullet() > 0) {
-}
-}
+// function shieldBlock() {
+//   if (game.time.now > nextFire && blocks.bullet() > 0) {
+// }
+// }
 
 function addWeapon(wpn, type) {
   if (type === 'sword') {

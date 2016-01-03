@@ -65,13 +65,6 @@ function addWeapon(wpn, type) {
     laserSwordEquipped = false;
     shieldEquipped = false;
   }
-  //added this below
-  if (type === 'shield') {
-    gunEquipped = false;
-    swordEquipped = false;
-    laserSwordEquipped = false;
-    shieldEquipped = true;
-  }
   weapon = game.add.sprite(player.body.x, player.body.y, wpn);
   if (wpn === "shield") {
 
@@ -152,41 +145,47 @@ function processHandler(projectile, enemy) {
 function gameOver() {
   game.state.restart();
 }
-
+function fireHitEnemy(enemy, fireball){
+  fireballHit = true;
+  fireball.kill();
+  enemies[enemy.name].damage();
+}
 function unpause(event) {
   // Only act if paused
   if (game.paused) {
     // Calculate the corners of the menu
-    var x1 = 800 / 2 - 270 / 2,
-      x2 = 800 / 2 + 270 / 2,
-      y1 = 600 / 2 - 180 / 2,
-      y2 = 600 / 2 + 180 / 2;
+    var x1 = rollIcon.x - game.camera.x,
+      x2 = rollIcon.x - game.camera.x + 128,
+      y1 = rollIcon.y - game.camera.y,
+      y2 = rollIcon.y - game.camera.y + 128;
 
     // Check if the click was inside the menu
+    // console.log(event.x, event.y);
+    // console.log(x1, x2, y1, y2);
     if (event.x > x1 && event.x < x2 && event.y > y1 && event.y < y2) {
-      // The choicemap is an array that will help us see which item was clicked
-      var choisemap = ['one', 'two', 'three', 'four', 'five', 'six'];
-
-      // Get menu local coordinates for the click
-      var x = event.x - x1,
-        y = event.y - y1;
-
-      // Calculate the choice
-      var choise = Math.floor(x / 90) + 3 * Math.floor(y / 90);
-
-      // Display the choice
-      choiseLabel.text = 'You chose menu item: ' + choisemap[choise];
+      console.log('roll clicked');
+    //   // The choicemap is an array that will help us see which item was clicked
+    //   var choisemap = ['one', 'two', 'three', 'four', 'five', 'six'];
+    //
+    //   // Get menu local coordinates for the click
+      // var x = event.x - x1,
+      //   y = event.y - y1;
+    //
+    //   // Calculate the choice
+    //   var choise = Math.floor(x / 90) + 3 * Math.floor(y / 90);
+    //
+    //   // Display the choice
+    //   choiseLabel.text = 'You chose menu item: ' + choisemap[choise];
     } else {
       // Remove the menu and the label
-      menu.destroy();
-      choiseLabel.destroy();
-
+      // menu.destroy();
+      // choiseLabel.destroy();
+      rollIcon.destroy();
       // Unpause the game
       game.paused = false;
     }
   }
 };
-
 
 
 function roll() {

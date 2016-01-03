@@ -12,6 +12,9 @@ function update() {
   shieldEquipped = false;
   weapon.visible = true;
   shield.body.enable = false;
+  if(fireball != undefined){
+    fireball.animations.play('fireFlicker', 12);
+  }
   game.physics.arcade.overlap(enemyBullets, player, bulletHitPlayer, null, this);
   if (swordEquipped) {
     weapon.anchor.setTo(0, 1);
@@ -34,10 +37,6 @@ function update() {
       weapon.scale.y = 0.5;
     }
   }
-  if(shieldEquipped){
-
-    weapon.animations.play('shieldFlicker', 10);
-  }
   enemiesAlive = 0;
   if(player.health <= 0){
     gameOver();
@@ -47,15 +46,17 @@ function update() {
       enemiesAlive++;
       game.physics.arcade.overlap(bullets, enemies[i].enemy, bulletHitEnemy, null, this);
       game.physics.arcade.overlap(slashes, enemies[i].enemy, bulletHitEnemy, null, this);
+      game.physics.arcade.overlap(enemies[i].enemy, fireball, fireHitEnemy, null, this);
       enemies[i].update();
     }
   }
   if(wasd.p.isDown) {
     game.paused = true;
-    menu = game.add.sprite(game.camera.x + 400, game.camera.y +300, 'menu');
-        menu.anchor.setTo(0.5, 0.5);
-        choiseLabel = game.add.text(game.camera.x + 400/2, game.camera.y+150, 'Click outside menu to continue', { font: '30px Arial', fill: '#fff' });
-        choiseLabel.anchor.setTo(0.5, 0.5);
+    // menu = game.add.sprite(game.camera.x + 400, game.camera.y +300, 'menu');
+    //     menu.anchor.setTo(0.5, 0.5);
+    //     choiseLabel = game.add.text(game.camera.x + 400/2, game.camera.y+150, 'Click outside menu to continue', { font: '30px Arial', fill: '#fff' });
+    //     choiseLabel.anchor.setTo(0.5, 0.5);
+    rollIcon = game.add.sprite(game.camera.x + 200, game.camera.y + 100, 'rollIcon');
   }
   move();
   if (game.input.keyboard.isDown(Phaser.KeyCode.ONE)) {

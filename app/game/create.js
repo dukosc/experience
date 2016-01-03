@@ -13,6 +13,8 @@ var laserSwordEquipped = false;
 var shieldEquipped = false;
 var swung = false;
 var swingTimer;
+var fireball;
+var fireballHit = false;
 var attackTimer;
 var rollTimer;
 var rollDelay;
@@ -43,7 +45,8 @@ function create() {
     space: game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR),
     e: game.input.keyboard.addKey(Phaser.Keyboard.E),
     p: game.input.keyboard.addKey(Phaser.Keyboard.P),
-    q: game.input.keyboard.addKey(Phaser.Keyboard.Q)
+    q: game.input.keyboard.addKey(Phaser.Keyboard.Q),
+    f: game.input.keyboard.addKey(Phaser.Keyboard.F)
   };
   console.log(stats);
   game.stage.backgroundColor = '#787878';
@@ -73,6 +76,7 @@ function create() {
   wasd.e.onDown.add(function(){
     rollDelay.start();
   }, this);
+  wasd.f.onDown.add(shootFireball, this);
   game.stage.backgroundColor = '#fff000';
 
   game.physics.startSystem(Phaser.Physics.ARCADE);

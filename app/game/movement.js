@@ -87,6 +87,12 @@ function move() {
   if (wasd.down.isDown && wasd.left.isDown) {
     player.stamina++;
   }
+  if(wasd.down.isDown && wasd.up.isDown){
+    player.stamina++;
+  }
+  if(wasd.right.isDown && wasd.left.isDown){
+    player.stamina++;
+  }
   if (wasd.up.isDown && wasd.right.isDown && wasd.space.isDown) {
     if (player.stamina <= 1) {
       player.body.velocity.y = -150 - (stats.dexterity / 5);

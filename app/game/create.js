@@ -9,6 +9,7 @@ var slashes;
 var enemies;
 var gunEquipped = true;
 var swordEquipped = false;
+var shieldEquipped = false;
 var swung = false;
 var swingTimer;
 var attackTimer;
@@ -40,7 +41,6 @@ function create() {
 
   layer = map.createLayer('SnowLevel');
 
-  game.physics.startSystem(Phaser.Physics.ARCADE);
 
 
 
@@ -153,7 +153,6 @@ function create() {
   stamina.fixedToCamera = true;
   stamina.cameraOffset.setTo(300, 0);
   //movement animations
-
   var run = player.animations.add('run', [4, 5, 6, 7, 8]);
   var idle = player.animations.add('idle', [0, 1, 2, 3]);
   cursors = game.input.keyboard.createCursorKeys();

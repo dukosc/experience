@@ -14,7 +14,7 @@ h1 {
   text-align: center;
   letter-spacing: 15px;
   padding: 3% 0 1%;
-  margin-top: 6%;
+  margin-top: 10%;
   margin-bottom: -5%; }
 
 h2 {
@@ -35,7 +35,8 @@ h2 {
   border-radius: 4px;
   width: 70%; }
   .loginWindow form {
-    margin: 5% 10%; }
+    margin: 5% 10%;
+    font-family: gamegirl; }
     .loginWindow form a {
       color: #333333;
       font-family: gamegirl;
@@ -79,7 +80,8 @@ h2 {
     background-position: -512px; } }
 
 .mainMenu .mainNav {
-  margin-top: 2%; }
+  margin-top: 2%;
+  margin-bottom: 4%; }
   .mainMenu .mainNav ul {
     list-style-type: none; }
     .mainMenu .mainNav ul li {

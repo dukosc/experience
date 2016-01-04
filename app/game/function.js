@@ -103,7 +103,7 @@ function attack() {
   if (gunEquipped) {
     gunFire();
   }
-  if (swordEquipped && attackTimer.seconds > 0.5) {
+  if (swordEquipped && attackTimer.seconds > 0.3) {
     swordSlash.play();
     swordSwing();
     attackTimer.stop();
@@ -173,9 +173,7 @@ function grubHitPlayer(player, grub){
 }
 function bulletHitEnemy(enemy, bullet) {
   console.log(enemy);
-  if (gunEquipped) {
-    bullet.kill();
-  }
+  bullet.kill();
   if(enemy.key === 'enemy'){
     enemies[enemy.name].damage();
   }

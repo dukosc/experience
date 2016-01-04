@@ -57,35 +57,35 @@
             }
             if(compGoal.activity === "burpees" || compGoal.activity === "jumping jacks" || compGoal.activity === "heisman"){
               if(compGoal.interval === "10"){
-                user.evalue = 1;
+                user.dvalue = 1;
               }
               if(compGoal.interval === "25"){
-                user.evalue = 3;
+                user.dvalue = 3;
               }
               if(compGoal.interval === "50"){
-                user.evalue = 7;
+                user.dvalue = 7;
               }
             }
             if(compGoal.activity === "read" || compGoal.activity === "practice music" || compGoal.activity === "puzzle"){
               if(compGoal.interval === "15 min"){
-                user.evalue = 1;
+                user.ivalue = 1;
               }
               if(compGoal.interval === "30 min"){
-                user.evalue = 3;
+                user.ivalue = 3;
               }
               if(compGoal.interval === "1 hour"){
-                user.evalue = 7;
+                user.ivalue = 7;
               }
             }
             if(compGoal.activity === "meditate" || compGoal.activity === "study" || compGoal.activity === "rest"){
               if(compGoal.interval === "15 min"){
-                user.evalue = 1;
+                user.wvalue = 1;
               }
               if(compGoal.interval === "30 min"){
-                user.evalue = 3;
+                user.wvalue = 3;
               }
               if(compGoal.interval === "1 hour"){
-                user.evalue = 7;
+                user.wvalue = 7;
               }
             }
             user.completedGoals.push(compGoal);
@@ -97,6 +97,7 @@
             var getGoals = function(){
               for (var i in data) {
                 if (user._id === data[i]._id) {
+                  localStorage.setItem('stats', JSON.stringify(data[i].stats));
                   return data[i].currGoals;
                 };
               }

@@ -65,6 +65,7 @@ function addWeapon(wpn, type) {
     laserSwordEquipped = false;
     shieldEquipped = false;
   }
+
   weapon = game.add.sprite(player.body.x, player.body.y, wpn);
   if (wpn === "shield") {
 
@@ -114,18 +115,74 @@ function attack() {
     attackTimer.stop();
   }
 }
-
+function loadEnemies(){
+  enemies = [];
+  enemiesTotal = 5;
+  enemiesAlive = 5;
+  for (var i = 0; i < enemiesTotal; i++) {
+    enemies.push(new Enemy(i, game, player, bullets));
+  }
+  grubs = [];
+  grubsTotal = 7;
+  grubsAlive = 7;
+  for(var i = 0; i < grubsTotal; i++){
+    grubs.push(new Grub(i, game, player));
+  }
+}
+function loadEnemiesPhysics(){
+  enemiesAlive = 0;
+  grubsAlive = 0;
+  for (var i = 0; i < enemies.length; i++) {
+    if (enemies[i].alive) {
+      enemiesAlive++;
+      game.physics.arcade.overlap(bullets, enemies[i].enemy, bulletHitEnemy, null, this);
+      game.physics.arcade.overlap(slashes, enemies[i].enemy, bulletHitEnemy, null, this);
+      game.physics.arcade.overlap(enemies[i].enemy, fireball, fireHitEnemy, null, this);
+      enemies[i].update();
+    }
+  }
+  for(var i = 0; i < grubs.length; i++) {
+    if(grubs[i].alive) {
+      grubsAlive++;
+      game.physics.arcade.overlap(bullets, grubs[i].enemy, bulletHitEnemy, null, this);
+      game.physics.arcade.overlap(slashes, grubs[i].enemy, bulletHitEnemy, null, this);
+      game.physics.arcade.overlap(grubs[i].enemy, fireball, fireHitEnemy, null, this);
+      game.physics.arcade.collide(player, grubs[i].enemy, grubHitPlayer, null, this);
+      grubs[i].update();
+    }
+  }
+}
 function collided(bullet) {
   if (gunEquipped) {
     bullet.kill();
   }
 }
+function grubHitPlayer(player, grub){
+  console.log(grub.hitTimer);
+  if(grub.hitTimer.running === false){
+    grub.hitTimer.start();
+    console.log(grub.hitTimer);
+  }
+  if(grub.hitTimer.seconds > 1){
+    player.health = player.health - 2;
+    health.text = "Health: " + player.health;
+    grub.hitTimer.stop(false);
+  }
 
+
+
+}
 function bulletHitEnemy(enemy, bullet) {
+  console.log(enemy);
   if (gunEquipped) {
     bullet.kill();
   }
-  var destroyed = enemies[enemy.name].damage();
+  if(enemy.key === 'enemy'){
+    enemies[enemy.name].damage();
+  }
+  if(enemy.key === 'grub'){
+    grubs[enemy.name].damage();
+  }
 }
 
 function bulletBlocked(shield, bullet) {
@@ -147,8 +204,16 @@ function gameOver() {
 }
 function fireHitEnemy(enemy, fireball){
   fireballHit = true;
-  fireball.kill();
-  enemies[enemy.name].damage();
+  if(enemy.key === 'enemy'){
+    enemies[enemy.name].damage();
+  }
+  if(enemy.key === 'grub'){
+    grubs[enemy.name].damage();
+  }
+}
+function fireHitWall(fireball){
+  fireballHitWall = true;
+  fireTimer.start();
 }
 function unpause(event) {
   // Only act if paused
@@ -158,28 +223,9 @@ function unpause(event) {
       x2 = rollIcon.x - game.camera.x + 128,
       y1 = rollIcon.y - game.camera.y,
       y2 = rollIcon.y - game.camera.y + 128;
-
-    // Check if the click was inside the menu
-    // console.log(event.x, event.y);
-    // console.log(x1, x2, y1, y2);
     if (event.x > x1 && event.x < x2 && event.y > y1 && event.y < y2) {
       console.log('roll clicked');
-    //   // The choicemap is an array that will help us see which item was clicked
-    //   var choisemap = ['one', 'two', 'three', 'four', 'five', 'six'];
-    //
-    //   // Get menu local coordinates for the click
-      // var x = event.x - x1,
-      //   y = event.y - y1;
-    //
-    //   // Calculate the choice
-    //   var choise = Math.floor(x / 90) + 3 * Math.floor(y / 90);
-    //
-    //   // Display the choice
-    //   choiseLabel.text = 'You chose menu item: ' + choisemap[choise];
     } else {
-      // Remove the menu and the label
-      // menu.destroy();
-      // choiseLabel.destroy();
       rollIcon.destroy();
       // Unpause the game
       game.paused = false;

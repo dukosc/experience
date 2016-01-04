@@ -22,6 +22,7 @@
         for(var i = 0; i < vm.users.length; i++){
           if(user.username === vm.users[i].username && user.password === vm.users[i].password){
             localStorage.setItem('user', JSON.stringify(vm.users[i]));
+            localStorage.setItem('stats', JSON.stringify(vm.users[i].stats));
             var user = localStorage.getItem('user');
             $location.path('/main-page');
           }

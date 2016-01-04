@@ -13,28 +13,40 @@ var laserSwordEquipped = false;
 var shieldEquipped = false;
 var swung = false;
 var swingTimer;
+var fireTimer;
 var fireball;
 var fireballHit = false;
+var fireballHitWall = false;
 var attackTimer;
 var rollTimer;
 var rollDelay;
 var ammo;
 var health;
 var map;
+var bossMap;
 var layer;
+var snowBossLayer;
 var stats = JSON.parse(localStorage.getItem('stats'));
+
 ////////////////// audio
 
 var themeSong;
 var gunshot;
+var shotgun;
+var enemyGunshot;
 var gunClick;
 var drawSword;
 var drawGun;
+var drawShield;
 var swordSlash;
 var ammoEquip;
 var laserSwordOn;
 var laserSwordOff;
-var drawShield;
+var fireballSound;
+var grubCollide;
+
+
+
 
 function create() {
   wasd = {
@@ -49,17 +61,20 @@ function create() {
     f: game.input.keyboard.addKey(Phaser.Keyboard.F)
   };
   console.log(stats);
-  game.stage.backgroundColor = '#787878';
+  // game.stage.backgroundColor = '#787878';
 
   map = game.add.tilemap('snowmap');
+  bossMap = game.add.tilemap('snowbosslevel');
 
 
   map.addTilesetImage('tiles', 'tiles');
   map.setCollisionByExclusion([13, 14, 8]);
+  bossMap.addTilesetImage('tiles', 'tiles');
+  bossMap.setCollisionByExclusion([13, 14, 8]);
 
 
   layer = map.createLayer('SnowLevel');
-
+  layer.resizeWorld();
 
 
 
@@ -67,15 +82,21 @@ function create() {
 
 
   //bullet physics
-  layer.resizeWorld();
+
   swingTimer = game.time.create();
   attackTimer = game.time.create();
   rollTimer = game.time.create();
   rollDelay = game.time.create();
+  fireTimer = game.time.create();
   game.input.onDown.add(attack, this);
   wasd.e.onDown.add(function(){
     rollDelay.start();
   }, this);
+
+  wasd.q.onDown.add(function(){
+    drawShield.play();
+  }, this);
+
   wasd.f.onDown.add(shootFireball, this);
   game.stage.backgroundColor = '#fff000';
 
@@ -141,14 +162,7 @@ function create() {
   addWeapon('gun');
   addShield();
   game.camera.follow(player);
-  enemies = [];
-
-  enemiesTotal = 5;
-  enemiesAlive = 5;
-
-  for (var i = 0; i < enemiesTotal; i++) {
-    enemies.push(new Enemy(i, game, player, bullets));
-  }
+  loadEnemies();
   game.input.onDown.add(unpause, self);
   ammo = game.add.text(0, 0, "Ammo: " + player.ammo, {
     font: "30px Arial",
@@ -187,6 +201,8 @@ function create() {
   themeSong = game.add.audio('themeSong');
   // themeSong.play();
   gunshot = game.add.audio('gunshot');
+  shotgun = game.add.audio('shotgun');
+  enemyGunshot = game.add.audio('enemyGunshot');
   gunClick = game.add.audio('gunClick');
   drawSword = game.add.audio('drawSword');
   drawGun = game.add.audio('drawGun');
@@ -195,7 +211,9 @@ function create() {
   laserSwordOn = game.add.audio('laserSwordOn');
   laserSwordOff = game.add.audio('laserSwordOff');
   drawShield = game.add.audio('drawShield');
-  game.sound.setDecodedCallback([ gunshot, gunClick, drawSword, drawGun, swordSlash, ammoEquip, themeSong, laserSwordOn, laserSwordOff, drawShield ], start, this);
+  fireballSound = game.add.audio('fireball');
+  grubCollide = game.add.audio('grubCollide');
+  game.sound.setDecodedCallback([ gunshot, enemyGunshot, gunClick, drawSword, drawGun, drawShield, swordSlash, ammoEquip, themeSong, laserSwordOn, laserSwordOff, fireballSound], start, this);
 }
 
 

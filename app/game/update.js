@@ -3,7 +3,14 @@ function update() {
   game.physics.arcade.overlap(player, ammocrates, collectAmmo);
   game.physics.arcade.collide(player, layer);
   game.physics.arcade.collide(bullets, layer, collided);
+  game.physics.arcade.collide(fireball, layer, fireHitWall);
   game.physics.arcade.collide(enemyBullets, layer, collided);
+  if(snowBossLayer != undefined){
+    game.physics.arcade.collide(player, snowBossLayer);
+    game.physics.arcade.collide(bullets, snowBossLayer, collided);
+    game.physics.arcade.collide(fireball, snowBossLayer, fireHitWall);
+    game.physics.arcade.collide(enemyBullets, snowBossLayer, collided);
+  }
   weapon.x = player.body.x + 32;
   weapon.y = player.body.y + 32;
   shield.x = player.body.x + 32;
@@ -12,8 +19,19 @@ function update() {
   shieldEquipped = false;
   weapon.visible = true;
   shield.body.enable = false;
-  if(fireball != undefined){
+  if(fireball != undefined && fireballHitWall === false){
     fireball.animations.play('fireFlicker', 12);
+  }
+  if(fireball != undefined && fireballHitWall === true){
+    fireball.animations.play('fireExplode', 10);
+    fireball.body.velocity.x = 0;
+    fireball.body.velocity.y = 0;
+    if(fireTimer.seconds > 0.5){
+      console.log('fire hit');
+      fireball.kill();
+      fireballHitWall = false;
+      fireTimer.stop();
+    }
   }
   game.physics.arcade.overlap(enemyBullets, player, bulletHitPlayer, null, this);
   if (swordEquipped) {
@@ -37,18 +55,16 @@ function update() {
       weapon.scale.y = 0.5;
     }
   }
-  enemiesAlive = 0;
   if(player.health <= 0){
     gameOver();
   }
-  for (var i = 0; i < enemies.length; i++) {
-    if (enemies[i].alive) {
-      enemiesAlive++;
-      game.physics.arcade.overlap(bullets, enemies[i].enemy, bulletHitEnemy, null, this);
-      game.physics.arcade.overlap(slashes, enemies[i].enemy, bulletHitEnemy, null, this);
-      game.physics.arcade.overlap(enemies[i].enemy, fireball, fireHitEnemy, null, this);
-      enemies[i].update();
-    }
+  loadEnemiesPhysics();
+  if(grubsAlive === 0 && enemiesAlive === 0){
+    layer.destroy();
+    snowBossLayer = bossMap.createLayer('SnowBossLevel');
+    snowBossLayer.resizeWorld();
+    loadEnemies();
+    snowBossLayer.sendToBack();
   }
   if(wasd.p.isDown) {
     game.paused = true;

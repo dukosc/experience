@@ -18,6 +18,7 @@ function restoreMana(){
 }
 function shootFireball(){
   if(player.mana > 100){
+    fireballSound.play();
     fireball = game.add.sprite(player.body.center.x, player.body.center.y, 'fireball');
     var fireFlicker = fireball.animations.add('fireFlicker', [0, 1, 2, 3, 4, 5]);
     var fireExplode = fireball.animations.add('fireExplode', [6, 7, 8, 9, 10]);

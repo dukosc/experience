@@ -23,7 +23,9 @@ var rollDelay;
 var ammo;
 var health;
 var map;
+var bossMap;
 var layer;
+var snowBossLayer;
 var stats = JSON.parse(localStorage.getItem('stats'));
 ////////////////// audio
 
@@ -51,17 +53,20 @@ function create() {
     f: game.input.keyboard.addKey(Phaser.Keyboard.F)
   };
   console.log(stats);
-  game.stage.backgroundColor = '#787878';
+  // game.stage.backgroundColor = '#787878';
 
   map = game.add.tilemap('snowmap');
+  bossMap = game.add.tilemap('snowbosslevel');
 
 
   map.addTilesetImage('tiles', 'tiles');
   map.setCollisionByExclusion([13, 14, 8]);
+  bossMap.addTilesetImage('tiles', 'tiles');
+  bossMap.setCollisionByExclusion([13, 14, 8]);
 
 
   layer = map.createLayer('SnowLevel');
-
+  layer.resizeWorld();
 
 
 
@@ -69,7 +74,7 @@ function create() {
 
 
   //bullet physics
-  layer.resizeWorld();
+
   swingTimer = game.time.create();
   attackTimer = game.time.create();
   rollTimer = game.time.create();
@@ -144,14 +149,7 @@ function create() {
   addWeapon('gun');
   addShield();
   game.camera.follow(player);
-  enemies = [];
-
-  enemiesTotal = 5;
-  enemiesAlive = 5;
-
-  for (var i = 0; i < enemiesTotal; i++) {
-    enemies.push(new Enemy(i, game, player, bullets));
-  }
+  loadEnemies();
   game.input.onDown.add(unpause, self);
   ammo = game.add.text(0, 0, "Ammo: " + player.ammo, {
     font: "30px Arial",

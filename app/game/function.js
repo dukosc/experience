@@ -114,18 +114,74 @@ function attack() {
     attackTimer.stop();
   }
 }
-
+function loadEnemies(){
+  enemies = [];
+  enemiesTotal = 5;
+  enemiesAlive = 5;
+  for (var i = 0; i < enemiesTotal; i++) {
+    enemies.push(new Enemy(i, game, player, bullets));
+  }
+  grubs = [];
+  grubsTotal = 7;
+  grubsAlive = 7;
+  for(var i = 0; i < grubsTotal; i++){
+    grubs.push(new Grub(i, game, player));
+  }
+}
+function loadEnemiesPhysics(){
+  enemiesAlive = 0;
+  grubsAlive = 0;
+  for (var i = 0; i < enemies.length; i++) {
+    if (enemies[i].alive) {
+      enemiesAlive++;
+      game.physics.arcade.overlap(bullets, enemies[i].enemy, bulletHitEnemy, null, this);
+      game.physics.arcade.overlap(slashes, enemies[i].enemy, bulletHitEnemy, null, this);
+      game.physics.arcade.overlap(enemies[i].enemy, fireball, fireHitEnemy, null, this);
+      enemies[i].update();
+    }
+  }
+  for(var i = 0; i < grubs.length; i++) {
+    if(grubs[i].alive) {
+      grubsAlive++;
+      game.physics.arcade.overlap(bullets, grubs[i].enemy, bulletHitEnemy, null, this);
+      game.physics.arcade.overlap(slashes, grubs[i].enemy, bulletHitEnemy, null, this);
+      game.physics.arcade.overlap(grubs[i].enemy, fireball, fireHitEnemy, null, this);
+      game.physics.arcade.collide(player, grubs[i].enemy, grubHitPlayer, null, this);
+      grubs[i].update();
+    }
+  }
+}
 function collided(bullet) {
   if (gunEquipped) {
     bullet.kill();
   }
 }
+function grubHitPlayer(player, grub){
+  console.log(grub.hitTimer);
+  if(grub.hitTimer.running === false){
+    grub.hitTimer.start();
+    console.log(grub.hitTimer);
+  }
+  if(grub.hitTimer.seconds > 1){
+    player.health = player.health - 2;
+    health.text = "Health: " + player.health;
+    grub.hitTimer.stop(false);
+  }
 
+
+
+}
 function bulletHitEnemy(enemy, bullet) {
+  console.log(enemy);
   if (gunEquipped) {
     bullet.kill();
   }
-  var destroyed = enemies[enemy.name].damage();
+  if(enemy.key === 'enemy'){
+    enemies[enemy.name].damage();
+  }
+  if(enemy.key === 'grub'){
+    grubs[enemy.name].damage();
+  }
 }
 
 function bulletBlocked(shield, bullet) {
@@ -147,7 +203,12 @@ function gameOver() {
 }
 function fireHitEnemy(enemy, fireball){
   fireballHit = true;
-  enemies[enemy.name].damage();
+  if(enemy.key === 'enemy'){
+    enemies[enemy.name].damage();
+  }
+  if(enemy.key === 'grub'){
+    grubs[enemy.name].damage();
+  }
 }
 function fireHitWall(fireball){
   fireballHitWall = true;

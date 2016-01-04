@@ -5,6 +5,12 @@ function update() {
   game.physics.arcade.collide(bullets, layer, collided);
   game.physics.arcade.collide(fireball, layer, fireHitWall);
   game.physics.arcade.collide(enemyBullets, layer, collided);
+  if(snowBossLayer != undefined){
+    game.physics.arcade.collide(player, snowBossLayer);
+    game.physics.arcade.collide(bullets, snowBossLayer, collided);
+    game.physics.arcade.collide(fireball, snowBossLayer, fireHitWall);
+    game.physics.arcade.collide(enemyBullets, snowBossLayer, collided);
+  }
   weapon.x = player.body.x + 32;
   weapon.y = player.body.y + 32;
   shield.x = player.body.x + 32;
@@ -49,18 +55,16 @@ function update() {
       weapon.scale.y = 0.5;
     }
   }
-  enemiesAlive = 0;
   if(player.health <= 0){
     gameOver();
   }
-  for (var i = 0; i < enemies.length; i++) {
-    if (enemies[i].alive) {
-      enemiesAlive++;
-      game.physics.arcade.overlap(bullets, enemies[i].enemy, bulletHitEnemy, null, this);
-      game.physics.arcade.overlap(slashes, enemies[i].enemy, bulletHitEnemy, null, this);
-      game.physics.arcade.overlap(enemies[i].enemy, fireball, fireHitEnemy, null, this);
-      enemies[i].update();
-    }
+  loadEnemiesPhysics();
+  if(grubsAlive === 0 && enemiesAlive === 0){
+    layer.destroy();
+    snowBossLayer = bossMap.createLayer('SnowBossLevel');
+    snowBossLayer.resizeWorld();
+    loadEnemies();
+    snowBossLayer.sendToBack();
   }
   if(wasd.p.isDown) {
     game.paused = true;

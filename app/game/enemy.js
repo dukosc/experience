@@ -90,6 +90,7 @@ Enemy.prototype.update = function() {
         this.enemy.animations.play('idle', 10, true);
       }
       if (this.game.time.now > this.nextFire && this.bullets.countDead() > 0) {
+        enemyGunshot.play();
         this.nextFire = this.game.time.now + this.fireRate;
         var bullet = this.bullets.getFirstDead();
         bullet.body.setSize(32, 32);

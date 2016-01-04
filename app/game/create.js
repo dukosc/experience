@@ -27,18 +27,26 @@ var bossMap;
 var layer;
 var snowBossLayer;
 var stats = JSON.parse(localStorage.getItem('stats'));
+
 ////////////////// audio
 
 var themeSong;
 var gunshot;
+var shotgun;
+var enemyGunshot;
 var gunClick;
 var drawSword;
 var drawGun;
+var drawShield;
 var swordSlash;
 var ammoEquip;
 var laserSwordOn;
 var laserSwordOff;
-var drawShield;
+var fireballSound;
+var grubCollide;
+
+
+
 
 function create() {
   wasd = {
@@ -84,6 +92,11 @@ function create() {
   wasd.e.onDown.add(function(){
     rollDelay.start();
   }, this);
+
+  wasd.q.onDown.add(function(){
+    drawShield.play();
+  }, this);
+
   wasd.f.onDown.add(shootFireball, this);
   game.stage.backgroundColor = '#fff000';
 
@@ -188,6 +201,8 @@ function create() {
   themeSong = game.add.audio('themeSong');
   // themeSong.play();
   gunshot = game.add.audio('gunshot');
+  shotgun = game.add.audio('shotgun');
+  enemyGunshot = game.add.audio('enemyGunshot');
   gunClick = game.add.audio('gunClick');
   drawSword = game.add.audio('drawSword');
   drawGun = game.add.audio('drawGun');
@@ -196,7 +211,9 @@ function create() {
   laserSwordOn = game.add.audio('laserSwordOn');
   laserSwordOff = game.add.audio('laserSwordOff');
   drawShield = game.add.audio('drawShield');
-  game.sound.setDecodedCallback([ gunshot, gunClick, drawSword, drawGun, swordSlash, ammoEquip, themeSong, laserSwordOn, laserSwordOff, drawShield ], start, this);
+  fireballSound = game.add.audio('fireball');
+  grubCollide = game.add.audio('grubCollide');
+  game.sound.setDecodedCallback([ gunshot, enemyGunshot, gunClick, drawSword, drawGun, drawShield, swordSlash, ammoEquip, themeSong, laserSwordOn, laserSwordOff, fireballSound], start, this);
 }
 
 

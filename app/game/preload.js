@@ -34,14 +34,22 @@ var preload = function() {
   /////////////////////////////////////////////////////////////////////////menu
   game.load.image('sprintIcon', 'game/assets/skillicons/sprinticon.png');
   game.load.image('rollIcon', 'game/assets/skillicons/rollicon.png');
-  /////////////////////////////////////////////////////////////////////////audio
 
+
+  /////////////////////////////////////////////////////////////////////////audio
   game.load.audio ('gunshot', 'game/audio/gunshot.mp3');
   game.load.audio ('gunClick', 'game/audio/gun-click.mp3');
   game.load.audio ('drawSword', 'game/audio/draw-sword.mp3');
   game.load.audio ('drawGun', 'game/audio/draw-gun.mp3');
+  game.load.audio ('drawShield', 'game/audio/draw-shield.mp3');
   game.load.audio ('swordSlash', 'game/audio/sword-slash.mp3');
   game.load.audio ('laserSwordOn', 'game/audio/laser-sword-on.mp3');
   game.load.audio ('ammoEquip', 'game/audio/ammo-equip.mp3');
   game.load.audio ('themeSong', 'game/audio/theme-song.mp3');
+  game.load.audio ('fireball', 'game/audio/fireball.mp3');
+
+  /////////////////////////////////////////////////////////////////////////enemy audio
+  game.load.audio ('grubCollide', 'game/audio/grub-collide.mp3');
+  game.load.audio ('enemyGunshot', 'game/audio/enemy-gunshot.mp3');
+  game.load.audio ('shotgun', 'game/audio/shotgun.mp3');
 };

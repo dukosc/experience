@@ -178,10 +178,8 @@ function collided(bullet) {
   }
 }
 function grubHitPlayer(player, grub){
-  console.log(grub.hitTimer);
   if(grub.hitTimer.running === false){
     grub.hitTimer.start();
-    console.log(grub.hitTimer);
   }
   if(grub.hitTimer.seconds > 1 && shieldEquipped === false){
     player.health = player.health - 2;
@@ -196,7 +194,6 @@ function grubHitPlayer(player, grub){
 
 
 function bulletHitEnemy(enemy, bullet) {
-  console.log(enemy);
   bullet.kill();
   if(enemy.key === 'enemy'){
     enemies[enemy.name].damage();

@@ -39,7 +39,6 @@ function update() {
     fireball.body.velocity.x = 0;
     fireball.body.velocity.y = 0;
     if(fireTimer.seconds > 0.5){
-      console.log('fire hit');
       fireball.kill();
       fireballHitWall = false;
       fireTimer.stop();

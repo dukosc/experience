@@ -158,6 +158,7 @@ function loadEnemiesPhysics(){
       grubs[i].update();
     }
   }
+
   if(snowBossLayer != undefined){
     // yetiAlive = 0;
     for(var i = 0; i < yeti.length; i++) {
@@ -193,6 +194,9 @@ function grubHitPlayer(player, grub){
 
 
 }
+
+
+
 function bulletHitEnemy(enemy, bullet) {
   console.log(enemy);
   bullet.kill();

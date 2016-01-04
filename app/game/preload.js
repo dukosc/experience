@@ -32,7 +32,7 @@ var preload = function() {
   game.load.spritesheet('enemy', 'game/assets/enemy.png', 128, 128, 10);
   game.load.spritesheet('player', 'game/assets/player.png', 128, 128, 10);
   game.load.spritesheet('grub', 'game/assets/grub.png', 128, 128);
-  game.load.spritesheet('spaceyeti', 'game/assets/spaceyeti.png', 128, 128, 10);
+  game.load.spritesheet('spaceYeti', 'game/assets/spaceyeti.png', 128, 128, 10);
   /////////////////////////////////////////////////////////////////////////menu
   game.load.image('sprintIcon', 'game/assets/skillicons/sprinticon.png');
   game.load.image('rollIcon', 'game/assets/skillicons/rollicon.png');

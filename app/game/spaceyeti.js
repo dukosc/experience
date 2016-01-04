@@ -24,7 +24,7 @@ Yeti = function(index, game, player, bullets) {
   this.gun.anchor.set(0.05, 0.45);
   this.enemy.name = index.toString();
   game.physics.enable(this.enemy, Phaser.Physics.ARCADE);
-  this.healthText = game.add.text(this.enemy.x, this.enemy.y + 100, "Health: " + this.health, {
+  this.healthText = game.add.text(this.enemy.x, this.enemy.y + 150, "Health: " + this.health, {
     font: "15px Arial",
     fill: "#ff0044",
     align: "left"

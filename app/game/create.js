@@ -13,8 +13,10 @@ var laserSwordEquipped = false;
 var shieldEquipped = false;
 var swung = false;
 var swingTimer;
+var fireTimer;
 var fireball;
 var fireballHit = false;
+var fireballHitWall = false;
 var attackTimer;
 var rollTimer;
 var rollDelay;
@@ -72,6 +74,7 @@ function create() {
   attackTimer = game.time.create();
   rollTimer = game.time.create();
   rollDelay = game.time.create();
+  fireTimer = game.time.create();
   game.input.onDown.add(attack, this);
   wasd.e.onDown.add(function(){
     rollDelay.start();

@@ -3,6 +3,7 @@ function update() {
   game.physics.arcade.overlap(player, ammocrates, collectAmmo);
   game.physics.arcade.collide(player, layer);
   game.physics.arcade.collide(bullets, layer, collided);
+  game.physics.arcade.collide(fireball, layer, fireHitWall);
   game.physics.arcade.collide(enemyBullets, layer, collided);
   weapon.x = player.body.x + 32;
   weapon.y = player.body.y + 32;
@@ -12,8 +13,19 @@ function update() {
   shieldEquipped = false;
   weapon.visible = true;
   shield.body.enable = false;
-  if(fireball != undefined){
+  if(fireball != undefined && fireballHitWall === false){
     fireball.animations.play('fireFlicker', 12);
+  }
+  if(fireball != undefined && fireballHitWall === true){
+    fireball.animations.play('fireExplode', 10);
+    fireball.body.velocity.x = 0;
+    fireball.body.velocity.y = 0;
+    if(fireTimer.seconds > 0.5){
+      console.log('fire hit');
+      fireball.kill();
+      fireballHitWall = false;
+      fireTimer.stop();
+    }
   }
   game.physics.arcade.overlap(enemyBullets, player, bulletHitPlayer, null, this);
   if (swordEquipped) {

@@ -147,8 +147,11 @@ function gameOver() {
 }
 function fireHitEnemy(enemy, fireball){
   fireballHit = true;
-  fireball.kill();
   enemies[enemy.name].damage();
+}
+function fireHitWall(fireball){
+  fireballHitWall = true;
+  fireTimer.start();
 }
 function unpause(event) {
   // Only act if paused
@@ -158,28 +161,9 @@ function unpause(event) {
       x2 = rollIcon.x - game.camera.x + 128,
       y1 = rollIcon.y - game.camera.y,
       y2 = rollIcon.y - game.camera.y + 128;
-
-    // Check if the click was inside the menu
-    // console.log(event.x, event.y);
-    // console.log(x1, x2, y1, y2);
     if (event.x > x1 && event.x < x2 && event.y > y1 && event.y < y2) {
       console.log('roll clicked');
-    //   // The choicemap is an array that will help us see which item was clicked
-    //   var choisemap = ['one', 'two', 'three', 'four', 'five', 'six'];
-    //
-    //   // Get menu local coordinates for the click
-      // var x = event.x - x1,
-      //   y = event.y - y1;
-    //
-    //   // Calculate the choice
-    //   var choise = Math.floor(x / 90) + 3 * Math.floor(y / 90);
-    //
-    //   // Display the choice
-    //   choiseLabel.text = 'You chose menu item: ' + choisemap[choise];
     } else {
-      // Remove the menu and the label
-      // menu.destroy();
-      // choiseLabel.destroy();
       rollIcon.destroy();
       // Unpause the game
       game.paused = false;

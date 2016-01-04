@@ -38,7 +38,7 @@ Grub.prototype.damage = function() {
     this.health -= 3 + (stats.strength/10);
   }
   if(fireballHit){
-    this.health -= 1 + (stats.intelligence/2);
+    this.health -= 1 + (stats.intelligence/100);
     fireballHit = false;
     console.log(this.health);
   }

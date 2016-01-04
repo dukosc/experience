@@ -100,9 +100,9 @@ function update() {
     game.paused = true;
     // menu = game.add.sprite(game.camera.x + 400, game.camera.y +300, 'menu');
     //     menu.anchor.setTo(0.5, 0.5);
-    //     choiseLabel = game.add.text(game.camera.x + 400/2, game.camera.y+150, 'Click outside menu to continue', { font: '30px Arial', fill: '#fff' });
+        choiseLabel = game.add.text(game.camera.x + 460, game.camera.y + 230, 'Paused', { font: '100px Arial', fill: '#000000' });
     //     choiseLabel.anchor.setTo(0.5, 0.5);
-    rollIcon = game.add.sprite(game.camera.x + 200, game.camera.y + 100, 'rollIcon');
+    // rollIcon = game.add.sprite(game.camera.x + 200, game.camera.y + 100, 'rollIcon');
   }
   move();
   if (game.input.keyboard.isDown(Phaser.KeyCode.ONE)) {

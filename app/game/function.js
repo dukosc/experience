@@ -50,7 +50,6 @@ function addWeapon(wpn, type) {
     swordEquipped = true;
     laserSwordEquipped = false;
     gunEquipped = false;
-    shieldEquipped = false;
   }
   if (type === 'laserSword') {
     laserSwordOn.play();
@@ -63,7 +62,6 @@ function addWeapon(wpn, type) {
     gunEquipped = true;
     swordEquipped = false;
     laserSwordEquipped = false;
-    shieldEquipped = false;
   }
 
   weapon = game.add.sprite(player.body.x, player.body.y, wpn);
@@ -81,7 +79,6 @@ function addShield() {
   shield = game.add.sprite(player.body.x, player.body.y, 'shield');
   var shieldFlicker = shield.animations.add('shieldFlicker', [0, 1, 2, 3, 4], 1);
   shield.enableBody = true;
-  shieldEquipped = true;
   game.physics.arcade.enable(shield);
   shield.anchor.setTo(0.5, 0.5);
   shield.scale.setTo(1, 1);

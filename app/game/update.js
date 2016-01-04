@@ -1,6 +1,11 @@
 function update() {
   player.body.velocity.x = 0;
-  game.physics.arcade.overlap(player, ammocrates, collectAmmo);
+  if(ammocrates){
+    for(var i = 0; i < ammocrates.length; i++){
+      game.physics.arcade.enable(ammocrates[i]);
+      game.physics.arcade.overlap(player, ammocrates[i], collectAmmo, null, this);
+    }
+  }
   game.physics.arcade.collide(player, layer);
   game.physics.arcade.collide(bullets, layer, collided);
   game.physics.arcade.collide(fireball, layer, fireHitWall);
@@ -34,6 +39,7 @@ function update() {
     }
   }
   game.physics.arcade.overlap(enemyBullets, player, bulletHitPlayer, null, this);
+  game.physics.arcade.overlap(enemyArrows, player, bulletHitPlayer, null, this);
   if (swordEquipped) {
     weapon.anchor.setTo(0, 1);
     weapon.y = player.body.y + 40;
@@ -59,7 +65,7 @@ function update() {
     gameOver();
   }
   loadEnemiesPhysics();
-  if(grubsAlive === 0 && enemiesAlive === 0){
+  if(grubsAlive === 0 && enemiesAlive === 0 && yetiAlive === 0){
     layer.destroy();
     snowBossLayer = bossMap.createLayer('SnowBossLevel');
     snowBossLayer.resizeWorld();

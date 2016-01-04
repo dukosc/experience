@@ -26,6 +26,7 @@ function shootFireball(){
     game.physics.arcade.enable(fireball);
     game.physics.arcade.moveToPointer(fireball, 750, game.input.activePointer);
     fireball.anchor.setTo(0.5, 0.5);
+    fireball.body.setSize(128, 32, 0, -32);
     fireball.rotation = game.physics.arcade.angleToPointer(fireball) + 1.6;
     player.mana -= 100;
   }

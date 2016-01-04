@@ -21,6 +21,8 @@ var attackTimer;
 var rollTimer;
 var rollDelay;
 var ammo;
+var ammoText;
+var ammocrates = [];
 var health;
 var map;
 var bossMap;
@@ -109,11 +111,6 @@ function create() {
   bullets.setAll('anchor.y', 0.5);
   bullets.setAll('outOfBoundsKill', true);
   bullets.setAll('checkWorldBounds', true);
-  ammocrates = game.add.group();
-  ammocrates.enableBody = true;
-  ammocrates.physicsBodyType = Phaser.Physics.ARCADE;
-  ammocrates.setAll('anchor.x', 0.5);
-  ammocrates.setAll('anchor.y', 0.5);
   enemyBullets = game.add.group();
   enemyBullets.enableBody = true;
   enemyBullets.physicsBodyType = Phaser.Physics.ARCADE;
@@ -122,6 +119,14 @@ function create() {
   enemyBullets.setAll('anchor.y', 0.5);
   enemyBullets.setAll('outOfBoundsKill', true);
   enemyBullets.setAll('checkWorldBounds', true);
+  enemyArrows = game.add.group();
+  enemyArrows.enableBody = true;
+  enemyArrows.physicsBodyType = Phaser.Physics.ARCADE;
+  enemyArrows.createMultiple(30, 'arrow', 0, false);
+  enemyArrows.setAll('anchor.x', 0.5);
+  enemyArrows.setAll('anchor.y', 0.5);
+  enemyArrows.setAll('outOfBoundsKill', true);
+  enemyArrows.setAll('checkWorldBounds', true);
   slashes = game.add.group();
   slashes.enableBody = true;
   slashes.physicsBodyType = Phaser.Physics.ARCADE;
@@ -164,13 +169,13 @@ function create() {
   game.camera.follow(player);
   loadEnemies();
   game.input.onDown.add(unpause, self);
-  ammo = game.add.text(0, 0, "Ammo: " + player.ammo, {
+  ammoText = game.add.text(0, 0, "Ammo: " + player.ammo, {
     font: "30px Arial",
     fill: "#ff0044",
     align: "left"
   });
-  ammo.fixedToCamera = true;
-  ammo.cameraOffset.setTo(0, 0);
+  ammoText.fixedToCamera = true;
+  ammoText.cameraOffset.setTo(0, 0);
   health = game.add.text(0, 0, "Health: " + player.health, {
     font: "30px Arial",
     fill: "#ff0044",

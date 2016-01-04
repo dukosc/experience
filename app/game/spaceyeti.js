@@ -1,4 +1,4 @@
-Enemy = function(index, game, player, bullets) {
+Yeti = function(index, game, player, bullets) {
   var x = game.world.randomX;
   var y = game.world.randomY;
   // console.log(x, y);
@@ -7,35 +7,36 @@ Enemy = function(index, game, player, bullets) {
     y = game.world.randomY;
   }
   this.game = game;
-  this.health = 10;
+  this.health = 100;
   this.player = player;
-  this.bullets = enemyBullets;
+  this.bullets = enemyArrows;
   this.fireRate = 2000;
   this.nextFire = 0;
   this.alive = true;
   this.timer = game.time.create();
   this.enemy = game.add.sprite(x, y, 'spaceyeti');
-  this.enemy.animations.add('run', [4, 5, 6, 7, 8, 9], true);
-  this.enemy.animations.add('idle', [0, 1, 2, 3], true);
+  this.enemy.animations.add('run', [0, 1, 2, 3, 4, 5], true);
+  this.enemy.animations.add('idle', [6, 7, 8, 9], true);
   this.enemy.isRunning = true;
-  this.gun = game.add.sprite(x, y, 'gun');
-  this.gun.scale.setTo(0.5, 0.5);
+  this.gun = game.add.sprite(x, y, 'crossbow');
+  this.gun.scale.setTo(1, 1);
   this.enemy.anchor.set(0.5);
   this.gun.anchor.set(0.05, 0.45);
   this.enemy.name = index.toString();
   game.physics.enable(this.enemy, Phaser.Physics.ARCADE);
-  this.healthText = game.add.text(this.enemy.x, this.enemy.y - 50, "Health: " + this.health, {
-    font: "12px Arial",
+  this.healthText = game.add.text(this.enemy.x, this.enemy.y + 100, "Health: " + this.health, {
+    font: "15px Arial",
     fill: "#ff0044",
     align: "left"
   });
   this.healthText.anchor.setTo(0.5, 0.5);
-  this.enemy.body.setSize(64, 64, 0, 0);
+  // this.enemy.body.setSize(64, 64, 0, 0);
   this.enemy.body.immovable = false;
   this.enemy.body.collideWorldBounds = true;
   this.enemy.body.bounce.setTo(1, 1);
 };
-Enemy.prototype.damage = function() {
+Yeti.prototype.damage = function() {
+
   if (gunEquipped && !fireballHit) {
     this.health -= 1 + (stats.dexterity/10);
   }
@@ -43,9 +44,8 @@ Enemy.prototype.damage = function() {
     this.health -= 3 + (stats.strength/10);
   }
   if(fireballHit){
-    this.health -= 1 + (stats.intelligence/2);
+    this.health -= 1 + (stats.intelligence/100);
     fireballHit = false;
-    console.log(this.health);
   }
   if (this.health <= 0) {
     this.alive = false;
@@ -61,7 +61,7 @@ Enemy.prototype.damage = function() {
   return false;
 };
 
-Enemy.prototype.update = function() {
+Yeti.prototype.update = function() {
   this.timer.start();
   this.game.physics.arcade.collide(this.enemy, layer);
   if(snowBossLayer != undefined){
@@ -71,17 +71,17 @@ Enemy.prototype.update = function() {
   this.gun.y = this.enemy.y;
   this.gun.rotation = 0;
   if (this.game.physics.arcade.distanceBetween(this.enemy, this.player) < 300) {
-    this.gun.scale.x = 0.5;
+    this.gun.scale.x = 1;
     if(this.enemy.isRunning){
       this.enemy.animations.play('run', 10, true);
     }
     this.game.physics.arcade.moveToObject(this.enemy, this.player);
     if (this.enemy.x > this.player.x) {
       this.enemy.scale.x = -1;
-      this.gun.scale.y = -0.5;
+      this.gun.scale.y = -1;
     } else {
       this.enemy.scale.x = 1;
-      this.gun.scale.y = 0.5;
+      this.gun.scale.y = 1;
     }
     this.gun.rotation = this.game.physics.arcade.angleBetween(this.enemy, this.player);
     if(this.game.physics.arcade.distanceBetween(this.enemy, this.player) < 200){
@@ -107,7 +107,7 @@ Enemy.prototype.update = function() {
   else{
     if(this.timer.seconds > 1 || ranOnce === true){
       ranOnce = false;
-      this.gun.scale.y = 0.5;
+      this.gun.scale.y = 1;
       this.enemy.body.velocity.x = 50 * (Math.round(Math.random()) * 2 - 1) * (Math.round(Math.random()));
       this.enemy.body.velocity.y = 50 * (Math.round(Math.random()) * 2 - 1) * (Math.round(Math.random()));
       this.enemy.animations.play('run', 10, true);
@@ -115,13 +115,12 @@ Enemy.prototype.update = function() {
         this.enemy.animations.play('idle', 10, true);
       }
       if(this.enemy.body.velocity.x < 0){
-        console.log('fire');
         this.enemy.scale.x = -1;
-        this.gun.scale.x = -0.5;
+        this.gun.scale.x = -1;
       }
       else{
         this.enemy.scale.x = 1;
-        this.gun.scale.x = 0.5;
+        this.gun.scale.x = 1;
       }
       this.timer.stop();
     }

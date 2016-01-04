@@ -1,10 +1,14 @@
 function activateShield(){
   if(wasd.q.isDown && player.mana > 0) {
-    shield.visible = true;
+    console.log(player.mana);
     weapon.visible = false;
+    shield.visible = true;
     shield.body.enable = true;
-    shieldEquipped = true;
     player.mana--;
+    console.log(player.mana);
+    if(player.mana <= 0){
+      shield.visible = false;
+    }
     mana.text = "Mana: " + player.mana;
     shield.animations.play('shieldFlicker', 10);
     game.physics.arcade.overlap(enemyBullets, shield, bulletBlocked, null, this);

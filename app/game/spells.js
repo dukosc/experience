@@ -16,3 +16,16 @@ function restoreMana(){
     mana.text = "Mana: " + player.mana;
   }
 }
+function shootFireball(){
+  if(player.mana > 100){
+    fireballSound.play();
+    fireball = game.add.sprite(player.body.center.x, player.body.center.y, 'fireball');
+    var fireFlicker = fireball.animations.add('fireFlicker', [0, 1, 2, 3, 4, 5]);
+    fireball.enableBody = true;
+    game.physics.arcade.enable(fireball);
+    game.physics.arcade.moveToPointer(fireball, 750, game.input.activePointer);
+    fireball.anchor.setTo(0.5, 0.5);
+    fireball.rotation = game.physics.arcade.angleToPointer(fireball) + 1.6;
+    player.mana -= 100;
+  }
+}

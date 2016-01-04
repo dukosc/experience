@@ -13,6 +13,8 @@ var laserSwordEquipped = false;
 var shieldEquipped = false;
 var swung = false;
 var swingTimer;
+var fireball;
+var fireballHit = false;
 var attackTimer;
 var rollTimer;
 var rollDelay;
@@ -33,7 +35,7 @@ var swordSlash;
 var ammoEquip;
 var laserSwordOn;
 var laserSwordOff;
-var fireball;
+var fireballSound;
 
 
 function create() {
@@ -45,7 +47,8 @@ function create() {
     space: game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR),
     e: game.input.keyboard.addKey(Phaser.Keyboard.E),
     p: game.input.keyboard.addKey(Phaser.Keyboard.P),
-    q: game.input.keyboard.addKey(Phaser.Keyboard.Q)
+    q: game.input.keyboard.addKey(Phaser.Keyboard.Q),
+    f: game.input.keyboard.addKey(Phaser.Keyboard.F)
   };
   console.log(stats);
   game.stage.backgroundColor = '#787878';
@@ -75,9 +78,12 @@ function create() {
   wasd.e.onDown.add(function(){
     rollDelay.start();
   }, this);
+
   wasd.q.onDown.add(function(){
     drawShield.play();
   }, this);
+
+  wasd.f.onDown.add(shootFireball, this);
   game.stage.backgroundColor = '#fff000';
 
   game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -196,8 +202,8 @@ function create() {
   laserSwordOn = game.add.audio('laserSwordOn');
   laserSwordOff = game.add.audio('laserSwordOff');
   drawShield = game.add.audio('drawShield');
-  fireball = game.add.audio('fireball');
-  game.sound.setDecodedCallback([ gunshot, gunClick, drawSword, drawGun, drawShield, swordSlash, ammoEquip, themeSong, laserSwordOn, laserSwordOff, fireball], start, this);
+  fireballSound = game.add.audio('fireball');
+  game.sound.setDecodedCallback([ gunshot, gunClick, drawSword, drawGun, drawShield, swordSlash, ammoEquip, themeSong, laserSwordOn, laserSwordOff, fireballSound], start, this);
 }
 
 

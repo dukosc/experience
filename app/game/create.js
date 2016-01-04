@@ -23,10 +23,13 @@ var health;
 var map;
 var layer;
 var stats = JSON.parse(localStorage.getItem('stats'));
+
 ////////////////// audio
 
 var themeSong;
 var gunshot;
+var shotgun;
+var enemyGunshot;
 var gunClick;
 var drawSword;
 var drawGun;
@@ -36,6 +39,9 @@ var ammoEquip;
 var laserSwordOn;
 var laserSwordOff;
 var fireballSound;
+var grubCollide;
+
+
 
 
 function create() {
@@ -194,6 +200,8 @@ function create() {
   themeSong = game.add.audio('themeSong');
   // themeSong.play();
   gunshot = game.add.audio('gunshot');
+  shotgun = game.add.audio('shotgun');
+  enemyGunshot = game.add.audio('enemyGunshot');
   gunClick = game.add.audio('gunClick');
   drawSword = game.add.audio('drawSword');
   drawGun = game.add.audio('drawGun');
@@ -203,7 +211,8 @@ function create() {
   laserSwordOff = game.add.audio('laserSwordOff');
   drawShield = game.add.audio('drawShield');
   fireballSound = game.add.audio('fireball');
-  game.sound.setDecodedCallback([ gunshot, gunClick, drawSword, drawGun, drawShield, swordSlash, ammoEquip, themeSong, laserSwordOn, laserSwordOff, fireballSound], start, this);
+  grubCollide = game.add.audio('grubCollide');
+  game.sound.setDecodedCallback([ gunshot, enemyGunshot, gunClick, drawSword, drawGun, drawShield, swordSlash, ammoEquip, themeSong, laserSwordOn, laserSwordOff, fireballSound], start, this);
 }
 
 

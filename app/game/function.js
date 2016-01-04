@@ -164,6 +164,7 @@ function grubHitPlayer(player, grub){
     console.log(grub.hitTimer);
   }
   if(grub.hitTimer.seconds > 1){
+    grubCollide.play();
     player.health = player.health - 2;
     health.text = "Health: " + player.health;
     grub.hitTimer.stop(false);

@@ -18,7 +18,7 @@ function gunFire() {
       bullet.body.setSize(32, 32);
       game.physics.arcade.moveToPointer(bullet, 750, game.input.activePointer);
       player.ammo--;
-      ammo.text = 'Ammo: ' + player.ammo;
+      ammoText.text = 'Ammo: ' + player.ammo;
     } else {
       gunClick.play();
       return;
@@ -88,15 +88,16 @@ function addShield() {
 }
 
 function dropAmmo(x, y) {
-  ammo = ammocrates.create(x, y, 'ammo');
+  ammo = game.add.sprite(x, y, 'ammo');
   ammo.scale.setTo(0.6, 0.6);
+  ammocrates.push(ammo);
 }
 
-function collectAmmo() {
-  ammo.kill();
+function collectAmmo(player, ammo) {
   ammoEquip.play();
+  ammo.destroy();
   player.ammo += 25;
-  ammo.text = 'Ammo: ' + player.ammo;
+  ammoText.text = 'Ammo: ' + player.ammo;
 }
 
 function attack() {
@@ -104,7 +105,7 @@ function attack() {
   if (gunEquipped) {
     gunFire();
   }
-  if (swordEquipped && attackTimer.seconds > 0.5) {
+  if (swordEquipped && attackTimer.seconds > 0.3) {
     swordSlash.play();
     swordSwing();
     attackTimer.stop();
@@ -127,6 +128,15 @@ function loadEnemies(){
   grubsAlive = 7;
   for(var i = 0; i < grubsTotal; i++){
     grubs.push(new Grub(i, game, player));
+  }
+  yetiAlive = 0;
+  if(snowBossLayer != undefined){
+    yeti = [];
+    yetiTotal = 1;
+    yetiAlive = 1;
+    for(var i = 0; i < yetiTotal; i++){
+      yeti.push(new Yeti(i, game, player, bullets));
+    }
   }
 }
 function loadEnemiesPhysics(){
@@ -151,6 +161,18 @@ function loadEnemiesPhysics(){
       grubs[i].update();
     }
   }
+  if(snowBossLayer != undefined){
+    // yetiAlive = 0;
+    for(var i = 0; i < yeti.length; i++) {
+      if(yeti[i].alive) {
+        yetiAlive++;
+        game.physics.arcade.overlap(bullets, yeti[i].enemy, bulletHitEnemy, null, this);
+        game.physics.arcade.overlap(slashes, yeti[i].enemy, bulletHitEnemy, null, this);
+        game.physics.arcade.collide(yeti[i].enemy, fireball, fireHitEnemy, null, this);
+        yeti[i].update();
+      }
+    }
+  }
 }
 function collided(bullet) {
   if (gunEquipped) {
@@ -163,7 +185,8 @@ function grubHitPlayer(player, grub){
     grub.hitTimer.start();
     console.log(grub.hitTimer);
   }
-  if(grub.hitTimer.seconds > 1){
+
+  if(grub.hitTimer.seconds > 1 && shieldEquipped === false){
     grubCollide.play();
     player.health = player.health - 2;
     health.text = "Health: " + player.health;
@@ -175,14 +198,15 @@ function grubHitPlayer(player, grub){
 }
 function bulletHitEnemy(enemy, bullet) {
   console.log(enemy);
-  if (gunEquipped) {
-    bullet.kill();
-  }
+  bullet.kill();
   if(enemy.key === 'enemy'){
     enemies[enemy.name].damage();
   }
   if(enemy.key === 'grub'){
     grubs[enemy.name].damage();
+  }
+  if(enemy.key === 'spaceyeti'){
+    yeti[enemy.name].damage();
   }
 }
 
@@ -210,6 +234,10 @@ function fireHitEnemy(enemy, fireball){
   }
   if(enemy.key === 'grub'){
     grubs[enemy.name].damage();
+  }
+  if(enemy.key === 'spaceyeti'){
+    fireHitWall(fireball);
+    yeti[enemy.name].damage();
   }
 }
 function fireHitWall(fireball){

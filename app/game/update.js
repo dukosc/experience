@@ -20,8 +20,15 @@ function update() {
   weapon.y = player.body.y + 32;
   shield.x = player.body.x + 32;
   shield.y = player.body.y + 32;
-  shield.visible = false;
-  shieldEquipped = false;
+  if(wasd.q.isUp){
+    shield.visible = false;
+  }
+  if(shield.visible === false){
+    shieldEquipped = false;
+  }
+  if(shield.visible === true){
+    shieldEquipped = true;
+  }
   weapon.visible = true;
   shield.body.enable = false;
   if(fireball != undefined && fireballHitWall === false){

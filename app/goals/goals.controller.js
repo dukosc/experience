@@ -1,7 +1,7 @@
 (function() {
 
   angular.module('goals')
-    .controller('GoalsController', function($scope, $rootScope, GoalsService) {
+    .controller('GoalsController', function($scope, $location, $rootScope, GoalsService) {
       var vm = this;
       $rootScope.visited = false;
       vm.addGoal = function(user, goal) {
@@ -9,7 +9,7 @@
         user = JSON.parse(localStorage.getItem('user'));
         user.currGoals.push(goal);
         GoalsService.emit('new:goal', user);
-        console.log(user);
+        $location.path('/add-goals')
       };
     });
 })();

@@ -20,10 +20,12 @@ var fireballHitWall = false;
 var attackTimer;
 var rollTimer;
 var rollDelay;
+var levelTimer;
 var ammo;
 var ammoText;
 var ammocrates = [];
 var health;
+var yetiSplash;
 var map;
 var bossMap;
 var layer;
@@ -90,6 +92,7 @@ function create() {
   rollTimer = game.time.create();
   rollDelay = game.time.create();
   fireTimer = game.time.create();
+  levelTimer = game.time.create();
   game.input.onDown.add(attack, this);
   wasd.e.onDown.add(function(){
     rollDelay.start();
@@ -100,8 +103,9 @@ function create() {
   }, this);
 
   wasd.f.onDown.add(shootFireball, this);
-  game.stage.backgroundColor = '#fff000';
-
+  // game.stage.backgroundColor = '#fff000';
+  yetiSplash = game.add.sprite(0, 0, 'yetisplash');
+  yetiSplash.visible = false;
   game.physics.startSystem(Phaser.Physics.ARCADE);
   bullets = game.add.group();
   bullets.enableBody = true;

@@ -73,11 +73,29 @@ function update() {
   }
   loadEnemiesPhysics();
   if(grubsAlive === 0 && enemiesAlive === 0 && yetiAlive === 0){
-    layer.destroy();
-    snowBossLayer = bossMap.createLayer('SnowBossLevel');
-    snowBossLayer.resizeWorld();
-    loadEnemies();
-    snowBossLayer.sendToBack();
+    if(levelTimer.running === false){
+      levelTimer.start();
+      yetiSplash.visible = true;
+      yetiSplash.width = 1280;
+      yetiSplash.bringToTop();
+      player.x = 0;
+      player.y = 0;
+      for(var i = 0; i < ammocrates.length; i++){
+        ammocrates[i].destroy();
+      }
+    }
+    if(levelTimer.seconds > 5){
+      layer.destroy();
+      player.x = 500;
+      player.y = 500;
+      yetiSplash.destroy();
+      snowBossLayer = bossMap.createLayer('SnowBossLevel');
+      snowBossLayer.resizeWorld();
+      loadEnemies();
+      snowBossLayer.sendToBack();
+      levelTimer.stop();
+    }
+
   }
   if(wasd.p.isDown) {
     game.paused = true;

@@ -12,6 +12,7 @@ function activateShield(){
     mana.text = "Mana: " + player.mana;
     shield.animations.play('shieldFlicker', 10);
     game.physics.arcade.overlap(enemyBullets, shield, bulletBlocked, null, this);
+    game.physics.arcade.overlap(enemyArrows, shield, bulletBlocked, null, this);
   }
 }
 function restoreMana(){

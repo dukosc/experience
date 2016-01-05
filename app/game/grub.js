@@ -40,7 +40,6 @@ Grub.prototype.damage = function() {
   if(fireballHit){
     this.health -= 1 + (stats.intelligence/100);
     fireballHit = false;
-    console.log(this.health);
   }
   if (this.health <= 0) {
     this.alive = false;

@@ -178,10 +178,8 @@ function collided(bullet) {
   }
 }
 function grubHitPlayer(player, grub){
-  console.log(grub.hitTimer);
   if(grub.hitTimer.running === false){
     grub.hitTimer.start();
-    console.log(grub.hitTimer);
   }
 
   if(grub.hitTimer.seconds > 1 && shieldEquipped === false){
@@ -198,7 +196,6 @@ function grubHitPlayer(player, grub){
 
 
 function bulletHitEnemy(enemy, bullet) {
-  console.log(enemy);
   bullet.kill();
   if(enemy.key === 'enemy'){
     enemies[enemy.name].damage();
@@ -249,14 +246,19 @@ function unpause(event) {
   // Only act if paused
   if (game.paused) {
     // Calculate the corners of the menu
-    var x1 = rollIcon.x - game.camera.x,
-      x2 = rollIcon.x - game.camera.x + 128,
-      y1 = rollIcon.y - game.camera.y,
-      y2 = rollIcon.y - game.camera.y + 128;
+    // var x1 = rollIcon.x - game.camera.x,
+    //   x2 = rollIcon.x - game.camera.x + 128,
+    //   y1 = rollIcon.y - game.camera.y,
+    //   y2 = rollIcon.y - game.camera.y + 128;
+    var x1 = choiseLabel.x - game.camera.x,
+      x2 = choiseLabel.x - game.camera.x + 128,
+      y1 = choiseLabel.y - game.camera.y,
+      y2 = choiseLabel.y - game.camera.y + 128;
     if (event.x > x1 && event.x < x2 && event.y > y1 && event.y < y2) {
       console.log('roll clicked');
     } else {
-      rollIcon.destroy();
+      // rollIcon.destroy();
+      choiseLabel.destroy();
       // Unpause the game
       game.paused = false;
     }

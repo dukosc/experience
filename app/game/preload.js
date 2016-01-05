@@ -15,6 +15,7 @@ var preload = function() {
 
   game.load.tilemap('snowmap', 'game/assets/tiles/snowmap.json', null, Phaser.Tilemap.TILED_JSON);
   game.load.tilemap('snowbosslevel', 'game/assets/tiles/snowbosslevel.json', null, Phaser.Tilemap.TILED_JSON);
+  game.load.tilemap('snowlevelone', 'game/assets/tiles/snowlevelone.json', null, Phaser.Tilemap.TILED_JSON);
    //  Next we load the tileset. This is just an image, loaded in via the normal way we load images:
 
   game.load.image('tiles', 'game/assets/tiles/tiles.png');

@@ -2,7 +2,15 @@ Grub = function(index, game, player) {
   var x = game.world.randomX;
   var y = game.world.randomY;
   // console.log(x, y);
-  while(map.getTileWorldXY(x, y, 128, 128).index != 13 && map.getTileWorldXY(x, y, 128, 128).index != 14 && map.getTileWorldXY(x, y, 128, 128).index != 8){
+  while(level === 1 && firstMap.getTileWorldXY(x, y, 128, 128).index != 13 && firstMap.getTileWorldXY(x, y, 128, 128).index != 14 && firstMap.getTileWorldXY(x, y, 128, 128).index != 8){
+    x = game.world.randomX;
+    y = game.world.randomY;
+  }
+  while(level === 2 && secondMap.getTileWorldXY(x, y, 128, 128).index != 13 && secondMap.getTileWorldXY(x, y, 128, 128).index != 14 && secondMap.getTileWorldXY(x, y, 128, 128).index != 8){
+    x = game.world.randomX;
+    y = game.world.randomY;
+  }
+  while(level === 3 && bossMap.getTileWorldXY(x, y, 128, 128).index != 13 && bossMap.getTileWorldXY(x, y, 128, 128).index != 14 && bossMap.getTileWorldXY(x, y, 128, 128).index != 8){
     x = game.world.randomX;
     y = game.world.randomY;
   }
@@ -57,7 +65,10 @@ Grub.prototype.damage = function() {
 Grub.prototype.update = function() {
   this.timer.start();
   this.game.physics.arcade.collide(this.enemy, layer);
-  if(snowBossLayer != undefined){
+  if(secondLevelLayer != undefined && level === 2){
+    this.game.physics.arcade.collide(this.enemy, secondLevelLayer);
+  }
+  if(snowBossLayer != undefined && level === 3){
     this.game.physics.arcade.collide(this.enemy, snowBossLayer);
   }
   if (this.game.physics.arcade.distanceBetween(this.enemy, this.player) < 300) {

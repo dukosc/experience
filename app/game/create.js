@@ -26,10 +26,16 @@ var ammoText;
 var ammocrates = [];
 var health;
 var yetiSplash;
-var map;
+var firstMap;
 var bossMap;
+var secondMap;
 var layer;
 var snowBossLayer;
+var secondLevelLayer;
+var level = 1;
+var loaded = false;
+var yeti;
+var yetiLoaded = false;
 var stats = JSON.parse(localStorage.getItem('stats'));
 
 ////////////////// audio
@@ -66,18 +72,19 @@ function create() {
   };
   console.log(stats);
   // game.stage.backgroundColor = '#787878';
-
-  map = game.add.tilemap('snowmap');
+  firstMap = game.add.tilemap('snowlevelone');
+  secondMap = game.add.tilemap('snowmap');
   bossMap = game.add.tilemap('snowbosslevel');
 
 
-  map.addTilesetImage('tiles', 'tiles');
-  map.setCollisionByExclusion([13, 14, 8]);
+  secondMap.addTilesetImage('tiles', 'tiles');
+  secondMap.setCollisionByExclusion([13, 14, 8]);
   bossMap.addTilesetImage('tiles', 'tiles');
   bossMap.setCollisionByExclusion([13, 14, 8]);
+  firstMap.addTilesetImage('tiles', 'tiles');
+  firstMap.setCollisionByExclusion([13, 14, 8]);
 
-
-  layer = map.createLayer('SnowLevel');
+  layer = firstMap.createLayer('LevelOne');
   layer.resizeWorld();
 
 

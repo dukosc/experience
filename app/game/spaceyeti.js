@@ -78,7 +78,7 @@ Yeti.prototype.update = function() {
   this.gun.x = this.enemy.x;
   this.gun.y = this.enemy.y;
   this.gun.rotation = 0;
-  if (this.game.physics.arcade.distanceBetween(this.enemy, this.player) < 300) {
+  if (this.game.physics.arcade.distanceBetween(this.enemy, this.player) < 700) {
     this.gun.scale.x = 1;
     if(this.enemy.isRunning){
       this.enemy.animations.play('run', 10, true);
@@ -92,7 +92,7 @@ Yeti.prototype.update = function() {
       this.gun.scale.y = 1;
     }
     this.gun.rotation = this.game.physics.arcade.angleBetween(this.enemy, this.player);
-    if(this.game.physics.arcade.distanceBetween(this.enemy, this.player) < 200){
+    if(this.game.physics.arcade.distanceBetween(this.enemy, this.player) < 500){
       this.enemy.isRunning = false;
       if(!this.enemy.isRunning){
         this.enemy.animations.play('idle', 10, true);

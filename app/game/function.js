@@ -219,7 +219,7 @@ function bulletHitPlayer(player, bullet) {
   bullet.kill();
   console.log(bullet);
   if(bullet.key === "arrow"){
-    player.health = player.health - 15;
+    player.health = player.health - 3;
   }
   player.health = player.health - 1;
   health.text = 'Health: ' + player.health;

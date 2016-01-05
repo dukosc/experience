@@ -114,11 +114,13 @@ function attack() {
   }
 }
 function loadEnemies(){
-  enemies = [];
-  enemiesTotal = 5;
-  enemiesAlive = 5;
-  for (var i = 0; i < enemiesTotal; i++) {
-    enemies.push(new Enemy(i, game, player, bullets));
+  if(level === 2 || level === 3){
+    enemies = [];
+    enemiesTotal = 5;
+    enemiesAlive = 5;
+    for (var i = 0; i < enemiesTotal; i++) {
+      enemies.push(new Enemy(i, game, player, bullets));
+    }
   }
   grubs = [];
   grubsTotal = 7;
@@ -126,8 +128,11 @@ function loadEnemies(){
   for(var i = 0; i < grubsTotal; i++){
     grubs.push(new Grub(i, game, player));
   }
+}
+function loadYeti(){
   yetiAlive = 0;
-  if(snowBossLayer != undefined){
+  console.log('yeti loaded');
+  if(snowBossLayer != undefined && level === 3){
     yeti = [];
     yetiTotal = 1;
     yetiAlive = 1;
@@ -159,7 +164,7 @@ function loadEnemiesPhysics(){
     }
   }
 
-  if(snowBossLayer != undefined){
+  if(snowBossLayer != undefined && yeti != undefined){
     // yetiAlive = 0;
     for(var i = 0; i < yeti.length; i++) {
       if(yeti[i].alive) {
@@ -212,6 +217,10 @@ function bulletBlocked(shield, bullet) {
 
 function bulletHitPlayer(player, bullet) {
   bullet.kill();
+  console.log(bullet);
+  if(bullet.key === "arrow"){
+    player.health = player.health - 3;
+  }
   player.health = player.health - 1;
   health.text = 'Health: ' + player.health;
 }
@@ -222,6 +231,7 @@ function processHandler(projectile, enemy) {
 
 function gameOver() {
   game.state.restart();
+  level = 1;
 }
 function fireHitEnemy(enemy, fireball){
   fireballHit = true;

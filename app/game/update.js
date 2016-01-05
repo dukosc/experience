@@ -10,7 +10,13 @@ function update() {
   game.physics.arcade.collide(bullets, layer, collided);
   game.physics.arcade.collide(fireball, layer, fireHitWall);
   game.physics.arcade.collide(enemyBullets, layer, collided);
-  if(snowBossLayer != undefined){
+  if(secondLevelLayer != undefined && level === 2){
+    game.physics.arcade.collide(player, secondLevelLayer);
+    game.physics.arcade.collide(bullets, secondLevelLayer, collided);
+    game.physics.arcade.collide(fireball, secondLevelLayer, fireHitWall);
+    game.physics.arcade.collide(enemyBullets, secondLevelLayer, collided);
+  }
+  if(snowBossLayer != undefined && level === 3){
     game.physics.arcade.collide(player, snowBossLayer);
     game.physics.arcade.collide(bullets, snowBossLayer, collided);
     game.physics.arcade.collide(fireball, snowBossLayer, fireHitWall);
@@ -71,7 +77,17 @@ function update() {
     gameOver();
   }
   loadEnemiesPhysics();
-  if(grubsAlive === 0 && enemiesAlive === 0 && yetiAlive === 0){
+  if(levelTimer.running === false){
+    loaded = false;
+  }
+  if(grubsAlive === 0 && enemiesAlive === 0 && yetiLoaded === false && level === 3){
+    loadYeti();
+    yetiLoaded = true;
+  }
+  // if(yeti[0].alive === false){
+  //   var demoOver =
+  // }
+  if(grubsAlive === 0 && enemiesAlive === 0 && yetiLoaded === false){
     if(levelTimer.running === false){
       levelTimer.start();
       yetiSplash.visible = true;
@@ -84,14 +100,26 @@ function update() {
       }
     }
     if(levelTimer.seconds > 5){
-      layer.destroy();
+      level++;
       player.x = 500;
       player.y = 500;
-      yetiSplash.destroy();
-      snowBossLayer = bossMap.createLayer('SnowBossLevel');
-      snowBossLayer.resizeWorld();
-      loadEnemies();
-      snowBossLayer.sendToBack();
+      yetiSplash.visible = false;
+      if(level === 2 && loaded === false){
+        layer.destroy();
+        secondLevelLayer = secondMap.createLayer('SnowLevel');
+        secondLevelLayer.resizeWorld();
+        loadEnemies();
+        secondLevelLayer.sendToBack();
+        loaded = true;
+      }
+      if(level === 3 && loaded === false){
+        secondLevelLayer.destroy();
+        snowBossLayer = bossMap.createLayer('SnowBossLevel');
+        snowBossLayer.resizeWorld();
+        loadEnemies();
+        snowBossLayer.sendToBack();
+        loaded = true;
+      }
       levelTimer.stop();
     }
 

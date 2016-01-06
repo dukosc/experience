@@ -232,8 +232,9 @@ function processHandler(projectile, enemy) {
 }
 
 function gameOver() {
-  game.state.restart();
-  level = 1;
+  dead.bringToTop();
+  dead.visible = true;
+  game.paused = true;
 }
 function fireHitEnemy(enemy, fireball){
   fireballHit = true;

@@ -181,33 +181,60 @@ function create() {
   loadEnemies();
   game.input.onDown.add(unpause, self);
   ammoText = game.add.text(0, 0, "Ammo: " + player.ammo, {
-    font: "30px Arial",
+    font: "15px gamegirl",
     fill: "#ff0044",
     align: "left"
   });
   ammoText.fixedToCamera = true;
   ammoText.cameraOffset.setTo(0, 0);
   health = game.add.text(0, 0, "Health: " + player.health, {
-    font: "30px Arial",
+    font: "15px gamegirl",
     fill: "#ff0044",
     align: "left"
   });
   health.fixedToCamera = true;
   health.cameraOffset.setTo(150, 0);
   stamina = game.add.text(0, 0, "Stamina: " + player.stamina, {
-    font: "30px Arial",
+    font: "15px gamegirl",
     fill: "#17a82e",
     align: "left"
   });
   stamina.fixedToCamera = true;
-  stamina.cameraOffset.setTo(300, 0);
+  stamina.cameraOffset.setTo(325, 0);
   mana = game.add.text(0, 0, "Mana: " + player.mana, {
-    font: "30px Arial",
+    font: "15px gamegirl",
     fill: "#1664bf",
     align: "left"
   });
   mana.fixedToCamera = true;
-  mana.cameraOffset.setTo(500, 0);
+  mana.cameraOffset.setTo(525, 0);
+  nextLevel = game.add.text(0, 0, "Level " + level, {
+    font: "75px gamegirl",
+    fill: "#ffffff",
+    align: "left"
+  });
+  nextLevel.fixedToCamera = true;
+  nextLevel.cameraOffset.setTo(825, 200);
+  nextLevel.visible = false;
+  nextLevel.wordWrap = true;
+  nextLevel.wordWrapWidth = 50;
+  demoOver = game.add.text(0, 0, "Demo Completed", {
+    font: "75px gamegirl",
+    fill: "#333333",
+    align: "left"
+  });
+  demoOver.fixedToCamera = true;
+  demoOver.cameraOffset.setTo(85, 230);
+  demoOver.visible = false;
+  dead = game.add.text(0, 0, "Dead", {
+    font: "150px gamegirl",
+    fill: "#333333",
+    align: "left"
+  });
+  dead.fixedToCamera = true;
+  dead.cameraOffset.setTo(300, 175);
+  dead.visible = false;
+  dead.bringToTop();
   //movement animations
   var run = player.animations.add('run', [4, 5, 6, 7, 8]);
   var idle = player.animations.add('idle', [0, 1, 2, 3]);

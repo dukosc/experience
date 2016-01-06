@@ -186,7 +186,9 @@ function grubHitPlayer(player, grub){
   if(grub.hitTimer.running === false){
     grub.hitTimer.start();
   }
+
   if(grub.hitTimer.seconds > 1 && shieldEquipped === false){
+    grubCollide.play();
     player.health = player.health - 2;
     health.text = "Health: " + player.health;
     grub.hitTimer.stop(false);

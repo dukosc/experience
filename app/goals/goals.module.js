@@ -24,8 +24,8 @@
         templateUrl: 'goals/views/wisdom.html',
         controller: 'GoalsController as goalCtrl'
       })
-      .when('/goals/intellegence', {
-        templateUrl: 'goals/views/intellegence.html',
+      .when('/goals/Intelligence', {
+        templateUrl: 'goals/views/Intelligence.html',
         controller: 'GoalsController as goalCtrl'
       })
       .when('/goals/dexterity', {

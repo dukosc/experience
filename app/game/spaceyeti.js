@@ -46,13 +46,13 @@ Yeti = function(index, game, player, bullets) {
 Yeti.prototype.damage = function() {
 
   if (gunEquipped && !fireballHit) {
-    this.health -= 1 + (stats.dexterity/10);
+    this.health -= Math.floor(1 + (stats.dexterity/10));
   }
   if (swordEquipped && !fireballHit) {
-    this.health -= 3 + (stats.strength/10);
+    this.health -= Math.floor(3 + (stats.strength/10));
   }
   if(fireballHit){
-    this.health -= 1 + (stats.intelligence/100);
+    this.health -= Math.floor(1 + (stats.intelligence/100));
     fireballHit = false;
   }
   if (this.health <= 0) {
@@ -103,7 +103,7 @@ Yeti.prototype.update = function() {
         bullet.body.setSize(32, 32);
         bullet.scale.setTo(0.5, 0.5);
         bullet.reset(this.gun.x, this.gun.y);
-        bullet.rotation = this.game.physics.arcade.moveToObject(bullet, this.player, 500);
+        bullet.rotation = this.game.physics.arcade.moveToObject(bullet, this.player, 1000);
       }
       this.enemy.body.velocity.x = 0;
       this.enemy.body.velocity.y = 0;
@@ -134,5 +134,5 @@ Yeti.prototype.update = function() {
     }
   }
   this.healthText.x = this.enemy.x;
-  this.healthText.y = this.enemy.y - 50;
+  this.healthText.y = this.enemy.y - 60;
 };

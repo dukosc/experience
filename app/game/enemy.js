@@ -45,15 +45,14 @@ Enemy = function(index, game, player, bullets) {
 };
 Enemy.prototype.damage = function() {
   if (gunEquipped && !fireballHit) {
-    this.health -= 1 + (stats.dexterity/10);
+    this.health -= Math.floor(1 + (stats.dexterity/10));
   }
   if (swordEquipped && !fireballHit) {
-    this.health -= 3 + (stats.strength/10);
+    this.health -= Math.floor(3 + (stats.strength/10));
   }
   if(fireballHit){
-    this.health -= 1 + (stats.intelligence/100);
+    this.health -= Math.floor(1 + (stats.intelligence/100));
     fireballHit = false;
-    console.log(this.health);
   }
   if (this.health <= 0) {
     this.alive = false;

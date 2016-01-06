@@ -84,15 +84,21 @@ function update() {
     loadYeti();
     yetiLoaded = true;
   }
-  // if(yeti[0].alive === false){
-  //   var demoOver =
-  // }
+  if(yeti != undefined){
+    if(yeti[0].alive === false){
+      demoOver.visible = true;
+      game.paused = true;;
+    }
+  }
   if(grubsAlive === 0 && enemiesAlive === 0 && yetiLoaded === false){
     if(levelTimer.running === false){
       levelTimer.start();
       yetiSplash.visible = true;
+      nextLevel.visible = true;
       yetiSplash.width = 1280;
       yetiSplash.bringToTop();
+      nextLevel.text = "Level: " + (level + 1);
+      nextLevel.bringToTop();
       player.x = 0;
       player.y = 0;
       for(var i = 0; i < ammocrates.length; i++){
@@ -104,6 +110,7 @@ function update() {
       player.x = 500;
       player.y = 500;
       yetiSplash.visible = false;
+      nextLevel.visible = false;
       if(level === 2 && loaded === false){
         layer.destroy();
         secondLevelLayer = secondMap.createLayer('SnowLevel');
